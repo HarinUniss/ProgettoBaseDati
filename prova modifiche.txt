@@ -3,5 +3,5 @@ se leggi questo messaggio
 prova a scrivere qualcosa dentro alle parentesi 
 prova modifiche
 {
-...
+  System.out.println("Sono GIovanni, ho scritto sul file :)\n");
 }
