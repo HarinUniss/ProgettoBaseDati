@@ -7,5 +7,5 @@ prova modifiche
 
 ciao
 {
-...
+  System.out.println("Sono GIovanni, ho scritto sul file :)\n");
 }
