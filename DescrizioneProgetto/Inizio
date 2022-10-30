@@ -1,0 +1,183 @@
+CREAZIONE PASSO PASSO TABELLA ANIMALI
+
+
+	DEFINIZIONE DELLE COLONNE
+
+		Cosa caratterizza un animale?
+			La sua specie, il suo sesso, la sua data di nascita  e magari una possibile colonna di commenti che può fungere da catch-all per annotare qualcosa.
+
+
+		Specie:
+			Possiamo caratterizzare la specie con una o più parole.
+			Sarà quindi un campo di tipo alfanumerico.
+
+			I nomi delle specie sono relativamente brevi, ma non tutti hanno la stessa lunghezza.
+
+			Sceglieremo quindi un VARCHAR
+
+				Che lunghezza dargli?
+				 	Molti nomi di specie contengono solo una parola, ma "gufo delle nevi", ad esempio, contiene tre e 18 caratteri. Per non correre rischi, potresti anche consentire fino a 40 caratteri per la specie.
+
+		Sesso:
+			qui, due possibili scelte (maschio o femmina).
+			Sarebbe possibile utilizzare un, ENUM tuttavia, rimane un tipo non standard!!! è.é
+			Per questo motivo, useremo invece una colonna CHAR(1),
+			contenente 'M'(maschio) o 'F'(femmina).
+
+		Data di nascita:
+			non c'è bisogno di pensare molto qui...
+			un DATETIME, o un DATE vanno bene.
+
+			I'ora della nascita potrebbe essere importante? Diciamo di sì?
+			Forse per le cure nei primi giorni?
+				allora useremo un DATETIME
+
+		Commenti:
+			di nuovo, un tipo alfanumerico, ovviamente, ma non abbiamo idea della lunghezza.
+			Sicuramente saranno dei commenti concisi ma conviene comunque lasciare dello spazio.
+
+			Opteró per un TEXT.
+
+		Nome:
+		 	Prenderemo semplicemente un VARCHAR(30)
+		 	Sperando che i proprietari si limitino a 30 caratteri per poter nominare il proprio animale.
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	NULL o NOT NULL?
+		Ora è necessario determinare se coviene autorizzare alle colonne di non memorizzare un valore, ovvero poter mettere dei valori NULL
+
+		Specie:
+			un allevatore degno di questo nome conosce le specie di animali che alleva.
+			Non permetteremo quindi che la colonna delle specie contenga dei NULL.
+
+		Sesso:
+			Il sesso di alcuni animali è molto difficile da determinare alla nascita.
+			Non è quindi impossibile che dovremo aspettare diverse settimane per scoprire se "Leo" en realtá é una "Lea".
+			Pertanto la colonna sesso dovra poter contenere valori NULL.
+
+		Data di nascita:
+			per garantire la purezza delle razze (qui il Il Manifesto della razza - 1938 non c'entra nulla)
+			gli allevatori lavorano solo con individui la cui origine è nota.
+			É necessario sapere chi sono i genitori e la data di nascita.
+			Di conseguenza, questa colonna non può contenere dei NULL.
+
+		Commenti:
+			questo campo può benissimo non contenere nulla, se la bestiola in questione non ha assolutamente alcuna particolarità (Mi dispiace per la freddezz ama bisogna essere realistici u.u).
+			Di conseguenza, questa colonna non può contenere dei NULL.
+
+		Nome:
+			in caso di fallimento dell'ispirazione
+			(sembra facile, ma cosí non é un gatto può avere tra 1 e 8 piccoli contemporaneamente, puó essere difficile inventare 8 nomi originali entro il giorno stesso della registrazione!!!).
+			È meglio lasciare che questa colonna possa contenere dei NULL.
+
+
+	PICCOLA TABELLA RIASSUNTIVA
+
+		Caratteristico      Nome colonna    Tipo            NULL?
+
+		Specie              specie          VARCHAR(40)     No
+		Sesso               sesso           CHAR(1)         Sì
+		Data di nascita     data_nascita    DATETIME        No
+		Commenti            commenti        TEXT            Sì
+		Nome                nome            VARCHAR(30)     Sì
+
+
+		Non dimenticare di dare una dimensione alle colonne che ne richiedono una,
+		come VARCHAR(x) , CHAR(x) , DECIMAL(n, d) .
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	NECESSITA DI UNA CHIAVE PRIMARIA id
+
+		Definiremo quindi cinque colonne: specie, sesso, date_naissance, commenti e nome.
+		queste colonne permettono di caratterizzare i nostri animali.
+
+		cosa succede se due animali sono della stessa specie, dello stesso sesso, sono nati esattamente nello stesso giorno e hanno esattamente gli stessi commenti e lo stesso nome?
+
+		Si potrebbe fare in modo che due animali non abbiano mai lo stesso nome,
+		la cosa non é comunque semplice;
+
+		Analizziamo la seguente situazione:
+			un gatto ha appena dato alla luce sette cuccioli.
+			Non possiamo ancora definire il loro genere, non abbiamo ancora trovato un nome per alcuni di loro e non c'è ancora nessun commento da fare su di loro.
+			Quindi avranno esattamente le stesse caratteristiche!!!
+			Eppure non sono gli stessi individui!!!
+			Devono quindi essere differenziati!!!
+			Sará dunque neccessaria l'aggiunta di una colonna alla nostra tabella.
+
+			Seguiremo lo stesso principio per cui due bambini nati lo stesso giorno nello stesso paese e con lo stesso nome e cognome hanno due Codici Fiscali differenti,
+			daremo a ciascun animale un numero di identità.
+
+			La colonna che aggiungeremo si chiamerà quindi id, sará un INT , sempre positivo dunque UNSIGNED.
+
+				A seconda della dimensione dell'allevamento potrebbe essere di interesse l'utilizzo di un SMALLINT, oppure un MEDIUMINT.
+				Visto che é poco probabile che il nostro allevamento oltrepassi i 65.535 animali opteró per un SMALLINT.
+
+				Attenzione!!! Considereró tutti gli animali che un giorno entreranno nella basedati, non solo il numero di animali presenti contemporaneamente nel mio allevamento.
+				Infatti, se rimuoviamo per un motivo o per l'altro un animale dalla basedati, NON SI PUO riutilizzare il suo numero di identità.
+
+		Questo campo ovviamente NON potrà essere NULL, altrimenti perderebbe tutta la sua utilità.
+
+		Per tale riga verrá anche utilizzato l'AUTO_INCREMENT per evitare di contare tutto il tempo tali elementi.
+
+
+	SCELTA MOTORE DI ARCHIVIAZIONE
+		si utilizzera InnoDB.
+		Poiché  successivamente sara necessario l'utilizzo di chiavi esterne e MyISAM non le supporta.
+
+			ENGINE = INNODB;
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	RIASSUNTO TABELLA ANIMALI
+
+        Caratteristico      Nome colonna        Tipo           NULL?        Diverso
+
+        Numero Identitá     id                  SMALINT        No           ChiavePrimaria+
+                                                                            AutoIncremento+
+                                                                            UNSIGNED
+
+        Specie              specie              VARCHAR(40)    No            ---------
+
+        Sesso               sesso               CHAR(1)        Sì            ---------
+
+        Data di nascita     data_nascita        DATETIME       No            ---------
+
+        Commenti            commenti            TEXT           Sì            ---------
+
+        Nome                nome                VARCHAR(30)    Sì            ---------
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+DEFINITIVA CREAZIONE DELLA NOSTRA TABELLA!!!!!!!!!!!!
+
+		CREATE TABLE Animali (
+		    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+		    specie VARCHAR(40) NOT NULL,
+		    sesso CHAR(1),
+		    data_nascita DATETIME NOT NULL,
+		    nom VARCHAR(30),
+		    commenti TEXT,
+		    PRIMARY KEY (id)
+		)
+		ENGINE=INNODB;
+
+
+		Non ho iserito il valore predefinito per il campo specie, perché non ritengo che abbia molto senso in questo contesto.
+
+
+
+VERIFICO SE TUTTO é ANDATO COME PREVISTO CERCANDO DI VISUALIZZARE LA MIA TABELLA
+
+	SHOW TABLES;
+
+	DESCRIBE Animali;
+
+
+
+
+
+
+
+
+
+
+
+
