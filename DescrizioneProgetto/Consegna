@@ -1,0 +1,75 @@
+
+
+Obbiettivo:
+
+    creare applicazione web che permette di interfacciare:
+
+            Ricercatori di animali (anche utente non registrato) con:
+             Canili , donatori animali , allevamenti animali.
+
+
+    cosa deve fare l'app?
+
+        ricerca di animali secondo criteri di:
+                specie
+                sesso
+                età
+                ID
+                luogo
+                pedigree
+                provenienza
+
+        Possibilità di creazione account:
+                account canile
+                account allevamento
+                account donatore (utente iscritto)
+                utente non loggato
+
+                Tutti possono fare:
+                    Ricercare animali
+                    Login
+
+
+                    Tutti Tranne utente Non loggato:
+                        Chat privata (se fattibile)
+                        Lista cani preferiti (se fattibile)
+                        ricevere notifiche
+                        Prenotare appuntamento
+
+
+
+
+                        Account donatore puo:
+                            Caricare Animale (da donare)
+                            Rimuovere Animale
+                            Personalizzazione account (dati personali, preferenze orario , recapito )
+
+
+                        Account Canile puo:
+                             Caricare Animale (da donare con garanzia)
+                             Rimuovere Animale
+                             Personalizzazione account (dati canile, recapito )
+                             Caricare Orario disponibilità
+                             Modifica appuntamenti
+
+                        Account Allevamento puo:
+                             Caricare Animale (da donare con garanzia)
+                             Caricare Animale (da vendere)
+                             Rimuovere Animale
+                             Personalizzazione account (dati canile, recapito )
+                             Caricare Orario disponibilità
+                             Modifica appuntamenti
+
+
+
+
+
+
+
+
+
+
+
+
+
+
