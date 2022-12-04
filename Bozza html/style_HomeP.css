@@ -1,12 +1,19 @@
 
 div.title{
     display: inline-block;
-    background-color: lawngreen;
-    position: relative;
-    text-align: center;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    background-color: white;
+    position: absolute;
+    padding: 15px;
+    text-align: right;
     font-family: "Times New Roman", "Arial Black";
-    color: blueviolet;
-    width: 100%;
+    color: black;
+    width: 96%;
+    height: 25px;
+    border-style: groove;
+    border-width: thick;
 }
 a.h_img{
     position: absolute;
@@ -16,26 +23,26 @@ a.h_img{
 a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
     /*Text*/
     text-decoration-line: none;
-    color: black;
-    text-decoration-line: none;
     /**/
+    color: black;
     position: relative;
     border-radius: 50%;
     padding: 10px;
     margin: 10px;
 }
+
+button.b_search{
+    border-color: indianred;
+}
 #baricerca{
     background-color: white;
     border-color: indianred;
-    border-top-left-radius: 20%;
+    border-top-left-radius: 25%;
+    border-bottom-left-radius: 25%;
     border-right: none;
-    width: 50px;
+    width: 150px;
 }
-a.lente{
-    background-color: white;
-    border-color: indianred;
-    border-width: 10px;
-}
+
 a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
-    background-color: darkred;
+    background-color: darkgray;
 }

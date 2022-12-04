@@ -5,24 +5,22 @@
     <link rel="stylesheet" href="style_HomeP.css">
     <style></style>
     <script>
-        function barSearch(){
-
+        function resetbarSearch(){
+            var testo = document.getElementById("baricerca");
+            msg.outerHTM="<input type=\"text\" id=\"baricerca\" onclick=\"resetbarSearch()\"><img src=\"lente.png\" height=\"10\" width=\"10\">";
         }
     </script>
 </head>
 <body>
-<nobr>
-</nobr><div class="title"><nobr>
+<div class="title"><nobr>
     <a class="h_img">
         <img src="penup_20221204_170222.jpg" width="45" height="45">
     </a>
     <a href="HomePage.html" class="link">
         Home
     </a>
-
-    <input type="text" id="baricerca" value="Search" onclick=""><a class="lente"><img src="lente.png" height="10" width="10"></a>
-
-</nobr><a href="login.html" class="link"><nobr><img src="utente_img.png" height="10" width="10"> Login</nobr> <!--No br altrimenti si separa img da login-->
+    <a class="lente"><input type="text" id="baricerca" value="Search" onclick="resetbarSearch()"><button class="b_search"><img src="lente.png" height="8" width="8"></button>
+    </nobr><a href="login.html" class="link"><nobr><img src="utente_img.png" height="10" width="10"> Login</nobr> <!--No br altrimenti si separa img da login-->
 </a>
 </div>
 
