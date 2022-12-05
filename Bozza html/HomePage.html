@@ -7,7 +7,10 @@
     <script>
         function resetbarSearch(){
             var testo = document.getElementById("baricerca");
-            msg.outerHTM="<input type=\"text\" id=\"baricerca\" onclick=\"resetbarSearch()\"><img src=\"lente.png\" height=\"10\" width=\"10\">";
+            testo.outerHTML="<input type=\"text\" id=\"baricerca\" >";
+        }
+        function buttonSearch(){
+
         }
     </script>
 </head>
@@ -19,7 +22,7 @@
     <a href="HomePage.html" class="link">
         Home
     </a>
-    <a class="lente"><input type="text" id="baricerca" value="Search" onclick="resetbarSearch()"><button class="b_search"><img src="lente.png" height="8" width="8"></button>
+    <a class="lente"><input type="text" id="baricerca" value="Search" onclick="resetbarSearch()"><button class="b_search" onclick="buttonSearch()"><img src="lente.png" height="8" width="8"></button></a>
     </nobr><a href="login.html" class="link"><nobr><img src="utente_img.png" height="10" width="10"> Login</nobr> <!--No br altrimenti si separa img da login-->
 </a>
 </div>
