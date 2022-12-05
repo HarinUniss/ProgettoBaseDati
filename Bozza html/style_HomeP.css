@@ -1,38 +1,38 @@
-
-div.title{
-    display: inline-block;
+/*Definisco il css del div dell'header*/
+div.head{
+    /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
     left: 0px;
     top: 0px;
     right: 0px;
-    background-color: white;
-    position: absolute;
-    padding: 15px;
-    text-align: right;
-    font-family: "Times New Roman", "Arial Black";
-    color: black;
-    width: 96%;
-    height: 25px;
-    border-style: groove;
-    border-width: thick;
+    background-color: white; /*L'header ha lo sfondo bianco*/
+    position: absolute; /*Definisco la posizione in riferimento del resto della pagina. In questo caso è fisso*/
+    padding: 15px; /*Gestisco lo spazio interno tra li elementi*/
+    text-align: right; /*Metto il testo allineato a destra*/
+    font-family: "Times New Roman", "Arial Black"; /*Definisco i vari stili di font per browser*/
+    color: black; /*Definisco il colore delle scritte*/
+    width: 100%; /*Lunghezza dell' header*/
+    height: 25px; /*altezza dell' header*/
+    border-style: groove; /*Definisco lo stile del bordo*/
+    border-width: thick; /*Il bordo ha uno spessore abbastanza spesso*/
 }
-a.h_img{
-    position: absolute;
+a.h_img{ /*Definisco il comportamento dell' immagine dell'header*/
+    position: absolute; /*Posizione fissa, definita dai "margini" gestiti sotto*/
     left: 5px;
     top: 5px;
 }
 a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
     /*Text*/
-    text-decoration-line: none;
+    text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
     /**/
-    color: black;
+    color: black; /*Colore testo nero*/
     position: relative;
-    border-radius: 50%;
-    padding: 10px;
-    margin: 10px;
+    border-radius: 50%; /*Definisco il bordo del'background a forma di ellisse*/
+    padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
+    margin: 10px 10px 10px 40px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
 
 button.b_search{
-    border-color: indianred;
+    border-color: indianred; /**/
 }
 #baricerca{
     background-color: white;
