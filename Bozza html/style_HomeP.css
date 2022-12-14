@@ -4,7 +4,7 @@ div.head{
     left: 0px;
     top: 0px;
     right: 0px;
-    background-color: white; /*L'header ha lo sfondo bianco*/
+    background-color: lightblue; /*L'header ha lo sfondo veleste*/
     position: absolute; /*Definisco la posizione in riferimento del resto della pagina. In questo caso è fisso*/
     padding: 15px; /*Gestisco lo spazio interno tra li elementi*/
     text-align: right; /*Metto il testo allineato a destra*/
@@ -12,8 +12,8 @@ div.head{
     color: black; /*Definisco il colore delle scritte*/
     width: 100%; /*Lunghezza dell' header*/
     height: 25px; /*altezza dell' header*/
-    border-style: groove; /*Definisco lo stile del bordo*/
-    border-width: thick; /*Il bordo ha uno spessore abbastanza spesso*/
+    /*border-style: unset; /*Definisco lo stile del bordo*/
+    border-width: medium; /*Il bordo ha uno spessore abbastanza spesso*/
 }
 a.h_img{ /*Definisco il comportamento dell' immagine dell'header*/
     position: absolute; /*Posizione fissa, definita dai "margini" gestiti sotto*/
@@ -28,20 +28,33 @@ a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
     position: relative;
     border-radius: 50%; /*Definisco il bordo del'background a forma di ellisse*/
     padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-    margin: 10px 10px 10px 40px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+    margin: 1px 10px 10px 40px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
 
 button.b_search{
-    border-color: indianred; /**/
+    padding: 5px;
+    background-color: lightblue;
+    border: none;
+    width: 30px;
+    height: 30px;
 }
-#baricerca{
+button.b_search:hover{
+    background-color: deepskyblue;
+    border-style: groove;
+    border-color: white;
+}
+img.img_bt_src:hover{
+    rotate: 45deg;
+    background-size: 30px 30px;
+}
+/*#baricerca{
     background-color: white;
     border-color: indianred;
     border-top-left-radius: 25%;
     border-bottom-left-radius: 25%;
     border-right: none;
     width: 150px;
-}
+}*/
 
 a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
     background-color: darkgray;
