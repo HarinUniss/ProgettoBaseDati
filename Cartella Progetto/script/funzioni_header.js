@@ -2,12 +2,14 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
 
-    $("a.h_img").click(function(){
-        //$("div.barra_sinistra").slideToggle("slow");
-    });
+    /*$("a.h_img").click(function(){
+    });*/
 
     var butt_search = $("#butt_search");
     butt_search.on({ //Si usa quando si verificano diverse azioni
+        focus: function(){ //fix del bording del bottone di ricerca
+            butt_search.css("outline","none");
+        },
         mouseenter: function(){ //Quando il mouse passa sopra il bottone
             $("#img_bt_src").css("transform","rotate(45deg)"); //L'immmagine dentro ruota di 45 gradi
             butt_search.css("background-color", "lightgray");

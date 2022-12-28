@@ -18,11 +18,12 @@
 /*Definisco il css del div dell'header*/
 div.head {
   /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
-  left: 0px;
+  left: 120px;
   top: 0px;
   right: 0px;
   display: block;
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
+  position: absolute;
   position: fixed; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
@@ -30,14 +31,15 @@ div.head {
   text-align: right; /*Metto il testo allineato a destra*/
   font-family: "Times New Roman", "Arial Black"; /*Definisco i vari stili di font per browser*/
   color: black; /*Definisco il colore delle scritte*/
-  width: 100%; /*Lunghezza dell' header*/
+  width: 72%; /*Lunghezza dell' header*/
   height: 55px; /*altezza dell' header*/
   /*border-style: unset; /*Definisco lo stile del bordo*/
   box-shadow: 1px 1px 1px 1px darkslategray;
 }
 
 a.h_img { /*Definisco il comportamento dell' immagine dell'header*/
-  position: absolute; /*Posizione fissa, definita dai "margini" gestiti sotto*/
+  /*position: fixed; /*Posizione fissa, definita dai "margini" gestiti sotto*/
+  position: absolute;
   left: 5px;
   top: 5px;
 }
@@ -51,9 +53,9 @@ a.link { /*Si usa per le pagine di collegamento presenti nell' header*/
   text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
   color: black; /*Colore testo nero*/
   position: relative;
-  border-radius: 25%; /*Definisco il bordo*/
+  border-radius: 15%; /*Definisco il bordo*/
   padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-  margin: 10px 20px 10px 20px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+  margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
 
 a.link:hover { /*Si attiva quando ci passo sopra col mouse*/
@@ -65,10 +67,6 @@ a.link:hover { /*Si attiva quando ci passo sopra col mouse*/
 input:focus {
   outline: none;
 } /*Mi toglie il bordo che si genera premendo nella barra di testo*/
-button:focus {
-  outline: none;
-}
-
 #baricerca {
   height: 20px;
   display: inline-block;
@@ -76,20 +74,19 @@ button:focus {
   background-color: deepskyblue;
   box-shadow: 1px 1px 1px cornflowerblue;
   border: none;
-  margin-left: 55px;
   width: 150px;
   color: lightgray;
   font-style: italic;
 }
 
 #butt_search {
-  margin-left: 55px;
+  /*margin-left:55px;*/
   position: relative;
   display: inline-block;
   border: none;
   background-color: transparent;
-  border-top-right-radius: 25%;
-  border-bottom-right-radius: 25%;
+  border-top-right-radius: 15%;
+  border-bottom-right-radius: 15%;
   width: 20px;
   height: 25px;
 }
@@ -98,14 +95,6 @@ button:focus {
   cursor: pointer;
 }
 
-/*div.div{
-  display: block;
-  margin-left: 75px;
-  margin-top: 65px;
-  width: 90%;
-  height: 500px;
-  background-color: chartreuse;
-}*/
 /*css per il footer*/
 footer {
   padding-bottom: 50px;

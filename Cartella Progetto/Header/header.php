@@ -17,11 +17,11 @@
 </head>
 <body>
 <nobr>
-<div class="head" >
+<div class="head container-fluid" >
     <nobr>
-        <a class="h_img">
+        <!--<a class="h_img">
             <img src="./Immagini/imm_sito.jpg" width="45" height="45">
-        </a>
+        </a>-->
 
         <!--placeholder permette che all'inserimento lettera, Search Scompare-->
         <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->
