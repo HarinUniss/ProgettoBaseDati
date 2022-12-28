@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Animali per amici</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style_HomeP.css"> <!--linko il css della HP-->
+    <link rel="stylesheet" href="style/main.css"> <!--linko il css della HP-->
+    <link rel="stylesheet" href="style_HomeP.css">
     <!--Includo la libreria di jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="funzioni_header.js"></script>
+    <script src="./script/funzioni_header.js"></script>
 </head>
 <body>
 <nobr>
