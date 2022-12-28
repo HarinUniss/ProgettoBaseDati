@@ -32,12 +32,5 @@
         </a>
     </nobr>
 </div>
-
-<div class="barra_sinistra"></div>
-<div class="div container-fluid">
-    <div class="row">
-
-    </div>
-</div>
 </body>
 </html>

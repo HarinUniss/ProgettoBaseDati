@@ -1,10 +1,9 @@
 $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
-    $("div.barra_sinistra").hide();
 
     $("a.h_img").click(function(){
-        $("div.barra_sinistra").slideToggle("slow");
+        //$("div.barra_sinistra").slideToggle("slow");
     });
 
     var butt_search = $("#butt_search");
