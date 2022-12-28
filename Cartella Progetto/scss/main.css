@@ -119,11 +119,11 @@ footer {
   background-color: gray;
   text-align: center;
 }
-
-/* css per la barra orizzontale nel footer*/
-footer.hr {
+footer hr {
   height: 3px;
   background-color: blue;
 }
+
+/* css per la barra orizzontale nel footer*/
 
 /*# sourceMappingURL=main.css.map */
