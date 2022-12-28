@@ -57,6 +57,7 @@ a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
 }
 
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
+button:focus{outline:none;}
 
 #baricerca{
     height: 20px;

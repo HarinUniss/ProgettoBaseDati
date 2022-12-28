@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <enabled-global>
+      <option value="Sass" />
+      <option value="SCSS" />
       <option value="SCSS" />
       <option value="Sass" />
     </enabled-global>
