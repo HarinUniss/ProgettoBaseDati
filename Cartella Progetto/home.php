@@ -1,5 +1,5 @@
 <?php session_start();//accedo alla variabile globale $_SESSION ?>
-<!-- Fare in modo che una volta fatto il loghin la sessione resti aperta nelle altre pagine del sito -->
+<!-- Fare in modo che una volta fatto il loghin la sessione resti aperta nelle altre pagine del sito! -->
 
 <!DOCTYPE html>
 <html>
