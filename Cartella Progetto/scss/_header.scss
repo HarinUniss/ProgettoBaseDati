@@ -30,28 +30,20 @@ a.h_img:hover{
   cursor: pointer;
 }
 
-div.barra_sinistra{
-  margin-left: 0px;
-  display:block;
-  margin-top: 48px;
-  height: 500px;
-  width: 65px;
-  text-align: end;
-  background-color: darkslategray;
-}
 
 a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
   /*Text*/
   text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
-
   color: black; /*Colore testo nero*/
   position: relative;
-  border-radius: 50%; /*Definisco il bordo del'background a forma di ellisse*/
+  border-radius: 25%; /*Definisco il bordo*/
   padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
   margin: 10px 20px 10px 20px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
 a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
+  color: black;
+  text-decoration-line: none;
 }
 
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
@@ -78,21 +70,18 @@ button:focus{outline:none;}
   background-color: transparent;
   border-top-right-radius: 25%;
   border-bottom-right-radius: 25%;
-
+  width: 20px;
+  height: 25px;
 }
 #butt_search:hover{
   cursor: pointer;
 }
 
-div.div{
+/*div.div{
   display: block;
   margin-left: 75px;
   margin-top: 65px;
   width: 90%;
   height: 500px;
   background-color: chartreuse;
-}
-
-@media(max-width: 600px){
-
-}
+}*/

@@ -1,7 +1,4 @@
 /*Definisco il css del div dell'header*/
-body{
-    margin-left: 0px;
-}
 div.head{
     /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
     left: 0px;
@@ -32,23 +29,13 @@ a.h_img:hover{
     cursor: pointer;
 }
 
-div.barra_sinistra{
-    margin-left: 0px;
-    display:block;
-    margin-top: 48px;
-    height: 500px;
-    width: 65px;
-    text-align: end;
-    background-color: darkslategray;
-}
-
 a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
     /*Text*/
     text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
 
     color: black; /*Colore testo nero*/
     position: relative;
-    border-radius: 50%; /*Definisco il bordo del'background a forma di ellisse*/
+    border-radius: 25%; /*Definisco il bordo*/
     padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
     margin: 10px 20px 10px 20px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }

@@ -25,11 +25,10 @@
 
         <!--placeholder permette che all'inserimento lettera, Search Scompare-->
         <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->
-        <!--<div class="ricerca">-->
-            <input type="text" id="baricerca" placeholder="Search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
-        <!--</div>-->
+        <input type="text" id="baricerca" placeholder="Search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
+
         <a href="login.html" class="link">
-            <img src="./Immagini/utente_img.png" height="10" width="10"> Login <!--No br altrimenti si separa img da login-->
+            <img src="./Immagini/utente_img.png" height="25" width="25"> Login
         </a>
     </nobr>
 </div>
