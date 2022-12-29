@@ -1,6 +1,9 @@
 /*css per il footer*/
 footer {
-  padding-bottom: 50px;
+  height: 15%;
+  position:absolute;
+  bottom: 0px;
+  z-index: 100;
   background-color: gray;
   text-align: center;
   hr {

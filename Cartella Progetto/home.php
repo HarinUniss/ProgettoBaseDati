@@ -21,7 +21,9 @@
     <div>
         <?php include_once('./Navigatore/nav.php'); ?>
     </div>
-
+    <div>
+        <!--parte div centrale-->
+    </div>
     <?php include_once('./Footer/footer.php'); ?>
 
 

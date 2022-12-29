@@ -25,7 +25,24 @@
             <span class="logo_name">Cucciolotti</span> <!--Nome Sito-->
         </div>
 
+        <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="image/profile.png" alt="profile">
+                </div>
+
+                <div class="name-job">
+                    <div class="profile_name">Harin Uzra</div>
+                    <div class="job">Amministratore</div>
+                </div>
+                <i class='bx bx-log-out' ></i>
+            </div>
+        </li>
+
         <ul class="nav-links">
+
+
+
             <li>
                 <a href="#">
                     <i class='bx bx-grid-alt' ></i>
@@ -40,12 +57,50 @@
                 <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
                     <a href="#">
                         <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
-                        <span class="link_name">Sezione</span>
+                        <span class="link_name">Messaggi</span>
                     </a>
                     <i class='bx bx-chevron-down arrow' ></i>
                 </div>
                 <ul class="sub-menu">
-                    <li> <a class="link_name" href="#">Sezione </a> </li>
+                    <li> <a class="link_name" href="#">Messaggi </a> </li>
+                    <li> <a href="#"> capitolo 1 </a> </li>
+                    <li> <a href="#"> capitolo 2 </a> </li>
+                    <li> <a href="#"> capitolo 3 </a> </li>
+                    <li> <a href="#"> capitolo 4 </a> </li>
+                    <li> <a href="#"> capitolo 5 </a> </li>
+                    <li> <a href="#"> capitolo 7 </a> </li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
+                    <a href="#">
+                        <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
+                        <span class="link_name">Messaggi</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li> <a class="link_name" href="#">Messaggi </a> </li>
+                    <li> <a href="#"> capitolo 1 </a> </li>
+                    <li> <a href="#"> capitolo 2 </a> </li>
+                    <li> <a href="#"> capitolo 3 </a> </li>
+                    <li> <a href="#"> capitolo 4 </a> </li>
+                    <li> <a href="#"> capitolo 5 </a> </li>
+                    <li> <a href="#"> capitolo 7 </a> </li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
+                    <a href="#">
+                        <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
+                        <span class="link_name">Messaggi</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li> <a class="link_name" href="#">Messaggi </a> </li>
                     <li> <a href="#"> capitolo 1 </a> </li>
                     <li> <a href="#"> capitolo 2 </a> </li>
                     <li> <a href="#"> capitolo 3 </a> </li>
@@ -57,19 +112,6 @@
 
 
 
-            <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="image/profile.png" alt="profile">
-                    </div>
-
-                    <div class="name-job">
-                        <div class="profile_name">Harin Uzra</div>
-                        <div class="job">Amministratore</div>
-                    </div>
-                    <i class='bx bx-log-out' ></i>
-                </div>
-            </li>
 
 
         </ul>

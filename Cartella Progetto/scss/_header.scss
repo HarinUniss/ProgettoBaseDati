@@ -2,9 +2,9 @@
 
 div.head{
   /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
-  left: 0px;
+  /*left: 0px;
   top: 0px;
-  right: 0px;
+  right: 0px;*/
   display:block;
 
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
@@ -64,4 +64,11 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
 }
 #butt_search:hover{
   cursor: pointer;
+}
+
+
+
+div.div{
+  height: 300px;
+  width: 500px;
 }
