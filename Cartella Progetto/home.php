@@ -22,7 +22,7 @@
         <?php include_once('./Navigatore/nav.php'); ?>
     </div>
     <div>
-        <!--parte div centrale-->
+        <?php include_once('./Contenuto Pagina/contenuto.php')?>
     </div>
     <?php include_once('./Footer/footer.php'); ?>
 

@@ -1,9 +1,24 @@
 $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
-
+    $("div.login_div").hide();
     /*$("a.h_img").click(function(){
     });*/
+
+    $("a.login_button").on({
+
+        click: function(){
+            $("div.login_div").slideToggle("fast");
+        },
+        /*//Non funziona
+        mouseenter: function(){
+
+            $("#prof").after().text(t).show("slow");
+        },
+        mouseleave: function(){
+            $("#prof").after().text(t).hold("slow");
+        },*/
+    });
 
     var butt_search = $("#butt_search");
     butt_search.on({ //Si usa quando si verificano diverse azioni

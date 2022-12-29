@@ -1,0 +1,15 @@
+div.contenitore{
+    margin-left: 265px;
+    margin-right: 10px;
+    width: min(100% - 15px, 840px);
+    padding: 0 15px;
+    background-color: blue;
+}
+
+.element { //Dentro il container
+  height: 70px;
+  margin: 1px;
+  border-color: white;
+  background-color: gray;
+  text-align: center;
+}

@@ -19,10 +19,10 @@ div.head{
   height: 55px; /*altezza dell' header*/
   /*border-style: unset; /*Definisco lo stile del bordo*/
   box-shadow: 1px  1px 1px 1px darkslategray;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
+a.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
   /*Text*/
   text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
   color: black; /*Colore testo nero*/
@@ -31,7 +31,7 @@ a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
   padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
   margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
-a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
+a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
   color: black;
   text-decoration-line: none;
@@ -52,7 +52,7 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
 }
 
 #butt_search{
-  /*margin-left:55px;*/
+  margin-left:265px;
   position: relative;
   display: inline-block;
   border:none;
@@ -66,9 +66,35 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   cursor: pointer;
 }
 
+div.login_div{
+  position: absolute;
+  background-color: rgba(150,150,150, .75);
+  width: 100%;
+  height: 100%;
+  z-index: 110;
+  text-align: center;
+  form{
+      //Posizionamento in confronto al div
+      left:100px;
+      right: 100px;
+      top:100px;
+      bottom: 100px;
+      z-index: 120; //Posizionamento asse z
 
+      padding-top: 10%;
+      padding-bottom: 10%;
 
-div.div{
-  height: 300px;
-  width: 500px;
+      position: absolute;
+      background-color: white;
+      font-family: arial, "Informal Roman", inherit;
+      color: blue;
+      input{
+          height: auto;
+          width: auto;
+      }
+      button{
+        height: auto;
+        width: auto;
+      }
+  }
 }

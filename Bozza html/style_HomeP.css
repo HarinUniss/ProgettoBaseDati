@@ -20,7 +20,7 @@ a.h_img{ /*Definisco il comportamento dell' immagine dell'header*/
     left: 5px;
     top: 5px;
 }
-a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
+a.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
     /*Text*/
     text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
     /**/
@@ -56,6 +56,6 @@ img.img_bt_src:hover{
     width: 150px;
 }*/
 
-a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
+a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
     background-color: darkgray;
 }
