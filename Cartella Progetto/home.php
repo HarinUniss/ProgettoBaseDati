@@ -18,7 +18,10 @@
 
 
     <?php include_once('./Header/header.php'); ?>
-    <?php include_once('./Navigatore/nav.php'); ?>
+    <div>
+        <?php include_once('./Navigatore/nav.php'); ?>
+    </div>
+
     <?php include_once('./Footer/footer.php'); ?>
 
 

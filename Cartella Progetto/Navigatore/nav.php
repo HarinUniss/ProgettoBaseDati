@@ -18,32 +18,34 @@
     <div class="sidebar ">  <!--Retro della barra di navigazione-->
 
         <div class="logo-details"> <!--Sezione del logo e del titolo-->
-            <i class='bx bxl-c-plus-plus'></i>  <!-- classe per il logo presa da Boxicons.com -->
-            <span class="logo_name">Appunti</span> <!--Nome Sito-->
+            <!-- non aprire questo SVG!!!!!  -->
+
+
+            <i class='bx bxs-dog'></i> <!-- classe per il logo presa da Boxicons.com -->
+            <span class="logo_name">Cucciolotti</span> <!--Nome Sito-->
         </div>
 
-        <ul class="nav-links>"> <!--sezine di navigazione con tutti i link-->
-
-            <li> <!--Link diretto senza menu a tendina-->
+        <ul class="nav-links">
+            <li>
                 <a href="#">
-                    <i class='bx bx-grid-alt' ></i> <!-- classe per il logo presa da Boxicons.com -->
-                    <span class="link_name">Dashboard</span> <!-- Nome del link -->
+                    <i class='bx bx-grid-alt' ></i>
+                    <span class="link_name">Categoria</span>
                 </a>
-                <ul class="sub-menu blank"> <!--Sottomenu vuoto-->
-                    <li><a class="link_name" href="#">Dashboard</a></li> <!--Nome sezione che sarà visibile solo se il menu è stretto-->
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Categoria</a></li>
                 </ul>
             </li>
 
-            <li><!--Bottone con menu a tendina contenente dei link-->
+            <li>
                 <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
                     <a href="#">
                         <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
-                        <span class="link_name">Html</span><!--Nome sezione-->
+                        <span class="link_name">Sezione</span>
                     </a>
-                    <i class='bx bx-chevron-down arrow' ></i> <!--Freccettinache dovrà andare su o giu al clik-->
+                    <i class='bx bx-chevron-down arrow' ></i>
                 </div>
-                <ul class="sub-menu"> <!--Sotto menu a tendina-->
-                    <li> <a class="link_name" href="#">Html </a> </li><!--Nome sezione che sarà visibile solo se il menu è stretto-->
+                <ul class="sub-menu">
+                    <li> <a class="link_name" href="#">Sezione </a> </li>
                     <li> <a href="#"> capitolo 1 </a> </li>
                     <li> <a href="#"> capitolo 2 </a> </li>
                     <li> <a href="#"> capitolo 3 </a> </li>
@@ -53,20 +55,19 @@
                 </ul>
             </li>
 
-            <li>    <!--Sezione profilo-->
-                <div class="profile-details"> <!--Sfondo-->
-                    <div class="profile-content"> <!--Sfondo immagine profilo-->
-                        <img src="image/profile.png" alt="profile"> <!--Immagine profilo-->
+
+
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="image/profile.png" alt="profile">
                     </div>
 
-                    <div class="name-job"> <!--Blocco info-->
-                        <div class="profile_name">Harin Uzra</div> <!--Nome profilo-->
-                        <div class="job">UtenteAmminiatratore</div> <!--Ruolo-->
+                    <div class="name-job">
+                        <div class="profile_name">Harin Uzra</div>
+                        <div class="job">Amministratore</div>
                     </div>
-
-                    <a href="#">
-                        <i class='bx bx-log-out' ></i> <!--Immagine per il log out presa da Boxicons.com -->
-                    </a>
+                    <i class='bx bx-log-out' ></i>
                 </div>
             </li>
 
@@ -76,9 +77,20 @@
 
 
 
-
     </div>
 </nav>
+
+<script>
+    let arrow = document.querySelectorAll( ".arrow" );
+    console.log(arrow);
+    for (var i = 0 ; i < arrow.length ; i++){
+        arrow[i].addEventListener("click", (e)=>{
+            let arrowParent = e.target.parentElement.parentElement;
+            console.log(arrowParent);
+            arrowParent.classList.toggle("showMenu");
+        })
+    }
+</script>
 
 
 
