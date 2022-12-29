@@ -8,7 +8,7 @@ div.head{
   display:block;
 
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
-  position:fixed; /*Il div rimane visibile anche con lo scrolling*/
+  position:relative; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
@@ -19,18 +19,8 @@ div.head{
   height: 55px; /*altezza dell' header*/
   /*border-style: unset; /*Definisco lo stile del bordo*/
   box-shadow: 1px  1px 1px 1px darkslategray;
+  margin-bottom: 10px;
 }
-
-a.h_img{ /*Definisco il comportamento dell' immagine dell'header*/
-  /*position: fixed; /*Posizione fissa, definita dai "margini" gestiti sotto*/
-  position: absolute;
-  left: 5px;
-  top: 5px;
-}
-a.h_img:hover{
-  cursor: pointer;
-}
-
 
 a.link{ /*Si usa per le pagine di collegamento presenti nell' header*/
   /*Text*/
@@ -50,7 +40,7 @@ a.link:hover{ /*Si attiva quando ci passo sopra col mouse*/
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
 
 #baricerca{
-  height: 20px;
+  height: 25px;
   display:inline-block;
   position: relative;
   background-color: deepskyblue;
