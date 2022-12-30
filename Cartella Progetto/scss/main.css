@@ -392,16 +392,19 @@ body {
 }
 
 #blocco_pagina {
-  top: 65px;
+  top: 56px;
+  padding-top: 10px;
   padding-left: 265px;
   position: fixed;
   background-color: green;
   background-position: center;
   max-width: 100%;
+  width: 100%;
   height: 85%;
+  overflow: auto;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 740px) {
   #blocco_pagina {
     padding-left: 90px;
   }
