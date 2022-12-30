@@ -229,7 +229,7 @@
   display: none;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .sidebar.close .nav-links li .sub-menu {
     display: none;
   }
@@ -368,7 +368,7 @@ div.pagina {
   background-color: gray;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   div.pagina {
     margin-left: 90px;
   }
