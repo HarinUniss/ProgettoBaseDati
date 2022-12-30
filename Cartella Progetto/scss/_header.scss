@@ -8,7 +8,7 @@ div.head{
   display:block;
 
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
-  position:relative; /*Il div rimane visibile anche con lo scrolling*/
+  position:absolute; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
@@ -66,30 +66,7 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   cursor: pointer;
 }
 
-div.login_div{
-  position: absolute;
-  background-color: rgba(150,150,150, .75);
-  width: 100%;
-  height: 100%;
-  z-index: 110;
-  text-align: center;
-  form{
-      //Posizionamento in confronto al div
-      margin:100px;
-      min-height: 150px;
-      min-width: 200px;
-      z-index: 120; //Posizionamento asse z
 
-      padding-top: 10%;
-      padding-bottom: 10%;
-
-      position: relative;
-      background-color: white;
-      font-family: arial, "Informal Roman", inherit;
-      color: blue;
-
-  }
-}
 
 
 

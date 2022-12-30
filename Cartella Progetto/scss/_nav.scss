@@ -6,7 +6,7 @@
   top: 0px;
   left: 0;
 
-  height: 85%; //si sviluppa per tutta la lunghezza verso il basso
+  height: 100%; //si sviluppa per tutta la lunghezza verso il basso
 
   width-max: 260px;
   z-index: 100; //indico che deve stare davanti a tutti gli altri blocchi con un z-index inferiore a 100
@@ -277,7 +277,7 @@
 
 
 
-@media (max-width: 540px) {
+@media (max-width: 740px) {
   .sidebar.close .nav-links li .sub-menu{
     display: none;
   }

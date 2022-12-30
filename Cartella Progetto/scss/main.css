@@ -21,7 +21,7 @@
   position: fixed;
   top: 0px;
   left: 0;
-  height: 85%;
+  height: 100%;
   width-max: 260px;
   z-index: 100;
   transition: all 0.5s ease;
@@ -229,7 +229,7 @@
   display: none;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 740px) {
   .sidebar.close .nav-links li .sub-menu {
     display: none;
   }
@@ -257,7 +257,7 @@ div.head {
   right: 0px;*/
   display: block;
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
-  position: relative; /*Il div rimane visibile anche con lo scrolling*/
+  position: absolute; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
@@ -318,6 +318,30 @@ input:focus {
   cursor: pointer;
 }
 
+div.box {
+  top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: auto;
+  width: 2000px;
+  height: 400px;
+  padding: 1px 0;
+  font-size: 10px;
+  max-width: 75%;
+  left: 235px;
+}
+
+div.box-inner {
+  position: relative;
+  height: 100%;
+  width: 48%;
+  overflow: auto;
+  margin: 1px;
+  padding-right: 2px;
+  background-color: gray;
+}
+
 div.login_div {
   position: absolute;
   background-color: rgba(150, 150, 150, 0.75);
@@ -327,7 +351,10 @@ div.login_div {
   text-align: center;
 }
 div.login_div form {
+  position: center;
   margin: 100px;
+  max-height: 800px;
+  max-width: 500px;
   min-height: 150px;
   min-width: 200px;
   z-index: 120;
@@ -339,45 +366,8 @@ div.login_div form {
   color: blue;
 }
 
-div.pagina {
-  height: 100%;
-  width: 100%;
-  /*position: relative;
-  display: flex;
-  flex-wrap: wrap;*/
-  left: 235px;
-  right: 10px;
-  background-color: green;
-  background-position: center;
-  border-radius: 5px 5px 5px 5px;
-  max-width: 70%;
-}
-
-div.box {
-  position: relative;
-  overflow: auto;
-  width: 1000px;
-  height: 400px;
-  padding: 1px 0;
-  font-size: 10px;
-}
-
-div.box-inner {
-  height: 200px;
-  overflow: auto;
-  margin: 25px 24px 0;
-  padding-right: 2px;
-}
-
-.element {
-  width: 48%;
-  height: 100px;
-  margin: 1px;
-  background-color: gray;
-}
-
-@media (max-width: 540px) {
-  div.pagina {
+@media (max-width: 740px) {
+  div.box {
     left: 90px;
   }
 }
@@ -400,7 +390,7 @@ footer div {
 
 /* css per la barra orizzontale nel footer*/
 body {
-  max-width: 1080px;
+  max-width: 2000px;
   min-width: 400px;
   min-height: 250px;
   max-height: 750px;
