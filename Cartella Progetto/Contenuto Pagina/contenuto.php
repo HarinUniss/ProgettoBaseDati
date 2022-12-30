@@ -6,16 +6,18 @@
 
 </head>
 <body>
-    <div class="pagina"><!---->
-            <div class=" element">1</div>
-            <div class=" element">2</div>
-            <div class=" element">1</div>
-            <div class=" element">1</div>
+    <div class="pagina box">
 
-            <div class=" element">1</div>
-            <div class=" element">1</div>
-            <div class=" element">1</div>
-            <div class=" element">1</div>
+        <div class=" element box-inner">1</div>
+        <div class=" element box-inner">2</div>
+        <div class=" element box-inner">1</div>
+        <div class=" element box-inner">2</div>
+
+        <div class=" element box-inner">1</div>
+        <div class=" element box-inner">2</div>
+        <div class=" element box-inner">1</div>
+        <div class=" element box-inner">2</div>
+
     </div>
 </body>
 </html>

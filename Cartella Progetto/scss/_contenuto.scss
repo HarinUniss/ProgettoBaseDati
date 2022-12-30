@@ -1,28 +1,46 @@
 div.pagina{
     height: 100%;
     width: 100%;
-
+    /*position: relative;
     display: flex;
-    flex-wrap: wrap;
-    margin-left: 250px;
+    flex-wrap: wrap;*/
+    left: 235px;
+    right:10px;
     background-color: green;
-    background-attachment: fixed; // Lo sfondo resta fisso
+    //background-attachment: fixed; // Lo sfondo resta fisso
     background-position: center;
     border-radius: 5px 5px 5px 5px;
-    max-width: 900px;
+    max-width: 70%;
 }
-//
+
+div.box
+{
+  position: relative;
+  overflow: auto;
+  width:1000px; height:400px;
+  padding:1px 0;
+  font-size:10px
+}
+
+div.box-inner
+{
+  height: 200px;
+  overflow:auto;
+  margin:25px 24px 0;
+  padding-right:2px
+}
+
 .element { //Dentro il container
 
   //position:relative;
-  width:50%;
-  height: 50%;
+  width:48%;
+  height: 100px;
   margin: 1px; //Distanzia tra gli elementi
   background-color: gray;
 }
 
 @media (max-width: 540px){
   div.pagina{
-    margin-left: 90px;
+    left: 90px;
   }
 }

@@ -75,26 +75,21 @@ div.login_div{
   text-align: center;
   form{
       //Posizionamento in confronto al div
-      left:100px;
-      right: 100px;
-      top:100px;
-      bottom: 100px;
+      margin:100px;
+      min-height: 150px;
+      min-width: 200px;
       z-index: 120; //Posizionamento asse z
 
       padding-top: 10%;
       padding-bottom: 10%;
 
-      position: absolute;
+      position: relative;
       background-color: white;
       font-family: arial, "Informal Roman", inherit;
       color: blue;
-      input{
-          height: auto;
-          width: auto;
-      }
-      button{
-        height: auto;
-        width: auto;
-      }
+
   }
 }
+
+
+
