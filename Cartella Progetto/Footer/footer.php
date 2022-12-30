@@ -28,7 +28,7 @@
             <a href="#">"Cookie Policy"</a><br>
         </div>
     </div>
-    <hr>
+
 
 </footer>
 </body>

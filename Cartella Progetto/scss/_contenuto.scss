@@ -1,15 +1,17 @@
-div.contenitore{
-    margin-left: 265px;
-    margin-right: 10px;
-    width: min(100% - 15px, 840px);
-    padding: 0 15px;
-    background-color: blue;
+div.pagina{
+    //margin-left: 20%;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .element { //Dentro il container
-  height: 70px;
-  margin: 1px;
-  border-color: white;
+
+  //position:relative;
+  width:50%;
+  height: 50%;
+  margin: 1px; //Distanzia tra gli elementi
   background-color: gray;
-  text-align: center;
 }

@@ -25,7 +25,7 @@
             <span class="logo_name">Cucciolotti</span> <!--Nome Sito-->
         </div>
 
-        <li>
+        <!--<li>
             <div class="profile-details">
                 <div class="profile-content">
                     <img src="image/profile.png" alt="profile">
@@ -37,7 +37,7 @@
                 </div>
                 <i class='bx bx-log-out' ></i>
             </div>
-        </li>
+        </li>-->
 
         <ul class="nav-links">
 

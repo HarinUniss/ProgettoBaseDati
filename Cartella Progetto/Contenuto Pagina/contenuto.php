@@ -6,23 +6,16 @@
 
 </head>
 <body>
-    <div class="container-fluid contenitore">
-        <div class="row">
-            <div class="col-sm-3 element">1</div>
-            <div class="col-sm-3 element">2</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 element">1</div>
-            <div class="col-sm-3 element">1</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 element">1</div>
-            <div class="col-sm-3 element">1</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 element">1</div>
-            <div class="col-sm-3 element">1</div>
-        </div>
+    <div class="pagina">
+            <div class=" element">1</div>
+            <div class=" element">2</div>
+            <div class=" element">1</div>
+            <div class=" element">1</div>
+
+            <div class=" element">1</div>
+            <div class=" element">1</div>
+            <div class=" element">1</div>
+            <div class=" element">1</div>
     </div>
 </body>
 </html>

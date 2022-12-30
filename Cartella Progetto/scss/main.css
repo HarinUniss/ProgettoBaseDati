@@ -22,7 +22,7 @@
   top: 0px;
   left: 0;
   height: 85%;
-  width: 260px;
+  width-max: 260px;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -303,7 +303,7 @@ input:focus {
 }
 
 #butt_search {
-  margin-left: 265px;
+  margin-left: 20%;
   position: relative;
   display: inline-block;
   border: none;
@@ -348,20 +348,19 @@ div.login_div form button {
   width: auto;
 }
 
-div.contenitore {
-  margin-left: 265px;
-  margin-right: 10px;
-  width: min(100% - 15px, 840px);
-  padding: 0 15px;
-  background-color: blue;
+div.pagina {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .element {
-  height: 70px;
+  width: 50%;
+  height: 50%;
   margin: 1px;
-  border-color: white;
   background-color: gray;
-  text-align: center;
 }
 
 /*css per il footer*/
@@ -370,14 +369,29 @@ footer {
   position: absolute;
   bottom: 0px;
   z-index: 100;
-  background-color: gray;
+  background-color: #161d34;
   text-align: center;
+  color: white;
+  width: 100%;
+  /* css per la barra orizzontale nel footer*/
 }
-footer hr {
-  height: 3px;
-  background-color: blue;
+footer div {
+  background-color: #161d34;
 }
 
 /* css per la barra orizzontale nel footer*/
+/*body{
+  width-max: 1000px;
+  width-min: 300px;
+}
+#blocco_pagina
+{
+  margin-left: 265px;
+  background-color: green;
+  background-attachment: fixed; // Lo sfondo resta fisso
+  background-position: center;
+  border-radius: 5px 5px 5px 5px;
+  max-width: 900px;
+}*/
 
 /*# sourceMappingURL=main.css.map */

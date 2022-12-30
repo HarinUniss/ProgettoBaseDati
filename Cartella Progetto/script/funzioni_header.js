@@ -1,3 +1,4 @@
+
 $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
