@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
 
 </head>
-    <!--<div class="box">
-        <div class=" element box-inner">1</div>
-        <div class=" element box-inner">2</div>
-        <div class=" element box-inner">1</div>
-        <div class=" element box-inner">2</div>
-        <div class=" element box-inner">1</div>
-        <div class=" element box-inner">2</div>
-        <div class=" element box-inner">1</div>
-        <div class=" element box-inner">2</div>
-    </div>-->
-
-<div class="login_div">
+    <div class="pagina">
+        <div class="elemento">1</div>
+        <div class="elemento">2</div>
+        <div class="elemento">1</div>
+        <div class="elemento">2</div>
+        <div class="elemento">1</div>
+        <div class="elemento">2</div>
+        <div class="elemento">1</div>
+        <div class="elemento">2</div>
+    </div>
+    <div style="background-color: red;"><p>asvfbdwbvdewhbveilobvuwpbewweu</p></div>
+<!--<div class="login_div">
     <form method="post" action="<?php echo $_SERVER['PHP_SELF'];//Per fare riferimento a questo file?>">
         Inserisci credenziali<br>
         <input type="text" placeholder="email" name="email"><br>
         <input type="password" placeholder="password" name="password"><br><br>
         <button type="submit" class="btn btn-info">Invia</button><button id="cancella" class="btn btn-danger">Cancella</button>
     </form>
-</div>
+</div>-->
 <?php
 /*//Consiglio vivamente di non attivarlo per ora
 if($_SERVER["REQUEST_METHOD"]=="POST"){

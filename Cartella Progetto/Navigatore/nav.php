@@ -110,6 +110,43 @@
                 </ul>
             </li>
 
+            <li>
+                <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
+                    <a href="#">
+                        <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
+                        <span class="link_name">Messaggi</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li> <a class="link_name" href="#">Messaggi </a> </li>
+                    <li> <a href="#"> capitolo 1 </a> </li>
+                    <li> <a href="#"> capitolo 2 </a> </li>
+                    <li> <a href="#"> capitolo 3 </a> </li>
+                    <li> <a href="#"> capitolo 4 </a> </li>
+                    <li> <a href="#"> capitolo 5 </a> </li>
+                    <li> <a href="#"> capitolo 7 </a> </li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link"><!-- classe che uso per creare un sottomenu -->
+                    <a href="#">
+                        <i class='bx bxl-html5' ></i> <!-- classe per il logo presa da Boxicons.com -->
+                        <span class="link_name">Messaggi</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow' ></i>
+                </div>
+                <ul class="sub-menu">
+                    <li> <a class="link_name" href="#">Messaggi </a> </li>
+                    <li> <a href="#"> capitolo 1 </a> </li>
+                    <li> <a href="#"> capitolo 2 </a> </li>
+                    <li> <a href="#"> capitolo 3 </a> </li>
+                    <li> <a href="#"> capitolo 4 </a> </li>
+                    <li> <a href="#"> capitolo 5 </a> </li>
+                    <li> <a href="#"> capitolo 7 </a> </li>
+                </ul>
+            </li>
 
 
 

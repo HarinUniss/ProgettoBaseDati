@@ -252,12 +252,12 @@
 /*Definisco il css del div dell'header*/
 div.head {
   /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
-  /*left: 0px;
+  left: 0px;
   top: 0px;
-  right: 0px;*/
+  right: 0px;
   display: block;
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
-  position: absolute; /*Il div rimane visibile anche con lo scrolling*/
+  position: fixed; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
@@ -347,7 +347,6 @@ div.login_div {
   background-color: rgba(150, 150, 150, 0.75);
   width: 100%;
   height: 100%;
-  z-index: 110;
   text-align: center;
 }
 div.login_div form {
@@ -373,14 +372,12 @@ div.login_div form {
 }
 /*css per il footer*/
 footer {
-  height: 5%;
   position: absolute;
   bottom: 0px;
   z-index: 100;
   background-color: #161d34;
   text-align: center;
   color: white;
-  width: 100%;
   font-size: small;
   /* css per la barra orizzontale nel footer*/
 }
@@ -392,18 +389,23 @@ footer div {
 body {
   max-width: 2000px;
   min-width: 400px;
-  min-height: 250px;
-  max-height: 750px;
-} /*
-#blocco_pagina
-{
-  margin-left: 265px;
+}
+
+#blocco_pagina {
+  top: 65px;
+  padding-left: 265px;
+  position: fixed;
   background-color: green;
-  background-attachment: fixed; // Lo sfondo resta fisso
   background-position: center;
-  border-radius: 5px 5px 5px 5px;
-  max-width: 900px;
-}*/
+  max-width: 100%;
+  height: 85%;
+}
+
+@media (max-width: 750px) {
+  #blocco_pagina {
+    padding-left: 90px;
+  }
+}
 /**/
 
 /*# sourceMappingURL=main.css.map */

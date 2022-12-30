@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./script/funzioni_header.js"></script>
 </head>
-<body>
+
 <nobr>
 <div class="head container-fluid" >
     <nobr>
@@ -33,5 +33,5 @@
 </div>
 
 
-</body>
+
 </html>

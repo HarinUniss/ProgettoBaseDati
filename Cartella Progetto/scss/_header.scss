@@ -2,13 +2,13 @@
 
 div.head{
   /*Definisco la posizione rispetto a sinistra, alto, destra della pagina*/
-  /*left: 0px;
+  left: 0px;
   top: 0px;
-  right: 0px;*/
+  right: 0px;
   display:block;
 
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
-  position:absolute; /*Il div rimane visibile anche con lo scrolling*/
+  position:fixed; /*Il div rimane visibile anche con lo scrolling*/
   padding-top: 15px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
