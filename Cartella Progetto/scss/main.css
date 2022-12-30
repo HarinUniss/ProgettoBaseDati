@@ -379,13 +379,16 @@ footer {
   text-align: center;
   color: white;
   font-size: small;
-  /* css per la barra orizzontale nel footer*/
 }
-footer div {
+footer div { /* css per la barra orizzontale nel footer*/
   background-color: #161d34;
 }
 
-/* css per la barra orizzontale nel footer*/
+@media (max-width: 740px) {
+  footer {
+    height: 0%;
+  }
+}
 body {
   max-width: 2000px;
   min-width: 400px;

@@ -19,7 +19,6 @@
         </div>
         <div class="col-sm">
             <b> Contact </b><br>
-
         </div>
         <div class="col-sm">
             <b>Usefull link</b><br>

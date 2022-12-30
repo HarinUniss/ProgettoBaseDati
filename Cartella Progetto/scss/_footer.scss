@@ -1,18 +1,20 @@
 /*css per il footer*/
 footer {
-  //height: 50px;                            //altezza in percentuale della pagina
   position:absolute;                      //posizione assoluta
   bottom: 0px;                            //distanziamento dalla fine della pagina
   z-index: 100;                           //posizione del layer
   background-color: $clr-gray700;         //colore dell sfondo ( blu scuro )
   text-align: center;                     //allineamento del testo all'interno dei blocchi
   color: white;                           //colore del testo all'interno
-  //width: 100%;                            //larghezza del blocco footer
   font-size: small;
-  /* css per la barra orizzontale nel footer*/
-  div{
+
+  div{                                    /* css per la barra orizzontale nel footer*/
     background-color: $clr-gray700;
   }
-  //
 }
-/* css per la barra orizzontale nel footer*/
+@media (max-width:(740px)){
+footer {
+          height: 0%;
+        }
+}
+
