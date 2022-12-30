@@ -351,9 +351,14 @@ div.login_div form button {
 div.pagina {
   height: 100%;
   width: 100%;
-  background-color: transparent;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 250px;
+  background-color: green;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 5px 5px 5px 5px;
+  max-width: 900px;
 }
 
 .element {
@@ -380,10 +385,10 @@ footer div {
 }
 
 /* css per la barra orizzontale nel footer*/
-/*body{
+body {
   width-max: 1000px;
   width-min: 300px;
-}
+} /*
 #blocco_pagina
 {
   margin-left: 265px;
