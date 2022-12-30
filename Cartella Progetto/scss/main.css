@@ -368,6 +368,11 @@ div.pagina {
   background-color: gray;
 }
 
+@media (max-width: 400px) {
+  div.pagina {
+    margin-left: 90px;
+  }
+}
 /*css per il footer*/
 footer {
   height: 15%;
@@ -398,5 +403,6 @@ body {
   border-radius: 5px 5px 5px 5px;
   max-width: 900px;
 }*/
+/**/
 
 /*# sourceMappingURL=main.css.map */

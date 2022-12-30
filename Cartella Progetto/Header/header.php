@@ -20,7 +20,7 @@
     <nobr>
         <!--<a class="h_img">
             <img src="./Immagini/imm_sito.jpg" width="45" height="45">
-        </a>-->
+        </a>--><!---->
 
         <!--placeholder permette che all'inserimento lettera, Search Scompare-->
         <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->

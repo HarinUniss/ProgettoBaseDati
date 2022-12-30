@@ -11,7 +11,7 @@ div.pagina{
     border-radius: 5px 5px 5px 5px;
     max-width: 900px;
 }
-
+//
 .element { //Dentro il container
 
   //position:relative;
@@ -19,4 +19,10 @@ div.pagina{
   height: 50%;
   margin: 1px; //Distanzia tra gli elementi
   background-color: gray;
+}
+
+@media (max-width: 400px){
+  div.pagina{
+    margin-left: 90px;
+  }
 }
