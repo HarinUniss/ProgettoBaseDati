@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 
-
-
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -20,7 +18,6 @@
     <?php include_once('./Header/header.php'); ?>
     <div id="blocco_pagina">
         <?php include_once('./Contenuto Pagina/contenuto.php')?>
-
     </div>
     <?php include_once('./Footer/footer.php'); ?>
 

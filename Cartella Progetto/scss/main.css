@@ -318,12 +318,47 @@ input:focus {
   cursor: pointer;
 }
 
+div.login_div {
+  position: absolute;
+  background-color: rgba(150, 150, 150, 0.75);
+  width: 100%;
+  height: 100%;
+  z-index: 118;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+div.login_div form {
+  position: absolute;
+  display: block;
+  top: 10%;
+  right: 5%;
+  max-height: 800px;
+  max-width: 500px;
+  min-height: 150px;
+  min-width: 200px;
+  padding: 2%;
+  z-index: 119;
+  background-color: white;
+  font-family: arial, "Informal Roman", inherit;
+  font-size: x-large;
+  color: blue;
+  text-align: center;
+}
+div.login_div form .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 div.box {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   overflow: auto;
-  width: 100%;
+  width: 98%;
   height: 100%;
   padding: 1px 0;
   font-size: 10px;
@@ -331,35 +366,14 @@ div.box {
 }
 
 div.box-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   height: 50%;
   width: 48%;
   margin: 5px;
-  padding-right: 2px;
   background-color: gray;
-}
-
-div.login_div {
-  position: absolute;
-  background-color: rgba(150, 150, 150, 0.75);
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-div.login_div form {
-  position: center;
-  margin: 100px;
-  max-height: 800px;
-  max-width: 500px;
-  min-height: 150px;
-  min-width: 200px;
-  z-index: 120;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  position: relative;
-  background-color: white;
-  font-family: arial, "Informal Roman", inherit;
-  color: blue;
 }
 
 @media (max-width: 781px) {
@@ -381,12 +395,18 @@ footer {
   text-align: center;
   color: white;
   font-size: small;
+  height: 6%;
 }
 footer div { /* css per la barra orizzontale nel footer*/
   background-color: #161d34;
 }
 
-@media (max-width: 740px) {
+@media (max-width: 1870px) {
+  footer {
+    height: 4%;
+  }
+}
+@media (max-width: 1362px) {
   footer {
     height: 0%;
   }
@@ -400,7 +420,7 @@ body {
   top: 56px;
   padding-top: 10px;
   padding-left: 245px;
-  padding-bottom: 8%;
+  padding-bottom: 5%;
   position: fixed;
   background-color: green;
   background-position: center;

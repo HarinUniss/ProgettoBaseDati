@@ -7,12 +7,17 @@ footer {
   text-align: center;                     //allineamento del testo all'interno dei blocchi
   color: white;                           //colore del testo all'interno
   font-size: small;
-
+  height: 6%;
   div{                                    /* css per la barra orizzontale nel footer*/
     background-color: $clr-gray700;
   }
 }
-@media (max-width:(740px)){
+@media (max-width:1870px){
+  footer {
+    height: 4%;
+  }
+}
+@media (max-width:1362px){
 footer {
           height: 0%;
         }

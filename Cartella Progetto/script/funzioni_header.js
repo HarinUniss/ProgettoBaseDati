@@ -6,20 +6,19 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     /*$("a.h_img").click(function(){
     });//*/
 
-    $("a.login_button").on({
 
+    /*--- Funzioni di apertura e chiusura del div di login*/
+
+    $("a.login_button").on({ //Imagine omino login
         click: function(){
-            $("div.login_div").slideToggle("fast");
-        },
-        /*//Non funziona
-        mouseenter: function(){
-
-            $("#prof").after().text(t).show("slow");
-        },
-        mouseleave: function(){
-            $("#prof").after().text(t).hold("slow");
-        },*/
+            $("div.login_div").slideDown("fast");
+        }
     });
+    $("button.close").click(function (){
+        $("div.login_div").hide();
+    });
+
+
 
     var butt_search = $("#butt_search");
     butt_search.on({ //Si usa quando si verificano diverse azioni

@@ -2,53 +2,29 @@
 
 div.box
 {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   overflow: auto;
-  width:100%; height:100%;
+  width:98%; height:100%;
   padding:1px 0;
   font-size:10px;
   max-width: 100%;
 }
 div.box-inner
 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   height: 50%;
   width:48%;
 
   margin: 5px; //Distanzia tra gli elementi
-  padding-right:2px;
   background-color: gray;
 }
 
-
-div.login_div{
-  position: absolute;
-  background-color: rgba(150,150,150, .75);
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  form{
-    //Posizionamento in confronto al div
-    position: center;
-    margin:100px;
-    max-height: 800px;
-    max-width: 500px;
-    min-height: 150px;
-    min-width: 200px;
-    z-index: 120; //Posizionamento asse z
-
-    padding-top: 10%;
-    padding-bottom: 10%;
-
-    position: relative;
-    background-color: white;
-    font-family: arial, "Informal Roman", inherit;
-    color: blue;
-
-  }
-}
 
 @media (max-width: 781px){
 
