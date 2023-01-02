@@ -287,6 +287,17 @@ a.login_button:hover { /*Si attiva quando ci passo sopra col mouse*/
   text-decoration-line: none;
 }
 
+#cancella {
+  background-color: red;
+  padding: 1px;
+  border: none;
+  value-text: white;
+}
+
+#cancella:hover {
+  background-color: orangered;
+}
+
 input:focus {
   outline: none;
 } /*Mi toglie il bordo che si genera premendo nella barra di testo*/
@@ -308,8 +319,8 @@ input:focus {
   display: inline-block;
   border: none;
   background-color: transparent;
-  border-top-right-radius: 15%;
-  border-bottom-right-radius: 15%;
+  border-top-left-radius: 15%;
+  border-bottom-left-radius: 15%;
   width: 20px;
   height: 25px;
 }
@@ -350,6 +361,10 @@ div.login_div form .close {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+p.error {
+  color: red;
 }
 
 div.box {
@@ -420,7 +435,7 @@ body {
   top: 56px;
   padding-top: 10px;
   padding-left: 245px;
-  padding-bottom: 5%;
+  padding-bottom: 6%;
   position: fixed;
   background-color: green;
   background-position: center;

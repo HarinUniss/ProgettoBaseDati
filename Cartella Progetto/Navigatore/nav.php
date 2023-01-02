@@ -46,7 +46,8 @@
             <li>
                 <a href="#">
                     <i class='bx bx-grid-alt' ></i>
-                    <span class="link_name">Categoria</span>
+                    <!--<span class="link_name">Categoria</span>-->
+                    <button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button><input type="text" id="baricerca" placeholder="search">
                 </a>
                 <ul class="sub-menu blank">
                     <li><a class="link_name" href="#">Categoria</a></li>

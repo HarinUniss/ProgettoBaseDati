@@ -9,13 +9,16 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
 
     /*--- Funzioni di apertura e chiusura del div di login*/
 
-    $("a.login_button").on({ //Imagine omino login
-        click: function(){
+    $("a.login_button").click(function(){
             $("div.login_div").slideDown("fast");
-        }
     });
-    $("button.close").click(function (){
+    $("input.close").click(function (){
         $("div.login_div").hide();
+    });
+
+    $("#cancella").click(function(){
+        $("#input_username").val("");
+        $("#input_password").val("");
     });
 
 

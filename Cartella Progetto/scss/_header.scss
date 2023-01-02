@@ -37,6 +37,16 @@ a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
   text-decoration-line: none;
 }
 
+#cancella{
+  background-color: red;
+  padding: 1px;
+  border: none;
+  value-text: white;
+}
+#cancella:hover{
+  background-color: orangered;
+}
+
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
 
 #baricerca{
@@ -57,8 +67,8 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   display: inline-block;
   border:none;
   background-color: transparent;
-  border-top-right-radius: 15%;
-  border-bottom-right-radius: 15%;
+  border-top-left-radius: 15%;
+  border-bottom-left-radius: 15%;
   width: 20px;
   height: 25px;
 }
@@ -103,5 +113,8 @@ div.login_div{ //Finesta di sfondo di login
   }
 }
 
+p.error{
+  color: red;
+}
 
 
