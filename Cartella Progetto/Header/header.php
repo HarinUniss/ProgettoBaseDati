@@ -29,40 +29,35 @@
             $passERR = "password non inserita";
         }else{
             $pass = htmlspecialchars($_REQUEST['password']); //Assegnamento password
-
         }
+        if($usernERR=="" && $passERR==""){
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
 
-    }
+            //crea connessione
+            $conn = new mysqli("localhost", "root", "", "db_progetto");
 
-    if($userN!="" && $pass!=""){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        //crea connessione
-        $conn = new mysqli("localhost", "root", "", "db_progetto");
-
-        //Controllo connessione
-        if($conn->connect_error){
-            die("Connessione fallita: ".$conn->connect_error); //streammo l'errore di connessione
-        }else{
-            $sql_check_user = "SELECT select username
+            //Controllo connessione
+            if($conn->connect_error){
+                die("Connessione fallita: ".$conn->connect_error); //streammo l'errore di connessione
+            }else{
+                $sql_check_user = "SELECT username
                     from credenziali
                     where credenziali.username = ". $userN;
-            if($conn->query($sql_check_user) ){
-                echo '<script type="text/javascript"> ';
-                echo 'alert("Credenziali corrette")';
-                echo '</script>';
-            }else{
-                echo '<script type="text/javascript"> ';
-                echo 'alert("Credenziali non presenti nel nostro database...")';
-                echo '</script>';
+                if($conn->query($sql_check_user) === TRUE){
+                    echo '<script type="text/javascript"> ';
+                    echo 'alert("Credenziali corrette")';
+                    echo '</script>';
+                }else{
+                    echo '<script type="text/javascript"> ';
+                    echo 'alert("Credenziali non presenti nel nostro database...")';
+                    echo '</script>';
+                }
+
             }
-
+            $conn->close();
         }
-
-
-        $conn->close();
     }
 ?>
 
@@ -83,8 +78,8 @@
         <form method="post" action="">
             <p><input type="button" class="close" value="close">
             Inserisci credenziali<br>
-            <input type="text" id="input_username" placeholder="username" name="username"><p class="error"><?php echo $usernERR . $userN?></p>
-            <input type="password" id="input_password" placeholder="password" name="password"><p class="error"><?php echo $passERR . $pass?></p><br>
+            <input type="text" id="input_username" placeholder="username" name="username"><p class="error"><?php echo $usernERR?></p>
+            <input type="password" id="input_password" placeholder="password" name="password"><p class="error"><?php echo $passERR?></p><br>
             <button id="invia" type="submit" class="btn btn-info">Invia</button><input type="button" id="cancella" value="cancella"></p>
             <p>Se non sei registrato: <a href="">Registrati</a></p>
         </form>

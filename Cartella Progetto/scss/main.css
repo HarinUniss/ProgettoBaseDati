@@ -445,9 +445,15 @@ body {
   overflow: auto;
 }
 
+@media (max-width: 924px) {
+  #blocco_pagina {
+    height: 95%;
+  }
+}
 @media (max-width: 781px) {
   #blocco_pagina {
     padding-left: 85px;
+    height: 94%;
   }
 }
 /**/
