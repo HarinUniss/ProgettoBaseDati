@@ -12,164 +12,11 @@
     <script src="../script/registrazione.js"></script>
     <script>
 
-        function checkDiConferma()
-            if(confirm("Sicuro di voler confermare la tua registrazione?"))
-                <?php
-                $id = $nome = $cognome = $telefono = $indirizzo = $civico = $citta = $email = $tipo = $userN = $pass = $foto = $rip_pass ="";
-                $nomeERR = $cognomeERR = $indirizzoERR = $civicoERR = $cittaERR = $telefonoERR = $emailERR = $usernERR = $passERR = $rip_passERR =  $errori ="";
-                $conferma_successo = false;
-                if($_SERVER["REQUEST_METHOD"]=="POST"){
-                    //if($conferma_Utente == true){
-
-
-                    //Per il caricamento immagine
-                    //NOn funziona per ora ahahah
-                    /*include_once('./caricamento_img.php');
-                    $foto = $_POST["fotoDaUpload"];*/
-
-
-                    $tipo = $_POST["tipo"];
-                    //---Quà faccio dei controlli su elementi separati per tipo di utente---
-                    if($tipo == "utente"){
-                        //controlli su cognome
-                        $cognome = htmlspecialchars($_REQUEST["cognome"]);
-                        if(empty($cognome)){
-                            $cognomeERR = "*Valore non impostato";
-                        }else{
-                            $cognome = ucfirst(strtolower(ltrim($cognome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
-                        }
-                    }else{
-                        if($tipo == "canile" || $tipo == "allevamento"){
-                            //controllo su indirizzo
-                            $indirizzo = htmlspecialchars($_REQUEST["indirizzo"]); //Prendo l'indirizzo dato in input
-                            if(empty($indirizzo)){
-                                $indirizzoERR = "*Valore non impostato";
-                            }else{
-                                $indirizzo = ltrim($indirizzo); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
-                                if(strpos($indirizzo, "via")== false){ //Dovrebbe controllarmi se c'è "via" nell' indirizzo inserito
-                                    $indirizzo = "via ".$indirizzo; //Se non è inserito lo inserisco io...
-                                }
-                            }
-
-                            //il civico è impostato a tipo numerico, controllo solo se è stato inserito
-                            $civico = htmlspecialchars($_REQUEST["civico"]);
-                            if(empty($civico)){
-                                $civicoERR = "*Numero civico non inserito";
-                            }
-                        }
-                    }
-
-                    //---Qui ci sono i controlli per gli elementi utilizzabili da tutti i tipi di user---
-
-                    //Controlli su nome
-                    $nome = htmlspecialchars($_REQUEST["nome"]);
-                    if(empty($nome)){
-                        $nomeERR = "*Valore non impostato";
-                    }else{
-                        $nome = ucfirst(strtolower(ltrim($nome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
-                    }
-
-                    //Controlli su città
-                    $citta = htmlspecialchars($_REQUEST["citta"]);
-                    if(empty($citta)){
-                        $cittaERR = "*Valore non impostato";
-                    }else{
-                        $citta = ucfirst(strtolower(ltrim($citta))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
-                    }
-
-                    //controllo telefono
-                    $telefono = htmlspecialchars($_REQUEST["telefono"]);
-                    if(empty($telefono)){
-                        $telefonoERR = "*telefono non impostato";
-                        $telefono = "";
-                    }
-
-                    //Controllo email
-                    $email = strtolower(htmlspecialchars($_REQUEST["email"])); //Mi converte i caratteri in minuscolo...
-                    if(!empty($email)){
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            $emailERR = "*email non valida";
-                            $email ="";
-                        }
-                    }else{ $emailERR = "*email non inserita"; }
-
-                    $userN = htmlspecialchars($_REQUEST['username']); //Assegnamento usarname;
-                    if(empty($userN)){ $usernERR = "username non inserito"; }
-                    //I controlli sull' esistenza dell'username li faccio giù...
-
-                    $pass = htmlspecialchars($_REQUEST['password']);
-                    if (empty($pass)){
-                        $passERR = "*password non inserita";
-                    }
-                    $rip_pass = htmlspecialchars($_REQUEST['rip_password']);
-                    if(empty($rip_pass)){
-                        $rip_passERR = "*sezione lasciata vuota";
-                    }else{
-                        if(strcmp($rip_pass, $pass) != 0){  //Se != 0 sono diverse
-                            $passERR = $rip_passERR = "*Password non coincidenti";
-                            $rip_pass="";
-                        }else{
-                            $pass = sha1(md5(sha1($pass)));
-                            $rip_pass = sha1(md5(sha1($rip_pass)));
-                        }
-                    }
-                    $errori = $nomeERR. $cognomeERR. $indirizzoERR. $cittaERR. $telefonoERR. $emailERR. $usernERR. $passERR;
-                    if($errori==""){
-
-                        //crea connessione
-                        $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: ".$conn->connect_error); //streammo l'errore di connessione;
-
-                        //Query di controllo se esiste già l'username
-                        $sql_check_user = "SELECT *
-                    FROM credenziali as C
-                    WHERE C.username = '$userN'";
-                        $risultato = $conn->query($sql_check_user) or die("Query di controllo username errata");
-                        $num = mysqli_num_rows($risultato);
-                        if($num > 0){
-                            $errori = "username già esistente";
-                        }else{
-                            $esiste = true;
-                            $id = rand(0,9999999);
-
-                            if($cognome == ""){
-                                $cognome = null;
-                            }
-                            if($civico == ""){
-                                $civico = null;
-                            }
-                            if($email == ""){
-                                $email = null;
-                            }
-
-                            $query_reg_inUtente = "INSERT INTO utenti(id_utente, cognome, nome, indirizzo, civico, citta, telefono, email, foto, tipo)
-    VALUES('$id', '$cognome', '$nome', '$indirizzo', '$civico', '$citta', '$telefono', '$email', null, '$tipo');";
-                            $query_reg_inCredenziali = "INSERT INTO credenziali(username, password, proprietario)
-    VALUES('$userN', '$pass', '$id');";
-
-                            //Registro i dati nel database
-
-                            $conn->query($query_reg_inUtente) or die("Errore registrazione utente: ".$conn->error);
-
-                            $conn->query($query_reg_inCredenziali) or die("Errore registrazione credenziali: ".$conn->error);
-
-                            if(!$conn->connect_error){
-                                echo '<script type="text/javascript">';
-                                echo 'alert("Registrazione avvenuta con successo");';
-                                echo '</script>';
-                            }
-                        }
-
-                        $conn->close();
-
-                    }else{
-                        echo '<script type="text/javascript"> ';
-                        echo 'alert("Ops, Qualcosa è andato storto... Per favore, reinserisca le informazioni")';
-                        echo '</script>';
-                    }
-
-                }?>
-
-
+        function checkDiConferma() {
+            if (confirm("Sicuro di voler confermare la tua registrazione?")){
+                <?php $conferma = 1;?>
+            }
+        }
     </script>
     <style>
         body{
@@ -217,14 +64,161 @@
 </head>
 <body>
 <?php
-/*-	Utenti (id_utente, Cognome, Nome, N° telefono, indirizzo, foto utente, tipo (utente registrato, canile, allevamento)
--	Credenziali (id_utente, username, password)*/
+$id = $nome = $cognome = $telefono = $indirizzo = $civico = $citta = $email = $tipo = $userN = $pass = $foto = $rip_pass = "";
+$nomeERR = $cognomeERR = $indirizzoERR = $civicoERR = $cittaERR = $telefonoERR = $emailERR = $usernERR = $passERR = $rip_passERR = $errori = "";
+$conferma_successo = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-?>
+    //Per il caricamento immagine
+    //NOn funziona per ora ahahah
+    /*include_once('./caricamento_img.php');
+    $foto = $_POST["fotoDaUpload"];*/
 
+    if($conferma == 1){
+        $tipo = $_POST["tipo"];
+        //---Quà faccio dei controlli su elementi separati per tipo di utente---
+        if ($tipo == "utente") {
+            //controlli su cognome
+            $cognome = htmlspecialchars($_REQUEST["cognome"]);
+            if (empty($cognome)) {
+                $cognomeERR = "*Valore non impostato";
+            } else {
+                $cognome = ucfirst(strtolower(ltrim($cognome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+            }
+        } else {
+            if ($tipo == "canile" || $tipo == "allevamento") {
+                //controllo su indirizzo
+                $indirizzo = htmlspecialchars($_REQUEST["indirizzo"]); //Prendo l'indirizzo dato in input
+                if (empty($indirizzo)) {
+                    $indirizzoERR = "*Valore non impostato";
+                } else {
+                    $indirizzo = ltrim($indirizzo); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+                    if (strpos($indirizzo, "via") == false) { //Dovrebbe controllarmi se c'è "via" nell' indirizzo inserito
+                        $indirizzo = "via " . $indirizzo; //Se non è inserito lo inserisco io...
+                    }
+                }
 
+                //il civico è impostato a tipo numerico, controllo solo se è stato inserito
+                $civico = htmlspecialchars($_REQUEST["civico"]);
+                if (empty($civico)) {
+                    $civicoERR = "*Numero civico non inserito";
+                }
+            }
+        }
 
+        //---Qui ci sono i controlli per gli elementi utilizzabili da tutti i tipi di user---
 
+        //Controlli su nome
+        $nome = htmlspecialchars($_REQUEST["nome"]);
+        if (empty($nome)) {
+            $nomeERR = "*Valore non impostato";
+        } else {
+            $nome = ucfirst(strtolower(ltrim($nome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+        }
+
+        //Controlli su città
+        $citta = htmlspecialchars($_REQUEST["citta"]);
+        if (empty($citta)) {
+            $cittaERR = "*Valore non impostato";
+        } else {
+            $citta = ucfirst(strtolower(ltrim($citta))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+        }
+
+        //controllo telefono
+        $telefono = htmlspecialchars($_REQUEST["telefono"]);
+        if (empty($telefono)) {
+            $telefonoERR = "*telefono non impostato";
+            $telefono = "";
+        }
+
+        //Controllo email
+        $email = strtolower(htmlspecialchars($_REQUEST["email"])); //Mi converte i caratteri in minuscolo...
+        if (!empty($email)) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailERR = "*email non valida";
+                $email = "";
+            }
+        } else {
+            $emailERR = "*email non inserita";
+        }
+
+        $userN = htmlspecialchars($_REQUEST['username']); //Assegnamento usarname;
+        if (empty($userN)) {
+            $usernERR = "username non inserito";
+        }
+        //I controlli sull' esistenza dell'username li faccio giù...
+
+        $pass = htmlspecialchars($_REQUEST['password']);
+        if (empty($pass)) {
+            $passERR = "*password non inserita";
+        }
+        $rip_pass = htmlspecialchars($_REQUEST['rip_password']);
+        if (empty($rip_pass)) {
+            $rip_passERR = "*sezione lasciata vuota";
+        } else {
+            if (strcmp($rip_pass, $pass) != 0) {  //Se != 0 sono diverse
+                $passERR = $rip_passERR = "*Password non coincidenti";
+                $rip_pass = "";
+            } else {
+                $pass = sha1(md5(sha1($pass)));
+                $rip_pass = sha1(md5(sha1($rip_pass)));
+            }
+        }
+        $errori = $nomeERR . $cognomeERR . $indirizzoERR . $cittaERR . $telefonoERR . $emailERR . $usernERR . $passERR;
+        if ($errori == "") {
+
+            //crea connessione
+            $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $conn->connect_error); //streammo l'errore di connessione;
+
+            //Query di controllo se esiste già l'username
+            $sql_check_user = "SELECT *
+                        FROM credenziali as C
+                        WHERE C.username = '$userN'";
+            $risultato = $conn->query($sql_check_user) or die("Query di controllo username errata");
+            $num = mysqli_num_rows($risultato);
+            if ($num > 0) {
+                $errori = "username già esistente";
+            } else {
+                $esiste = true;
+                $id = rand(0, 9999999);
+
+                if ($cognome == "") {
+                    $cognome = null;
+                }
+                if ($civico == "") {
+                    $civico = null;
+                }
+                if ($email == "") {
+                    $email = null;
+                }
+
+                $query_reg_inUtente = "INSERT INTO utenti(id_utente, cognome, nome, indirizzo, civico, citta, telefono, email, foto, tipo)
+        VALUES('$id', '$cognome', '$nome', '$indirizzo', '$civico', '$citta', '$telefono', '$email', null, '$tipo');";
+                $query_reg_inCredenziali = "INSERT INTO credenziali(username, password, proprietario)
+        VALUES('$userN', '$pass', '$id');";
+
+                //Registro i dati nel database
+
+                $conn->query($query_reg_inUtente) or die("Errore registrazione utente: " . $conn->error);
+
+                $conn->query($query_reg_inCredenziali) or die("Errore registrazione credenziali: " . $conn->error);
+
+                if (!$conn->connect_error) {
+                    echo '<script type="text/javascript">';
+                    echo 'alert("Registrazione avvenuta con successo");';
+                    echo '</script>';
+                }
+            }
+
+            $conn->close();
+
+        } else {
+            echo '<script type="text/javascript"> ';
+            echo 'alert("Ops, Qualcosa è andato storto... Per favore, reinserisca le informazioni")';
+            echo '</script>';
+        }
+    }
+}?>
 <div class="form-group">
     <p class="titolo">Benvenuto nella pagina di REGISTRAZIONE</p>
     <form method="post" action="">

@@ -16,7 +16,7 @@
 <?php
 
     $usernERR = $passERR = "";
-    $userN = $pass = $nome = "";
+    $userN = $pass = $nome ="";
 
     //Consiglio vivamente di non attivarlo per ora
     if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -45,16 +45,16 @@
             $num = mysqli_num_rows($ris);
             if($num == 1){
                 $id_utente = $ris->fetch_assoc()["id_utente"];
-                echo '<script type="text/javascript"> ';
-                echo 'alert("Credenziali corrette")';
-                echo '</script>';
                 $nome = $ris->fetch_assoc()["nome"];
                 $query_pop_Utente_Loggato = "SELECT cognome, nome, foto, tipo FROM Utenti as U WHERE U.id_utente = ".$id_utente;
+                echo '<script type="text/javascript"> ';
+                echo 'alert("Credenziali corrette... benvenuto '.$nome.'")';
+                echo '</script>';
+
 
             }else{
                 echo '<script type="text/javascript"> ';
-                echo 'alert("Credenziali non presenti nel nostro database...")';
-                /*echo 'alert("username: "'. $row["username"].')';*/
+                echo 'alert("Credenziali non presenti nel nostro database")';
                 echo '</script>';
             }
 
@@ -72,7 +72,7 @@
         <!--<input type="text" id="baricerca" placeholder="search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
         -->
         <a class="login_button">
-            <img id="prof" src="./Immagini/utente_img.png" height="25" width="25"><?php echo $nome;?>
+            <img id="prof" src="./Immagini/utente_img.png" height="25" width="25"><?php echo "<a>$nome</a>";?>
         </a>
 
 </div>
@@ -83,7 +83,7 @@
             Inserisci credenziali<br>
             <input type="text" id="input_username" placeholder="username" name="username"><p class="error"><?php echo $usernERR?></p>
             <input type="password" id="input_password" placeholder="password" name="password"><p class="error"><?php echo $passERR?></p><br>
-            <button id="invia" type="submit" class="btn btn-info" onclick="myFunction()">Invia</button><input type="button" id="cancella" value="cancella"></p>
+            <button id="invia" type="submit" class="btn btn-info">Invia</button><input type="button" id="cancella" value="cancella"></p>
             <p>Se non sei registrato: <a href="./Contenuto Pagina/registrazione.php">Registrati</a></p>
         </form>
     </div>
