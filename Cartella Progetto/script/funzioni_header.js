@@ -3,9 +3,9 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
     $("div.login_div").hide();
+
     /*$("a.h_img").click(function(){
     });//*/
-
 
     /*--- Funzioni di apertura e chiusura del div di login*/
 
