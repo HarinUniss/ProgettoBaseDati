@@ -285,6 +285,7 @@ a.login_button:hover { /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
   color: black;
   text-decoration-line: none;
+  cursor: pointer;
 }
 
 #cancella {

@@ -9,14 +9,18 @@
     <!--Includo la libreria di jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./script/funzioni_header.js"></script>
+    <script src="./script/header.js"></script>
 
 </head>
-
+<?php
+    //Includo la classe utente
+    include_once("ClassUtente.php");
+    $utente = $nome_utente = "";
+?>
 <?php
 
     $usernERR = $passERR = "";
-    $userN = $pass = $nome ="";
+    $userN = $pass = "";
 
     //Consiglio vivamente di non attivarlo per ora
     if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -38,17 +42,28 @@
             //crea connessione
             $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: ".$conn->connect_error); //streammo l'errore di connessione;
 
-            $sql_check_user = "SELECT C.username, C.password, C.proprietario
+            $sql_check_user = "SELECT C.proprietario
                 FROM Credenziali AS C
                 WHERE C.username = '$userN' AND C.password = '$pass';";
             $ris = $conn->query($sql_check_user) or die("Query errata per la ricerca dell' utente da lei inserito");
-            $num = mysqli_num_rows($ris);
-            if($num == 1){
-                $id_utente = $ris->fetch_assoc()["id_utente"];
-                $nome = $ris->fetch_assoc()["nome"];
-                $query_pop_Utente_Loggato = "SELECT cognome, nome, foto, tipo FROM Utenti as U WHERE U.id_utente = ".$id_utente;
+
+            //Se il numero di righe della query è 1 vuol dire che l'utente esiste
+            if(mysqli_num_rows($ris)== 1){
+                $id_proprietario = $ris->fetch_assoc()["proprietario"]; //Dato che mi basta solo l'id utente non ho bisogno di salvarmi il fetch...
+                $query_pop_Utente_Loggato = "SELECT U.* FROM Utenti as U WHERE U.id_utente = ".$id_proprietario;
+                $ris1 = $conn->query($query_pop_Utente_Loggato) or die("Query errata per la ricerca dell' utente da lei inserito2");
+                if(mysqli_num_rows($ris1)== 1){
+                    $row = $ris1->fetch_assoc();
+                    $utente = new ClassUtente($row["id_utente"], $row["cognome"], $row["nome"], $row["indirizzo"], $row["civico"], $row["citta"], $row["telefono"], $row["email"], $row["foto"], $row["tipo"]);
+                    $nome_utente = $utente->getNome();
+                }else{
+                    echo '<script type="text/javascript"> ';
+                    echo 'console.log("Non è stato possibile salvare i dati dell utente")';
+                    echo '</script>';
+                }
+
                 echo '<script type="text/javascript"> ';
-                echo 'alert("Credenziali corrette... benvenuto '.$nome.'")';
+                echo 'alert("Credenziali corrette... benvenuto '.$utente->getNome().'")';
                 echo '</script>';
 
 
@@ -72,8 +87,13 @@
         <!--<input type="text" id="baricerca" placeholder="search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
         -->
         <a class="login_button">
-            <img id="prof" src="./Immagini/utente_img.png" height="25" width="25"><?php echo "<a>$nome</a>";?>
-        </a>
+            <img id="prof" src="./Immagini/utente_img.png" height="25" width="25"><?php echo $nome_utente; ?>
+        </a><!--<div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Login</a>
+        <a class="dropdown-item" href="#">Profilo</a>
+        <a class="dropdown-item" href="#">Logout</a>
+        </div>-->
+
 
 </div>
     <div class="login_div">

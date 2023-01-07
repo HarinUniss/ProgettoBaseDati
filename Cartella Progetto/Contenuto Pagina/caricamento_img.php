@@ -1,7 +1,7 @@
 <?php
 $foto = $_POST["fotoDaUpload"];
 if($foto) {
-    $target_dir = "Uploads/Utente/"; //Directory di destinazione
+    $target_dir = "Uploads/ClassUtente/"; //Directory di destinazione
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1; //variable di controllo, se 1 si effettua l'upload
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

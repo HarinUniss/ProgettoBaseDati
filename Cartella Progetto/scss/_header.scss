@@ -35,9 +35,10 @@ a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
   color: black;
   text-decoration-line: none;
+  cursor: pointer;
 }
 
-#cancella{
+#cancella{ //Per il bottone cancella per il login
   background-color: red;
   padding: 1px;
   border: none;
