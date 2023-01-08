@@ -6,61 +6,18 @@
     <title>Animali per amici</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/main.css"> <!--linko il css della HP-->
+
     <!--Includo la libreria di jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../script/registrazione.js"></script>
     <script>
-
         function checkDiConferma() {
             if (confirm("Sicuro di voler confermare la tua registrazione?")){
                 <?php $conferma = 1;?>
             }
         }
     </script>
-    <style>
-        body{
-            color: forestgreen;
-        }
-        p.titolo{
-            font-family: Helvetica, Arial, sans-serif;
-            color: #0930f2;
-        }
-        #definizioneUser{
-            width: 200px;
-        }
-        /*p.conferma{
-            text-align: right;
-            color: #4a64e2;
-        }*/
-        div.credenziali{
-            position:absolute;
-            top: 10px;
-            right: 10px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: green;
-        }
-        #civico{
-            width: 80px;
-        }
-        form > a{
-            color: darkred;
-            text-decoration-line: none;
-        }
-        a.error{
-            color: darkred;
-            text-decoration-line: none;
-        }
-        @media(max-width: 953px){
-            div.credenziali{
-                position: relative;
-                border-style: none;
-                margin-left:50px;
-            }
-        }
-    </style>
-
 </head>
 <body>
 <?php
