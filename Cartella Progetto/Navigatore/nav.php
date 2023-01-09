@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style/main.css">
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <nav>
@@ -149,7 +150,19 @@
                 </ul>
             </li>
 
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="image/profile.png" alt="profile">
+                    </div>
 
+                    <div class="name-job">
+                        <div class="profile_name">Harin Uzra</div>
+                        <div class="job">Amministratore</div>
+                    </div>
+                    <i class='bx bx-log-out' ></i>
+                </div>
+            </li>
 
 
         </ul>

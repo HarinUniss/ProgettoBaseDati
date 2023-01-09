@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <?php include_once('./Navigatore/nav.php'); ?>
 
     <?php include_once('./Header/header.php'); ?>
+    <?php include_once('./Navigatore/nav.php'); ?>
     <div id="blocco_pagina">
         <?php include_once('./Contenuto Pagina/contenuto.php')?>
     </div>

@@ -10,12 +10,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./script/header.js"></script>
-
 </head>
 <?php
     //Includo la classe utente
     include_once("ClassUtente.php");
-    $utente = $nome_utente = "";
+    $nome_utente = "";
+    $loginEffettuato = false;
 ?>
 <?php
 
@@ -61,7 +61,7 @@
                     echo 'console.log("Non è stato possibile salvare i dati dell utente")';
                     echo '</script>';
                 }
-
+                $loginEffettuato = true;
                 echo '<script type="text/javascript"> ';
                 echo 'alert("Credenziali corrette... benvenuto '.$utente->getNome().'")';
                 echo '</script>';
@@ -72,8 +72,9 @@
                 echo 'alert("Credenziali non presenti nel nostro database")';
                 echo '</script>';
             }
-
             $conn->close();
+        }else{
+            echo "<script type='text/javascript'>alert('Errore login, sono presenti dei campi vuoti')</script>";
         }
 
     }
@@ -86,26 +87,50 @@
         <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->
         <!--<input type="text" id="baricerca" placeholder="search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
         -->
-        <a class="login_button">
-            <img id="prof" src="./Immagini/utente_img.png" height="25" width="25"><?php echo $nome_utente; ?>
-        </a><!--<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Login</a>
-        <a class="dropdown-item" href="#">Profilo</a>
-        <a class="dropdown-item" href="#">Logout</a>
+        <?php
+        if($loginEffettuato==false){
+            echo "<a class='login_button'>
+                <img id='prof' src='./Immagini/utente_img.png' height='25' width='25'>
+                </a>";
+        }else{
+            echo "<a class='login_button2'><img id='prof' src='./Immagini/utente_img.png' height='25' width='25'>$nome_utente</a>
+                  <div class='tendina-login-button'>
+                    <dl>
+                     <dt><a href='#'>Profilo</a></dt>
+                     <dt><button type='button' class='logout'>Logout<i class='bx bx-log-out' ></i></button></dt>
+                    </dl>   
+                  </div>";
+        }
+        ?>
+
+        <?php /*echo $nome_utente; if($loginEffettuato===true)echo"<a class='dropdown-item' href='#'>Login</a>
+        <a class='dropdown-item' href='#'>Profilo</a>
+        <a class='dropdown-item' href='#'>Logout<i class='bx bx-log-out' ></i></a>"*/?>
+
+    <!--<div class="dropdown-menu">
+        <a class='dropdown-item' href='#'>Login</a>
+        <a class='dropdown-item' href='#'>Profilo</a>
+        <a class='dropdown-item' href='#'>Logout</a>
         </div>-->
 
 
 </div>
-    <div class="login_div">
+    <?php
+    if($loginEffettuato === false){
+        echo '<div class="login_div">
+        
+            <form method="post" action="">
+                <p><input type="button" class="close" value="close">
+                Inserisci credenziali<br>
+                <input type="text" id="input_username" placeholder="username" name="username"><p class="error"> '.$usernERR.'</p>
+                <input type="password" id="input_password" placeholder="password" name="password"><p class="error"> '.$passERR.'</p><br>
+                <button id="invia" type="submit" class="btn btn-info">Invia</button><input type="button" id="cancella" value="cancella"></p>
+                <p>Se non sei registrato: <a href="./Contenuto Pagina/registrazione.php">Registrati</a></p>
+            </form>
+        </div>';
+    }
+    ?>
 
-        <form method="post" action="">
-            <p><input type="button" class="close" value="close">
-            Inserisci credenziali<br>
-            <input type="text" id="input_username" placeholder="username" name="username"><p class="error"><?php echo $usernERR?></p>
-            <input type="password" id="input_password" placeholder="password" name="password"><p class="error"><?php echo $passERR?></p><br>
-            <button id="invia" type="submit" class="btn btn-info">Invia</button><input type="button" id="cancella" value="cancella"></p>
-            <p>Se non sei registrato: <a href="./Contenuto Pagina/registrazione.php">Registrati</a></p>
-        </form>
-    </div>
+
 
 </html>

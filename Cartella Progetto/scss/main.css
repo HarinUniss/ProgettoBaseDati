@@ -288,6 +288,46 @@ a.login_button:hover { /*Si attiva quando ci passo sopra col mouse*/
   cursor: pointer;
 }
 
+a.login_button2 { /*Si usa per le pagine di collegamento presenti nell' header*/
+  /*Text*/
+  text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
+  color: black; /*Colore testo nero*/
+  position: relative;
+  border-radius: 15%; /*Definisco il bordo*/
+  padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
+  margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+}
+
+a.login_button2:hover { /*Si attiva quando ci passo sopra col mouse*/
+  background-color: lightgray;
+  color: black;
+  text-decoration-line: none;
+  cursor: pointer;
+}
+
+div.tendina-login-button {
+  position: fixed;
+  right: 20px;
+  top: 50px;
+  padding: 5px;
+  background-color: lightgray;
+  text-align: center;
+  width: 10%;
+  min-width: 102px;
+  margin-bottom: 0px;
+  z-index: 118;
+}
+
+button.logout {
+  background-color: #4a64e2;
+  color: white;
+}
+
+button.logout:hover {
+  background-color: white;
+  color: darkblue;
+}
+
 #cancella {
   background-color: red;
   padding: 1px;
@@ -388,6 +428,9 @@ div.box-inner {
   position: relative;
   height: 50%;
   width: 48%;
+  max-width: 512px;
+  min-width: 387px;
+  min-height: 235px;
   margin: 5px;
   background-color: gray;
 }
@@ -397,11 +440,12 @@ div.box-inner {
     width: 100%;
   }
 }
-@media (min-width: 1300px) {
-  div.box-inner {
+/*@media (min-width: 1300px){
+
+  div.box-inner{
     width: 23%;
-  }
 }
+}*/
 /*css per il footer*/
 footer {
   position: absolute;
@@ -428,14 +472,15 @@ footer div { /* css per la barra orizzontale nel footer*/
   }
 }
 body {
-  max-width: 2000px;
+  max-width: 1920px;
+  max-height: 1080px;
   min-width: 400px;
 }
 
 #blocco_pagina {
   top: 56px;
   padding-top: 10px;
-  padding-left: 245px;
+  padding-left: 270px;
   padding-bottom: 6%;
   position: fixed;
   background-color: green;
@@ -444,6 +489,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
+  z-index: -1;
 }
 
 @media (max-width: 924px) {
@@ -455,49 +501,6 @@ body {
   #blocco_pagina {
     padding-left: 85px;
     height: 94%;
-  }
-}
-p.titolo {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #0930f2;
-}
-
-#definizioneUser {
-  width: 200px;
-}
-
-/*p.conferma{
-    text-align: right;
-    color: #4a64e2;
-}*/
-div.credenziali {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: green;
-}
-
-#civico {
-  width: 80px;
-}
-
-form > a {
-  color: darkred;
-  text-decoration-line: none;
-}
-
-a.error {
-  color: darkred;
-  text-decoration-line: none;
-}
-
-@media (max-width: 953px) {
-  div.credenziali {
-    position: relative;
-    border-style: none;
-    margin-left: 50px;
   }
 }
 /**/

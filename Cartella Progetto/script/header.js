@@ -3,6 +3,7 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
     $("div.login_div").hide();
+    $("div.tendina-login-button").hide();
 
     /*$("a.h_img").click(function(){
     });//*/
@@ -22,6 +23,9 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     });
 
 
+    $("a.login_button2").click(function(){
+        $("div.tendina-login-button").slideToggle("fast");
+    });
 
     var butt_search = $("#butt_search");
     butt_search.on({ //Si usa quando si verificano diverse azioni
