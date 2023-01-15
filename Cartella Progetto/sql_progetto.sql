@@ -15,7 +15,7 @@ create table Utenti(
     foto blob,
     tipo char(12) not null check(tipo = 'canile' OR tipo = 'allevamento' OR tipo = 'utente')
 );
-
+alter table Utenti modify foto char(100); /**/
 alter table Utenti modify tipo integer not null;
 drop table Animali;
 create table Animali(
