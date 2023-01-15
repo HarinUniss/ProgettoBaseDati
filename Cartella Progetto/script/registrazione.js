@@ -1,5 +1,16 @@
 $(document).ready(function(){
     $("#div_nascondino").hide();
+    $("div.pop-up-conferma").hide();
+    $("#but_active_pop_up_conferma").click(function(){
+        $("div.pop-up-conferma").slideToggle(900);
+    });
+    $("#invia_reg").click(function (){
+        $("div.pop-up-conferma").hide();
+    });
+    $("#annulla_reg").click(function (){
+        $("div.pop-up-conferma").slideToggle(900);
+    });
+
 });
 
 function checkType(form){
@@ -23,3 +34,4 @@ function checkType(form){
         }break;
     }
 }
+

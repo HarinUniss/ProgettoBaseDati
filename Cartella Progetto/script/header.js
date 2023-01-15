@@ -2,22 +2,25 @@
 $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
 
     $("#baricerca").hide(); //Nascondo la barra di ricerca
-    $("div.login_div").hide();
+    /*$("div.login_div").hide();*/
     $("div.tendina-login-button").hide();
 
-    /*$("a.h_img").click(function(){
-    });//*/
 
     /*--- Funzioni di apertura e chiusura del div di login*/
 
-    $("a.login_button").click(function(){
-            $("div.login_div").slideDown("fast");
-    });
+    /*$("a.login_button").click(function(){
+        $("div.login_div").slideDown("fast");
+    });*/
     $("input.close").click(function (){
         $("div.login_div").hide();
     });
 
+    $("#annulla_reg").click(function (){
+        $("div.pop-up-conferma").slideUp(900);
+    });
+
     $("#cancella").click(function(){
+        //Cancello il contenuto degli inp text dei login
         $("#input_username").val("");
         $("#input_password").val("");
     });
@@ -45,4 +48,6 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
             $("#baricerca").toggle("slow");
         },
     });
+
 });
+

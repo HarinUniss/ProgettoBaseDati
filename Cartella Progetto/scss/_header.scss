@@ -65,23 +65,13 @@ div.tendina-login-button{
   margin-bottom:0px;
   z-index: 118;
 }
-button.logout{
+a.logout{
   background-color: #4a64e2;
   color: white;
 }
-button.logout:hover{
+a.logout:hover{
   background-color: white;
   color: darkblue;
-}
-
-#cancella{ //Per il bottone cancella per il login
-  background-color: red;
-  padding: 1px;
-  border: none;
-  value-text: white;
-}
-#cancella:hover{
-  background-color: orangered;
 }
 
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
@@ -91,7 +81,7 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   display:inline-block;
   position: relative;
   background-color: deepskyblue;
-  box-shadow: 1px 1px 1px cornflowerblue;
+  box-shadow: 1px 1px 1px cornflowerblue; //Ombreggiatura
   border:none;
   width: 150px;
   color: lightgray;
@@ -113,42 +103,7 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   cursor: pointer;
 }
 
-div.login_div{ //Finesta di sfondo di login
-  position: absolute;
-  background-color: rgba(150,150,150, .75);
-  width: 100%;
-  height: 100%;
-  z-index: 118;
-  padding-top:10%;
-  padding-bottom: 10%;
-  padding-right: 5%;
-  padding-left: 5%;
-  form{
-    .close{
-      position: absolute;
-      top:0;
-      right:0;
-      //align-self: end;
-    }
-    //Posizionamento in confronto al div
-    position: absolute;
-    display: block;
-    top: 10%;
-    right: 5%;
-    max-height: 800px;
-    max-width: 500px;
-    min-height: 150px;
-    min-width: 200px;
-    padding: 2%;
-    z-index: 119; //Posizionamento asse z
-    background-color: white;
-    //testo
-    font-family: arial, "Informal Roman", inherit;
-    font-size: x-large;
-    color: blue;
-    text-align: center;
-  }
-}
+
 
 p.error{
   color: red;

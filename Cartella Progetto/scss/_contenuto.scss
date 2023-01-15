@@ -19,8 +19,8 @@ div.box-inner
   align-items: center;
   position: relative;
   height: 50%;
-  width:48%;
-  max-width: 512px;
+  width: 100%;
+  //max-width: 512px;
   min-width: 387px;
   min-height: 235px;
   margin: 5px; //Distanzia tra gli elementi
@@ -30,16 +30,18 @@ div.box-inner
 
 @media (max-width: 781px){
 
-  div.box-inner{
+  /*div.box-inner{
     width: 100%;
+    max-width: 100%;
+  }*/
+}
+
+
+
+@media (min-width: 1090px){
+
+  div.box-inner{
+    width: 48%;
+    max-width: 50%;
   }
 }
-
-
-
-/*@media (min-width: 1300px){
-
-  div.box-inner{
-    width: 23%;
-}
-}*/

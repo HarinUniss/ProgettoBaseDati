@@ -1,4 +1,4 @@
-<?php session_start();//accedo alla variabile globale $_SESSION ?>
+<?php //session_start();//accedo alla variabile globale $_SESSION ?>
 <!-- Fare in modo che una volta fatto il loghin la sessione resti aperta nelle altre pagine del sito! -->
 
 <!DOCTYPE html>
@@ -14,8 +14,11 @@
 
 <body>
 
-    <?php include_once('./Header/header.php'); ?>
-    <?php include_once('./Navigatore/nav.php'); ?>
+    <?php
+    include_once('./Header/header.php');
+    include_once('./Navigatore/nav.php');
+    ?>
+
     <div id="blocco_pagina">
         <?php include_once('./Contenuto Pagina/contenuto.php')?>
     </div>

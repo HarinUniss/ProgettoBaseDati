@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 
 </head>
-    <div class="box">
+    <div class="box" >
         <div class="box-inner">1  dsjoiahgv</div>
         <div class="box-inner">2  dsjoiahgv</div>
         <div class="box-inner">3  dsjoiahgv</div>

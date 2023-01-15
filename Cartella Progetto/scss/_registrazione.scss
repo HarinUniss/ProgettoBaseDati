@@ -1,0 +1,55 @@
+p.titolo{
+  font-size: large;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #0930f2;
+}
+#definizioneUser{
+  width: 200px;
+}
+
+p.suggerimento_inserimento{
+  font-family: "Tempus Sans ITC",inherit;
+  font-size: small;
+  color: gray;
+}
+div.credenziali{
+  position:relative;
+  top: 10px;
+  right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  z-index: 100;
+
+  p.titolo{
+    font-size: large;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #0930f2;
+  }
+}
+#civico{
+  width: 80px;
+}
+
+a.error{
+  color: darkred;
+  text-decoration-line: none;
+}
+div.pop-up-conferma{
+  display: flex;
+  position: fixed;
+  width: 75%;
+  justify-content: center;
+  text-align: center;
+  background-color: deepskyblue;
+  margin-left: 12%;
+  z-index: 101;
+  padding: 10px;
+}
+@media(max-width: 953px){
+  div.credenziali{
+    position: relative;
+    border-style: none;
+    margin-left:50px;
+  }
+}

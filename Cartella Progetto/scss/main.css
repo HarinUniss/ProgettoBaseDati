@@ -318,25 +318,14 @@ div.tendina-login-button {
   z-index: 118;
 }
 
-button.logout {
+a.logout {
   background-color: #4a64e2;
   color: white;
 }
 
-button.logout:hover {
+a.logout:hover {
   background-color: white;
   color: darkblue;
-}
-
-#cancella {
-  background-color: red;
-  padding: 1px;
-  border: none;
-  value-text: white;
-}
-
-#cancella:hover {
-  background-color: orangered;
 }
 
 input:focus {
@@ -370,40 +359,6 @@ input:focus {
   cursor: pointer;
 }
 
-div.login_div {
-  position: absolute;
-  background-color: rgba(150, 150, 150, 0.75);
-  width: 100%;
-  height: 100%;
-  z-index: 118;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  padding-right: 5%;
-  padding-left: 5%;
-}
-div.login_div form {
-  position: absolute;
-  display: block;
-  top: 10%;
-  right: 5%;
-  max-height: 800px;
-  max-width: 500px;
-  min-height: 150px;
-  min-width: 200px;
-  padding: 2%;
-  z-index: 119;
-  background-color: white;
-  font-family: arial, "Informal Roman", inherit;
-  font-size: x-large;
-  color: blue;
-  text-align: center;
-}
-div.login_div form .close {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 p.error {
   color: red;
 }
@@ -427,8 +382,7 @@ div.box-inner {
   align-items: center;
   position: relative;
   height: 50%;
-  width: 48%;
-  max-width: 512px;
+  width: 100%;
   min-width: 387px;
   min-height: 235px;
   margin: 5px;
@@ -436,16 +390,17 @@ div.box-inner {
 }
 
 @media (max-width: 781px) {
-  div.box-inner {
+  /*div.box-inner{
     width: 100%;
+    max-width: 100%;
+  }*/
+}
+@media (min-width: 1090px) {
+  div.box-inner {
+    width: 48%;
+    max-width: 50%;
   }
 }
-/*@media (min-width: 1300px){
-
-  div.box-inner{
-    width: 23%;
-}
-}*/
 /*css per il footer*/
 footer {
   position: absolute;
@@ -501,6 +456,110 @@ body {
   #blocco_pagina {
     padding-left: 85px;
     height: 94%;
+  }
+}
+p.titolo {
+  font-size: large;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #0930f2;
+}
+
+#definizioneUser {
+  width: 200px;
+}
+
+p.suggerimento_inserimento {
+  font-family: "Tempus Sans ITC", inherit;
+  font-size: small;
+  color: gray;
+}
+
+div.credenziali {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  z-index: 100;
+}
+div.credenziali p.titolo {
+  font-size: large;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #0930f2;
+}
+
+#civico {
+  width: 80px;
+}
+
+a.error {
+  color: darkred;
+  text-decoration-line: none;
+}
+
+div.pop-up-conferma {
+  display: flex;
+  position: fixed;
+  width: 75%;
+  justify-content: center;
+  text-align: center;
+  background-color: deepskyblue;
+  margin-left: 12%;
+  z-index: 101;
+  padding: 10px;
+}
+
+@media (max-width: 953px) {
+  div.credenziali {
+    position: relative;
+    border-style: none;
+    margin-left: 50px;
+  }
+}
+div.login_div {
+  /*position: absolute;
+  background-color: rgba(150,150,150, .75);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  padding:10%;*/
+  justify-content: center;
+  max-width: 1024px;
+}
+div.login_div form.form_login {
+  position: relative;
+  display: block;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  /*margin-right: 5%;*/
+  width: 100%;
+  height: 70%;
+  max-height: 800px;
+  max-width: 500px;
+  min-height: 320px;
+  min-width: 316px;
+  padding: 1%;
+  z-index: 0;
+  background-color: orange;
+  font-family: arial, "Informal Roman", inherit;
+  font-size: x-large;
+  color: blue;
+  text-align: center;
+  font-size: medium;
+}
+div.login_div form.form_login .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 760px) {
+  form.form_login {
+    font-size: small;
+    margin-top: 20%;
+    margin-left: 0;
   }
 }
 /**/

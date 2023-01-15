@@ -1,58 +1,92 @@
 <?php
-$foto = $_POST["fotoDaUpload"];
-if($foto) {
-    $target_dir = "Uploads/ClassUtente/"; //Directory di destinazione
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1; //variable di controllo, se 1 si effettua l'upload
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+/*
+if(isset($_POST["invia"])){
+    $carica_fotoERR = "";
 
-    function alertError($errore)
-    {//Funzione che crea un alert con il tipo di errore
-        echo '<script type="text/javascript"> ';
-        echo 'alert($errore)';
-        echo '</script>';
+    // inserisco il percorso dove verranno caricate le foto
+    $upload_percorso = '../Uploads/Utente/';
+    // salvo il percorso temporaneo dell'immagine caricata
+    $filetmp = $_FILES['FotoUpload']['tmp_name'];
+    // salvo il nome dell'immagine caricata
+    $file_nome = $_FILES['FotoUpload']['name'];
+    $_SESSION["dir_immagine"] = "$upload_percorso$file_nome";
+
+    //Controllo solo se la dimensione del file supera una soglia...
+    if(filesize($filetmp)>5000000){
+        $carica_fotoERR = "*Dimensione file troppo pesante: ".(filesize($filetmp)/1024)."KB > 5MB<br>";
     }
 
-// Controllo se l'immagine è un file immagine e non un altro tipo di file
-    if (isset($_POST["submit"])) { //Controllo se è stato inserito qualcosa...
-        //..Controllando la dimensione
-        if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) !== false) {
-            $uploadOk = 1;
-        } else {
-            alertError("File is not an image.");
-            $uploadOk = 0;
+    //Controllo dell' estensione del file, posso controllare l'estensione usando str_contains...
+    if(str_contains($file_nome, ".jpg") || str_contains($file_nome, ".png") || str_contains($file_nome, "jpeg")){}
+    else{
+        $carica_fotoERR = $carica_fotoERR." *IL file non è un immagine o un immagine con formato non valido, inserire formati jpg, png, jpeg.<br>";
+    }
+    echo "<script>alert('File non caricato');</script>";
+    // sposto l'immagine nel percorso che prima abbiamo deciso
+    if(move_uploaded_file($filetmp, $upload_percorso . $file_nome)===true){
+        echo "Il file: $file_nome è stato salvato in: $upload_percorso";
+    }else{
+        echo "<script>alert('File non caricato');</script>";
+    }
+
+}
+*/
+?>
+
+<?php
+
+if($_SERVER["REQUEST_METHOD"]=="POST") {
+// inserisco il percorso dove verranno caricate le foto
+    $upload_percorso = '../Uploads/Utente/';
+// salvo il percorso temporaneo dell'immagine caricata
+    $file_tmp = $_FILES['img']['tmp_name'];
+// salvo il nome dell'immagine caricata
+    $file_nome = $_FILES['img']['name'];
+    $_SESSION["nome_immagine"] = "$upload_percorso$file_nome";
+    /*$immagine = file_get_contents($filetmp);
+    $immagine = addslashes ($immagine);*/
+    echo "IL nome del file inserito è: ".$file_nome."<br>";
+//Controllo solo se la dimensione del file supera una soglia...
+    if(filesize($file_tmp)>1000000){
+        echo "Dimensione file troppo pesante: ".filesize($file_tmp)." > 1MB<br>";
+    }
+
+
+    //Lettura dell' estensione del file
+    /*//non funziona
+    //$estensione = new SplFileInfo($filetmp);
+    $estensione = pathinfo($filetmp, PATHINFO_EXTENSION);
+    echo "L'estensione del file è: ".$estensione->getExtension()."<br>";*/
+
+    echo "In alternativa posso controllare l'estensione usando str_contains...<br>";
+
+    if(str_contains($file_nome, ".jpg") || str_contains($file_nome, ".png") || str_contains($file_nome, "jpeg")){
+        echo "Il file è un immagine<br>";
+    }else
+        echo "IL file non è un immagine<br>";
+
+    echo "Dimensione del file: ".filesize($file_tmp)." Byte<br>";
+
+// sposto l'immagine nel percorso che prima abbiamo deciso
+    if(move_uploaded_file($file_tmp, $upload_percorso . $file_nome)===true) {
+        //Tolgo il primo punto per poterlo usare nell'' header del progetto
+        $dir = substr("$upload_percorso$file_nome", 1);
+        echo "Il file è stato uploadato in: $dir<br>";
+        echo "<img src='$upload_percorso$file_nome' height='100' width='100'>";
+    }
+    /*
+        if(isset($_POST["submit"])){
+            $conn = new mysqli('localhost', 'root', '', 'database_prova1') or die("Errore di connesione al database");
+            $id = rand(0, 9999999);
+
+
+            if($conn->query("INSERT INTO Foto(id_foto, foto, proprietario) VALUES ('$id', '$immagine', '1')")){
+                echo "Foto inserita nel database con successo";
+            }else{
+                die("Upload to database failed");
+                echo "Foto non inserita";
+            }
         }
-    }
-
-// Controllo se il file esiste
-    if (file_exists($target_file)) {
-        alertError("File inesistente");
-        $uploadOk = 0;
-    }
-
-// Controllo peso immagine
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        alertError("File troppo pesante");
-        $uploadOk = 0;
-    }
-
-// Controllo formato
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif") {
-        alertError("Errore, si accettano solo file di tipo JPG, JPEG, PNG & GIF");
-        $uploadOk = 0;
-    }
-
-// Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        alertError("Sorry, your file was not uploaded.");
-// if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            alertError("The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.");
-        } else {
-            alertError("Sorry, there was an error uploading your file.");
-        }
-    }
+    */
 }
 ?>
