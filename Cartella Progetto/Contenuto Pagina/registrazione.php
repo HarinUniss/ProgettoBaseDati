@@ -16,16 +16,15 @@
 </head>
 <body>
 <?php
-
 $id = $nome = $cognome = $telefono = $indirizzo = $civico = $citta = $email = $tipo = $userN = $pass = $foto = $rip_pass = "";
 $nomeERR = $cognomeERR = $indirizzoERR = $civicoERR = $cittaERR = $telefonoERR = $emailERR = $usernERR = $fotoERR= $passERR = $rip_passERR = $errori = "";
-$conferma_successo = false;
+
 
 //Impostiamo la data e l'ora di roma...
 date_default_timezone_set("Europe/Rome");
 
 include_once('caricamento_img.php');
-
+caricaIMG("Utente");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -34,11 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Controllo su immagine inserita da utente...
             $nomeImmagine = array_key_exists('nome_immagine', $_SESSION)?$_SESSION['nome_immagine'] : "";
             //Inserisco nel database la directory dove è presente la foto...
-            if(file_exists($nomeImmagine)){
+            if(file_exists($nomeImmagine)){ //Se il file esiste
+                //Agiungo degli slash per la query Dovrebbero aiutare nel caso di qualche errore
+                //Di inserimento della dir della foto
                 $foto = addslashes ($nomeImmagine);
-                //session_unset(); //Elimina la variabile che contiene la dir_immagine
+                unset($_SESSION['nome_immagine']); //unsetta la var sessione "nomeimmagine"
             }
         }
+
+        //Non faccio alcun controllo perchè la pagina non carica se l'utente non sceglie il tipo...
         $tipo = $_POST["tipo"];
         //---Quà faccio dei controlli su elementi separati per tipo di utente---
         if ($tipo == "utente") {
@@ -47,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($cognome)) {
                 $cognomeERR = "*Valore non impostato";
             } else {
-                $cognome = ucfirst(strtolower(ltrim($cognome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+                //Mi lascia la prima lettera magliusc / mi mette tutte le altre min / mi toglie gli spazi bianchi (inutili)
+                $cognome = ucfirst(strtolower(ltrim($cognome)));
             }
         } else {
             if ($tipo == "canile" || $tipo == "allevamento") {
@@ -77,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($nome)) {
             $nomeERR = "*Nome non impostato";
         } else {
-            $nome = ucfirst(strtolower(ltrim($nome))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+            //Mi lascia la prima lettera magliusc / mi mette tutte le altre min / mi toglie gli spazi bianchi (inutili)
+            $nome = ucfirst(strtolower(ltrim($nome)));
         }
 
         //Controlli su città
@@ -85,7 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($citta)) {
             $cittaERR = "*Citta non impostato";
         } else {
-            $citta = ucfirst(strtolower(ltrim($citta))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+            //Mi lascia la prima lettera magliusc / mi mette tutte le altre min / mi toglie gli spazi bianchi (inutili)
+            $citta = ucfirst(strtolower(ltrim($citta)));
         }
 
         //controllo telefono
@@ -144,8 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-
-
         $errori = $nomeERR . $cognomeERR . $indirizzoERR . $cittaERR . $telefonoERR . $emailERR . $usernERR . $passERR;
         if ($errori == "") {
 
@@ -162,13 +166,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errori = "*username già esistente<br>";
             } else {
                 //Genero un id random
-                $esiste_id = false;
-                while($esiste_id != true) {
+                $esiste_id = true;
+                while($esiste_id != false) {
                     $id = rand(0, 9999999);
 
                     $sql_check_id_exist = "SELECT * FROM Utenti WHERE Utenti.id_utente = '$id'";
                     if(mysqli_num_rows($conn->query($sql_check_id_exist)) == 0){
-                        $esiste_id = true;
+                        $esiste_id = false;
                     }
                 }
 
@@ -185,19 +189,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $conn->query($query_reg_inCredenziali) or die("Errore registrazione credenziali: " . $conn->error);
 
-                $errore_connection = $conn->connect_error;
-                echo '<script type="text/javascript"> ';
-                echo 'alert("Registrazione avvenuta con successo :)")';
-                echo '</script>';
+                echo '<script type="text/javascript"> 
+                    alert("Registrazione avvenuta con successo :)");
+                    window.location.href = "login.php?reg=ok";
+                    </script>';
             }
 
             $conn->close();
 
-            if (!$errore_connection) {
-                $conferma_successo = true;
-
-                header("Location: login.php?reg=ok"); //Dovrebbe reindirizzarmi al login con GET[reg] = ok
-            }
+            //header("Location: login.php?reg=ok"); //Dovrebbe reindirizzarmi al login con GET[reg] = ok
 
         } else {
             echo '<script type="text/javascript"> ';
@@ -220,7 +220,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </p>
         </div>
         <?php  echo "Inizio sessione di registrazione: ".date("d-m-Y h:i:sa")."<br>";?>
-        <label for="definizioneUser">Tipo di Utente:</label>
+        <label for="definizioneUser"><p class="titolo">Tipo di Utente:</p></label>
         <select class="form-control" id="definizioneUser" onchange="checkType(this.form)" name="tipo">
             <option class="f"></option>
             <option>utente</option>

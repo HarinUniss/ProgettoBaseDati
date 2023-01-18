@@ -20,49 +20,52 @@ div.head{
   /*border-style: unset; /*Definisco lo stile del bordo*/
   box-shadow: 1px  1px 1px 1px darkslategray;
   margin-bottom: 5px;
+  a.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
+    /*Text*/
+    text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
+    color: black; /*Colore testo nero*/
+    position: relative;
+    border-radius: 15%; /*Definisco il bordo*/
+    padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
+    margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+  }
+  a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
+    background-color: lightgray;
+    color: black;
+    text-decoration-line: none;
+    cursor: pointer;
+  }
+
+  a.login_button2{ /*Si usa per le pagine di collegamento presenti nell' header*/
+    /*Text*/
+    text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
+    color: black; /*Colore testo nero*/
+    position: relative;
+    border-radius: 25%; /*Definisco il bordo*/
+    padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
+    margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+    img{
+      border-radius: 50%;
+    }
+  }
+  a.login_button2:hover{ /*Si attiva quando ci passo sopra col mouse*/
+    background-color: lightgray;
+    color: black;
+    text-decoration-line: none;
+    cursor: pointer;
+  }
 }
 
-a.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
-  /*Text*/
-  text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
-  color: black; /*Colore testo nero*/
-  position: relative;
-  border-radius: 15%; /*Definisco il bordo*/
-  padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-  margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
-}
-a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
-  background-color: lightgray;
-  color: black;
-  text-decoration-line: none;
-  cursor: pointer;
-}
 
-a.login_button2{ /*Si usa per le pagine di collegamento presenti nell' header*/
-  /*Text*/
-  text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
-  color: black; /*Colore testo nero*/
-  position: relative;
-  border-radius: 15%; /*Definisco il bordo*/
-  padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-  margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
-}
-a.login_button2:hover{ /*Si attiva quando ci passo sopra col mouse*/
-  background-color: lightgray;
-  color: black;
-  text-decoration-line: none;
-  cursor: pointer;
-}
 div.tendina-login-button{
   position:fixed;
-  right: 20px;
+  right: 10px;
   top: 50px;
   padding: 5px;
   background-color: lightgray;
   text-align: center;
-  width: 10%;
-  min-width: 102px;
-  margin-bottom:0px;
+  width: 12%;
+  min-width: 126px;
   z-index: 118;
 }
 a.logout{

@@ -270,8 +270,7 @@ div.head {
   box-shadow: 1px 1px 1px 1px darkslategray;
   margin-bottom: 5px;
 }
-
-a.login_button { /*Si usa per le pagine di collegamento presenti nell' header*/
+div.head a.login_button { /*Si usa per le pagine di collegamento presenti nell' header*/
   /*Text*/
   text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
   color: black; /*Colore testo nero*/
@@ -280,25 +279,25 @@ a.login_button { /*Si usa per le pagine di collegamento presenti nell' header*/
   padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
   margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
-
-a.login_button:hover { /*Si attiva quando ci passo sopra col mouse*/
+div.head a.login_button:hover { /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
   color: black;
   text-decoration-line: none;
   cursor: pointer;
 }
-
-a.login_button2 { /*Si usa per le pagine di collegamento presenti nell' header*/
+div.head a.login_button2 { /*Si usa per le pagine di collegamento presenti nell' header*/
   /*Text*/
   text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
   color: black; /*Colore testo nero*/
   position: relative;
-  border-radius: 15%; /*Definisco il bordo*/
+  border-radius: 25%; /*Definisco il bordo*/
   padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
   margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
 }
-
-a.login_button2:hover { /*Si attiva quando ci passo sopra col mouse*/
+div.head a.login_button2 img {
+  border-radius: 50%;
+}
+div.head a.login_button2:hover { /*Si attiva quando ci passo sopra col mouse*/
   background-color: lightgray;
   color: black;
   text-decoration-line: none;
@@ -307,14 +306,13 @@ a.login_button2:hover { /*Si attiva quando ci passo sopra col mouse*/
 
 div.tendina-login-button {
   position: fixed;
-  right: 20px;
+  right: 10px;
   top: 50px;
   padding: 5px;
   background-color: lightgray;
   text-align: center;
-  width: 10%;
-  min-width: 102px;
-  margin-bottom: 0px;
+  width: 12%;
+  min-width: 126px;
   z-index: 118;
 }
 
@@ -363,7 +361,7 @@ p.error {
   color: red;
 }
 
-div.box {
+div.boxAnimali {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
@@ -371,34 +369,67 @@ div.box {
   overflow: auto;
   width: 98%;
   height: 100%;
-  padding: 1px 0;
-  font-size: 10px;
   max-width: 100%;
 }
-
-div.box-inner {
+div.boxAnimali div.Animale {
+  font-size: large;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: flex-start;
   position: relative;
   height: 50%;
   width: 100%;
-  min-width: 387px;
   min-height: 235px;
   margin: 5px;
   background-color: gray;
+  /*word-wrap: break-word;*/
+  overflow: hidden;
+}
+div.boxAnimali div.Animale img {
+  position: relative;
+  background-color: blueviolet;
+  height: 100%;
+  width: 40%;
+}
+div.boxAnimali div.Animale p {
+  text: white;
+  justify-content: center;
+  text-align: center;
+  background-color: darkcyan;
+  height: 100%;
+  width: 60%;
 }
 
 @media (max-width: 781px) {
-  /*div.box-inner{
+  div.Animale {
     width: 100%;
     max-width: 100%;
-  }*/
+  }
+}
+@media (max-width: 682px) {
+  div.boxAnimali div.Animale img {
+    min-width: 173px;
+    width: 100%;
+    position: absolute;
+  }
+  div.boxAnimali div.Animale img:hover {
+    opacity: 20%;
+    z-index: -1;
+  }
+  div.boxAnimali div.Animale p {
+    min-width: 173px;
+    width: 100%;
+  }
 }
 @media (min-width: 1090px) {
-  div.box-inner {
-    width: 48%;
-    max-width: 50%;
+  div.boxAnimali div.Animale {
+    max-width: 48%;
+    /*img{
+      width: 50%;
+    }*/
+    /*p{
+      width: 50%;
+    }*/
   }
 }
 /*css per il footer*/
@@ -458,7 +489,7 @@ body {
     height: 94%;
   }
 }
-p.titolo {
+div.form-group p.titolo {
   font-size: large;
   font-family: Helvetica, Arial, sans-serif;
   color: #0930f2;
@@ -475,13 +506,13 @@ p.suggerimento_inserimento {
 }
 
 div.credenziali {
-  position: relative;
+  position: absolute;
   top: 10px;
   right: 10px;
   border-style: solid;
   border-width: 1px;
   border-color: green;
-  z-index: 100;
+  z-index: 150;
 }
 div.credenziali p.titolo {
   font-size: large;
@@ -506,8 +537,9 @@ div.pop-up-conferma {
   text-align: center;
   background-color: deepskyblue;
   margin-left: 12%;
-  z-index: 101;
+  z-index: 151;
   padding: 10px;
+  min-width: 429px;
 }
 
 @media (max-width: 953px) {
@@ -524,8 +556,10 @@ div.login_div {
   height: 100%;
   z-index: 100;
   padding:10%;*/
+  display: flex;
   justify-content: center;
   max-width: 1024px;
+  margin: 0 auto;
 }
 div.login_div form.form_login {
   position: relative;
@@ -562,6 +596,23 @@ div.login_div form.form_login .close {
     margin-left: 0;
   }
 }
+div.container-fluid p.titolo {
+  text-align: center;
+  font-family: "Tempus Sans ITC", "Times New Roman";
+  color: darkgreen;
+  font-size: large;
+}
+div.container-fluid div.div_user_profile_info {
+  position: relative;
+  margin-top: 75px;
+}
+div.container-fluid div.row div {
+  text-align: center;
+}
+div.container-fluid div.row div.modifiche_profilo {
+  background-color: #62e559;
+}
+
 /**/
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,21 @@
+
+div.container-fluid{
+  p.titolo{
+    text-align: center;
+    font-family: "Tempus Sans ITC", "Times New Roman";
+    color: darkgreen;
+    font-size: large;
+  }
+  div.div_user_profile_info{
+    position:relative;
+    margin-top: 75px;
+  }
+  div.row{
+    div{
+      text-align: center;
+    }
+    div.modifiche_profilo{
+      background-color: #62e559;
+    }
+  }
+}

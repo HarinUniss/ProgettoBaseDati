@@ -6,7 +6,7 @@
     <title>Title</title>
 
 </head>
-<body>
+
 
 <footer class="container-fluid">
 
@@ -29,5 +29,5 @@
     <!---->
 
 </footer>
-</body>
+
 </html>

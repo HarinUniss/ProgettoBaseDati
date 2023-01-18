@@ -5,8 +5,10 @@ div.login_div{ //Finesta di sfondo di login
   height: 100%;
   z-index: 100;
   padding:10%;*/
+  display: flex;
   justify-content: center;
   max-width: 1024px;
+  margin: 0 auto;
   form.form_login{
     .close{
       position: absolute;

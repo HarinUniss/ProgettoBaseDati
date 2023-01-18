@@ -16,9 +16,9 @@
 
 //Ci permette di fare in modo che se un utente appena registrato tenta di entrare in login, ipoteticamente
 //Se dovesse accedere alla pagina, si unsettano tutte le variabili session per sicurezza, anche in caso di logout
-$logout_ = array_key_exists('logout', $_GET)? $_GET['logout']: "";
-$req_by_reg = array_key_exists('reg', $_GET)? $_GET['reg']: "";
-if(isset($_GET['logout']) && isset($_GET['reg'])){
+/*$logout_ = array_key_exists('logout', $_GET)? $_GET['logout']: "";
+$req_by_reg = array_key_exists('reg', $_GET)? $_GET['reg']: "";*/
+if(isset($_GET['reg'])){
     session_unset(); //Elimina tutte le variabili di sessione create
     session_destroy(); //Distrugge la sessione
     echo '
@@ -81,15 +81,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     $_SESSION["email"] = $row["email"];
                     $_SESSION["tipo"] = $row["tipo"];
                     $_SESSION["foto"] = $row["foto"];
-
+                    $_SESSION["dataora"] = $row["dataora"];
                 }else{
                     echo '<script type="text/javascript"> ';
                     echo 'console.log("Non è stato possibile salvare i dati dell utente")';
                     echo '</script>';
                 }
 
-                $_SESSION["loginEffettuato"] = true;
-                header('Location: ../home.php');
+
+                    echo '
+                        <script>
+                            alert("Credenziali corrette Benvenuto '.$_SESSION["nome_utente"].'");
+                            window.location.href = "../home.php";
+                        </script>
+                    ';
+
             }else{
                 echo '<script type="text/javascript"> ';
                 echo 'alert("Credenziali non presenti nel nostro database")';
