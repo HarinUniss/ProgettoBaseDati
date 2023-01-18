@@ -372,7 +372,7 @@ div.boxAnimali {
   max-width: 100%;
 }
 div.boxAnimali div.Animale {
-  font-size: large;
+  font-size: medium;
   display: flex;
   justify-content: left;
   align-items: flex-start;

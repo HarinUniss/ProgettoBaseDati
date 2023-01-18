@@ -114,12 +114,14 @@
                                     VALUES('$id', '$nome', '$razza', '$eta', '$sesso', '$provenienza', '$pedigree', '$foto', '$proprietario', '$dataora_registrazione');";
                     $conn->query($query_registrazione_animale) or die("Errore nella query di inserimento dell' animale ".$conn->error);
 
-                    header('location: ../home.php');
+                    echo '<script>
+                        alert("Registrazione Avvenuta con successo :)");
+                        window.location.href = "../home.php"
+                    </script>';
 
                 }else{
                     echo '<script>
                         alert("Ops qualcosa è andato storto, Registrazione non compiuta :(");
-                        
                     </script>';
                 }
 
@@ -168,7 +170,7 @@
                 <option></option>
                 <?php
                 $citta = "";
-                $conn = new mysqli("localhoset", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
+                $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
 
                 //Per la sezione di ricerca per città abbiamo fatto una query e preso le provenienze di tutti gli animali inseriti
                 $query="SELECT distinct citta FROM Utenti";
@@ -183,7 +185,7 @@
                 } else {
                     echo "errore di lettura del database";
                 }
-                /*$query1 = "SELECT distinct provenienza FROM Aniamli;";
+               /* $query1 = "SELECT distinct provenienza FROM Aniamli;";
                 $result1 = $conn->query($query1);
                 $num = mysqli_num_rows($result1);
                 if (($num > 0)) {

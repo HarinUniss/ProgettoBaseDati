@@ -81,6 +81,7 @@
             echo '
             <script>
                 alert("Non sono presenti Animali inseriti");
+                window.location.href = "../home.php";
             </script>
             ';
         }
