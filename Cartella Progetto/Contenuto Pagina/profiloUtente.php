@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../scss/main.css">
     <script src="../script/profiloUtente.js"></script>
     <script src="../script/header.js"></script>
+    <style>
+
+        img{
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -62,7 +69,7 @@ $id_utente = "";
             $nome = $_SESSION["nome_utente"];
             if(isset($_SESSION["cognome_utente"]))
                 $cognome = $_SESSION["cognome_utente"];
-            $telefono = $_SESSION["telefono"];
+                    $telefono = $_SESSION["telefono"];
             if(isset($_SESSION["indirizzo"]) && isset($_SESSION["civico"])){
                 $indirizzo = $_SESSION["indirizzo"];
                 $civico = $_SESSION["civico"];
@@ -229,28 +236,30 @@ $id_utente = "";
         if($foto != "" && $foto != null){
             //Tolgo il primo . per poter essere localizzato nell'header
             $directory_foto = $foto;
+            //Visualizzo la foto se e solo se essa l'utente cel abbia
             echo "
                 <img src='$directory_foto'>
             ";
-        }else
-            echo '
-                <img src="" width="100px" height="200px">
-            ';
+        }
         ?>
         <p>ID: <?php echo $id_utente; ?></p>
         <p>Tipo di utente: <?php echo $tipo; ?></p>
         <p>Nome = <?php echo $nome." ".$cognome;?></p>
-        <?php if($indirizzo != "") echo '<p>Indirizzo = '.$indirizzo.'Civico = '.$civico.'</p>'; ?>
+        <?php if($indirizzo != "") echo '<p>Indirizzo = '.$indirizzo.' Civico = '.$civico.'</p>'; ?>
         <p>Citta = <?php echo $citta?></p>
         <p>telefono = <?php echo $telefono?></p>
         <p>email = <?php echo $email; ?></p>
-        <p>Data e Ora registrazione <?php echo $dataora;?></p>
+        <?php if($dataora!=null) echo "<p>Data e Ora registrazione ".$dataora;?></p>
     <?php
         //Devo fare così altriementi se un utente non loggato entra qui si generano dei warning
         //E devo passarlo tramite variabile senno non funziona... Nonn sò perchè
         if($id_utente === $x){
             echo '
                 <button type="button" class="btn btn-danger" id="butt_req_modif_user">Modificare?</button>
+            ';
+        }else{
+            echo '
+                <button type="button" class="btn btn-info" >Prenotare?</button>
             ';
         }
     ?>
@@ -270,7 +279,7 @@ $id_utente = "";
             echo '
                             <br>Modifica Citta: <input type="text" name ="citta"><br>
                             <p class="suggerimento_inserimento">Inserire un numero di telefono con 10 cifre</p>
-                            Modifica Telefono: <input type="number" name ="telefono">
+                            Modifica Telefono: <input type="number" name ="telefono"><br>
             ';
                             if($telefonoERR != "")
                                 echo '<p class="error">$telefonoERR</p>';
@@ -283,6 +292,12 @@ $id_utente = "";
                     </form>
                 </div>
             ';
+        }else{
+            echo '<div class="col-lg-6 ">';
+            echo '</div>';
+                include_once("contenuto.php");
+
+
         }
     ?>
 

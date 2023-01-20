@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
     //Controllo solo se la dimensione del file supera una soglia...
     if(filesize($file_tmp)>1000000){
-        $fotoERR = "<p class='error'>*Dimensione file troppo pesante: ".filesize($file_tmp)." > 1MB</p>>";
+        $fotoERR = "<p class='error'>*Dimensione file troppo pesante: ".filesize($file_tmp)." > 1MB</p>";
     }
 
 
@@ -31,10 +31,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
     //In alternativa posso controllare l'estensione usando str_contains...
 
-    if(str_contains($file_nome, ".jpg") || str_contains($file_nome, ".png") || str_contains($file_nome, "jpeg")){
-        echo "Il file è un immagine<br>";
-    }else
-        $fotoERR =  $fotoERR."<p class='error'>IL file non è un immagine</p>";
+    if((str_contains($file_nome, ".jpg") || str_contains($file_nome, ".png") || str_contains($file_nome, "jpeg"))&&($file_nome!= "")){
+
+    }elseif($file_nome!= "")
+        $fotoERR =  $fotoERR." IL file non è un immagine o un formato non accettabile";
 
     //echo "Dimensione del file: ".filesize($file_tmp)." Byte<br>";
 
@@ -42,11 +42,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     if($fotoERR == ""){ //Se non ho avuto errori...
         // ...sposto l'immagine nel percorso che prima abbiamo deciso
         if(move_uploaded_file($file_tmp, $upload_percorso . $file_nome)===true) {
-            //Tolgo il primo punto per poterlo usare nell'' header del progetto
-            $dir = substr("$upload_percorso$file_nome", 1);
-            echo "Il file è stato uploadato in: $dir<br>";
+            /*$dir = substr("$upload_percorso$file_nome", 1);
+            echo "Il file è stato uploadato in: $dir<br>";*/
             echo "<img src='$upload_percorso$file_nome' height='100' width='100'>";
         }
+    }else{
+        echo "<p class='error'>".$fotoERR."</p>";
     }
 
 }

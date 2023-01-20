@@ -18,21 +18,12 @@
 //Se dovesse accedere alla pagina, si unsettano tutte le variabili session per sicurezza, anche in caso di logout
 /*$logout_ = array_key_exists('logout', $_GET)? $_GET['logout']: "";
 $req_by_reg = array_key_exists('reg', $_GET)? $_GET['reg']: "";*/
-if(isset($_GET['reg'])){
-    session_unset(); //Elimina tutte le variabili di sessione create
-    session_destroy(); //Distrugge la sessione
-    echo '
-    <div class="pop-up-conferma">
-        <p><nobr>Logout eseguito</nobr></p>
-        <button type="button" name="cancella" class="btn btn-secondary" id="annulla_reg">annulla</button>
-    </div>
-    ';
-} else{
+
 //Se un utente già loggato entra in questa pagina viene reindirizzato alla home
     if(isset($_SESSION["nome_utente"])) {
         header('Location: ../home.php');
     }
-}
+
 
 $usernERR = $passERR = "";
 $userN = $pass = "";

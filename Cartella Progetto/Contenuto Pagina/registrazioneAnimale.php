@@ -9,8 +9,8 @@
 </head>
 <body>
 <?php
-    $id = $nome = $foto = $provenienza = $specie = $razza = $eta = $proprietario ="";
-    $nomeERR = $fotoERR = $provenienzaERR = $pedigreeERR = $etaERR = "";
+    $id = $nome = $foto = $provenienza = $specie = $razza = $eta = $pedigree =$proprietario ="";
+    $nomeERR = $fotoERR = $provenienzaERR = $razzaERR = $pedigreeERR = $etaERR = "";
     //Impostiamo la data e l'ora di roma...
     date_default_timezone_set("Europe/Rome");
 
@@ -21,7 +21,7 @@
         include_once('caricamento_img.php');
         caricaIMG("Animali");
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
             if(isset($_POST["invia"])){
 
                 //Controlli su immagine
@@ -32,7 +32,12 @@
                     if (file_exists($nomeImmagine)) {
                         $foto = addslashes($nomeImmagine);
                         unset($_SESSION['nome_immagine']);//unsetta la var sessione "nomeimmagine"
+                    }elseif($nomeImmagine == ""){
+                        $fotoERR ="La foto non è stata caricata";
                     }
+
+                }else{
+                    $fotoERR = "Nessuna Foto inserita";
                 }
 
                 //Controlli su nome
@@ -53,6 +58,8 @@
                 $razza = htmlspecialchars($_REQUEST["razza"]);
                 if (!empty($razza)) {
                     $razza = ucfirst(strtolower(ltrim($razza))); //Mi elimina gli spazi "bianchi"(inutili) inseriti dall' utente
+                }else{
+                    $razzaERR ="*Obbligatorio Inserire almeno una razza";
                 }
 
                 $sesso = htmlspecialchars($_REQUEST["sesso"]);
@@ -60,10 +67,10 @@
                 //Controllo provenienza
                 if(isset($_POST["provenienza1"])&& $_POST["provenienza1"] != ""){ //Ha priorità il select
                     $provenienza = htmlspecialchars($_REQUEST["provenienza1"]);
-                }elseif(isset($_POST["provenienza2"])){
+                }elseif(isset($_POST["provenienza2"])&& $_POST["provenienza1"] == ""){
                     $provenienza = htmlspecialchars($_REQUEST["provenienza2"]);
-                }else
-                    $provenienzaERR = "*Provenienza non inserita";
+                }else $provenienzaERR = "*Provenienza non inserita";
+
 
                 //Controllo eta >0
                 $eta = htmlspecialchars($_REQUEST["eta"]);
@@ -72,13 +79,13 @@
                 }
 
                 //Controllo su inserimento pedigree
-                $pedigree = false;
                 //Dato che il pedigree dev'essere obbligatorio per un animale inserito da un allevamento
                 //Faccio il controllo solo sull'allevamento...
-                if(!isset($_POST["pedigree"]) && $_SESSION["tipo"] == "Allevamento"){
+                if((!isset($_POST["pedigree"]) || $_POST["pedigree"] == 0) && $_SESSION["tipo"] == "allevamento"){
                     $pedigreeERR = "*Pegigree obbligatorio per animali inseriti da allavamento";
-                }elseif(isset($_POST["pedigree"])){
-                    $pedigree = true;
+                }elseif(isset($_POST["pedigree"]) ){
+                    $pedigree = 1;
+                    echo "Patata";
                 }
 
                 $errori = $nomeERR.$fotoERR.$provenienzaERR.$pedigreeERR.$etaERR;
@@ -126,7 +133,7 @@
                 }
 
             }
-        }
+
 
     }
 ?>
@@ -142,10 +149,9 @@
             </p>
         </div>
             <p class="suggerimento_inserimento">Dimensione immagine max: 5MByte</p>
-            Foto <input type="file" name="img" id="FotoToUpload" ><br>
-            <?php echo "<a class='error'>$fotoERR</a>";?>
+            Foto <input type="file" name="img" id="FotoToUpload" ><br><?php echo "<p class='error'>$fotoERR</p>";?>
 
-            <input type="text" id="nome" placeholder="Nome" name="nome"><?php echo "<a class='error'>$nomeERR</a>"?>
+            <input type="text" id="nome" placeholder="Nome" name="nome"><?php echo "<p class='error'>$nomeERR</p>"?>
 
             <!--<label for="specie">Specie</label>
             <select name="specie" id="specie">
@@ -157,7 +163,7 @@
             <select name="razza" id="razza">
                 <option value="none">none</option>
             </select>-->
-            <input type="text" name="razza" placeholder="Razza">
+            <input type="text" name="razza" placeholder="Razza"><?php echo "<p class='error'>$razzaERR</p>"?>
 
             <label for="sesso">Sesso</label>
             <select name="sesso" id="sesso">
@@ -172,45 +178,32 @@
                 $citta = "";
                 $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
 
-                //Per la sezione di ricerca per città abbiamo fatto una query e preso le provenienze di tutti gli animali inseriti
-                $query="SELECT distinct citta FROM Utenti";
+                //Per la sezione di ricerca per città abbiamo fatto una query
+                $query="SELECT distinct citta FROM Utenti UNION
+                        SELECT distinct provenienza FROM Animali";
                 $result = $conn->query($query);
-                $num = mysqli_num_rows($result);
-                if (($num > 0)) {
+                if ((mysqli_num_rows($result) > 0)) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         $citta = $citta.$row["citta"];
                         echo "<option>".$row["citta"]."</option> ";
                     }
                 } else {
-                    echo "errore di lettura del database";
+                    echo "Nessuna Città presente nel database";
                 }
-               /* $query1 = "SELECT distinct provenienza FROM Aniamli;";
-                $result1 = $conn->query($query1);
-                $num = mysqli_num_rows($result1);
-                if (($num > 0)) {
-                    // output data of each row
-                    while($row = $result1->fetch_assoc()) {
-                        if(!$citta.contains($row["provenienza"])){
-                            $citta = $citta.$row["provenienza"];
-                            echo "<option>".$row["provenienza"]."</option> ";
-                        }
-                    }
-                } else {
-                    echo "errore di lettura del database";
-                }*/
+
                 $conn->close(); //Chiudo la connessione al db
 
                 ?>
             </select><br>
-            <p class="suggerimento_inserimento">Inserire solo se non presente nella sezione precedente</p>
-            Provenienza: <input type="text" id="provenienza2" name="provenienza2"><?php echo "<a class='error'>$provenienzaERR</a>"?>
 
-            Età<input type="number" name="eta" id="civico" maxlength="4"> Pedigree<input type="checkbox" name="pedigree"><?php if($_SESSION["tipo"] == "allevamento")echo "<p class='suggerimento_inserimento'>Pedigree Obbligatorio</p>"?>
+            <p class="suggerimento_inserimento">Inserire solo se non presente nella sezione precedente</p>
+            Provenienza: <input type="text" id="provenienza2" name="provenienza2"><?php echo "<p class='error'>$provenienzaERR</p>"?>
+
+            Età<input type="number" name="eta" id="civico" maxlength="4"><?php echo "<p class='error'>$etaERR</p>";?> Pedigree<input type="checkbox" name="pedigree"><?php if($_SESSION["tipo"] == "allevamento")echo "<p class='error'>$pedigreeERR</p><p class='suggerimento_inserimento'>Pedigree Obbligatorio</p>"?>
 
             <button type="button" name="button_invia" id="but_active_pop_up_conferma" class="btn btn-info">Invia</button>
     </form>
-    <?php echo "<a class='error'>$etaERR</a>";?>
 </div>
 </body>
 </html>

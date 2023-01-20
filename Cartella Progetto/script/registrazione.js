@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $("#div_nascondino").hide();
     $("div.pop-up-conferma").hide();
+
     $("#but_active_pop_up_conferma").click(function(){
         $("div.pop-up-conferma").slideToggle(900);
     });

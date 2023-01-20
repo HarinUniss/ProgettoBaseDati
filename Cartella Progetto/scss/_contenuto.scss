@@ -1,3 +1,28 @@
+div.boxAnimali{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+
+  img{
+    width: 400px;
+    height: 400px;
+    flex-wrap: wrap;
+    display: flex;
+  }
+}
+
+@media (max-width: 506px){
+
+  div.boxAnimali{
+    img{
+      width: 325px;
+      height: 325px;
+    }
+  }
+
+}
+
+/*
 
 div.boxAnimali{
   background-color: white;
@@ -21,7 +46,7 @@ div.boxAnimali{
     min-height: 235px;
     margin: 5px; //Distanzia tra gli elementi
     background-color: gray;
-    /*word-wrap: break-word;*/
+    !*word-wrap: break-word;*!
     overflow: hidden; //Nascondo il testo che esce
     img{
       position: relative;
@@ -80,13 +105,14 @@ div.boxAnimali{
     div.boxAnimali{
       div.Animale{
         max-width: 48%;
-        /*img{
+        !*img{
           width: 50%;
-        }*/
-        /*p{
+        }*!
+        !*p{
           width: 50%;
-        }*/
+        }*!
       }
     }
 
 }
+*/

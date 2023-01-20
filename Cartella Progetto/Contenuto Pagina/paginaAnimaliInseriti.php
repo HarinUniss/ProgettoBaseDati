@@ -12,6 +12,17 @@
         }
     </style>
     <link rel="stylesheet" href="../scss/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--<script>
+        $(document).ready(function(){
+            $("div.pop-up-conferma").hide();
+
+            $("button.annulla_cancellazione").click(function (){
+                $("div.pop-up-conferma").show();
+            });
+
+        });
+    </script>-->
 </head>
 <body>
 
@@ -26,8 +37,7 @@
     }
 ?>
 
-
-            <?php
+  <?php
         $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database ".$conn->error);
 
         $query_pop_animali = "SELECT * FROM Animali WHERE Animali.proprietario = '".$_SESSION["id_utente"]."'";
@@ -51,14 +61,16 @@
                     <th>pedigree</th>
                 </tr>
                 </thead>
-                <tbody>';
-            echo "<tr>";
-                echo "<td><a href =''>rimuovi</a></td>
-                      <td><a href =''>modifica</a></td>";
+                <tbody><form method="get" action ="paginaConfermaCanc.php">
+                ';
             while($row = $ris->fetch_assoc()){
-                echo "
+                $perigree = "";
+                $id_animale = $row["id_animale"];
+                echo "<tr>
+                    <td><a href='paginaConfermaCanc.php?anim=$id_animale'>rimuovi</a></td>
+                    <td><a href =''>modifica</a></td>
                     <td><img src='".$row["foto"]."' width='50' height='50'></td>
-                    <td>".$row["id_animale"]."</td>
+                    <td>".$id_animale."</td>
                     <td>".$row["nome"]."</td>
                     <td>".$row["razza"]."</td> ";
 
@@ -73,10 +85,14 @@
                     <td>".$row["eta"]."</td>
                     <td>".$row["sesso"]."</td>
                     <td>".$row["provenienza"]."</td>
-                    <td>"; if($row["pedigree"] == 0) echo "si";else "no";"</td>
-                ";
+                    <td>"; if($row["pedigree"] == 1) $pedigree = "si";else $pedigree = "no";
+                    echo $pedigree."</td>
+                <tr>";
             }
-            echo "<tr>";
+            echo '</form> </tbody>
+            </table>
+        </div>
+        ';
         }else{
             echo '
             <script>
@@ -86,10 +102,6 @@
             ';
         }
         $conn->close();
-        echo ' </tbody>
-            </table>
-        </div>
-        ';
         ?>
 
 </body>

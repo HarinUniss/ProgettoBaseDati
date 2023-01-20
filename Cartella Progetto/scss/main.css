@@ -311,8 +311,7 @@ div.tendina-login-button {
   padding: 5px;
   background-color: lightgray;
   text-align: center;
-  width: 12%;
-  min-width: 126px;
+  width: 176px;
   z-index: 118;
 }
 
@@ -362,76 +361,117 @@ p.error {
 }
 
 div.boxAnimali {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+}
+div.boxAnimali img {
+  width: 400px;
+  height: 400px;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+@media (max-width: 506px) {
+  div.boxAnimali img {
+    width: 325px;
+    height: 325px;
+  }
+}
+/*
+
+div.boxAnimali{
   background-color: white;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   overflow: auto;
-  width: 98%;
-  height: 100%;
+  width:98%; height:100%;
+  //padding:1px 0;
   max-width: 100%;
-}
-div.boxAnimali div.Animale {
-  font-size: medium;
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
-  position: relative;
-  height: 50%;
-  width: 100%;
-  min-height: 235px;
-  margin: 5px;
-  background-color: gray;
-  /*word-wrap: break-word;*/
-  overflow: hidden;
-}
-div.boxAnimali div.Animale img {
-  position: relative;
-  background-color: blueviolet;
-  height: 100%;
-  width: 40%;
-}
-div.boxAnimali div.Animale p {
-  text: white;
-  justify-content: center;
-  text-align: center;
-  background-color: darkcyan;
-  height: 100%;
-  width: 60%;
+  div.Animale{
+    font-size: medium;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    position: relative;
+    height: 50%;
+    width: 100%;
+    //max-width: 512px;
+    //min-width: 387px;
+    min-height: 235px;
+    margin: 5px; //Distanzia tra gli elementi
+    background-color: gray;
+    !*word-wrap: break-word;*!
+    overflow: hidden; //Nascondo il testo che esce
+    img{
+      position: relative;
+      background-color: blueviolet;
+      height: 100%;
+      width: 40%;
+    }
+    p{
+      text:white;
+      justify-content: center;
+      text-align: center;
+      background-color: darkcyan;
+      height: 100%;
+      width:60%;
+
+    }
+  }
+
 }
 
-@media (max-width: 781px) {
-  div.Animale {
-    width: 100%;
-    max-width: 100%;
+@media (max-width: 781px){
+
+    div.Animale{
+      width: 100%;
+      max-width: 100%;
+    }
+
+}
+
+@media (max-width: 682px){
+
+    div.boxAnimali{
+      div.Animale{
+        img{
+          min-width: 173px;
+          width: 100%;
+          position:absolute;
+        }
+        img:hover{
+          opacity: 20%;
+          z-index: -1;
+        }
+        p{
+          min-width: 173px;
+          width: 100%;
+        }
+      }
+
   }
 }
-@media (max-width: 682px) {
-  div.boxAnimali div.Animale img {
-    min-width: 173px;
-    width: 100%;
-    position: absolute;
-  }
-  div.boxAnimali div.Animale img:hover {
-    opacity: 20%;
-    z-index: -1;
-  }
-  div.boxAnimali div.Animale p {
-    min-width: 173px;
-    width: 100%;
-  }
+
+
+
+@media (min-width: 1090px){
+
+    div.boxAnimali{
+      div.Animale{
+        max-width: 48%;
+        !*img{
+          width: 50%;
+        }*!
+        !*p{
+          width: 50%;
+        }*!
+      }
+    }
+
 }
-@media (min-width: 1090px) {
-  div.boxAnimali div.Animale {
-    max-width: 48%;
-    /*img{
-      width: 50%;
-    }*/
-    /*p{
-      width: 50%;
-    }*/
-  }
-}
+*/
 /*css per il footer*/
 footer {
   position: absolute;
