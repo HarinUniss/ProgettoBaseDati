@@ -12,14 +12,14 @@ function caricaIMG($dir_final){
         $file_tmp = $_FILES['img']['tmp_name'];
 // salvo il nome dell'immagine caricata
         $file_nome = $_FILES['img']['name'];
-        $_SESSION["nome_immagine"] = "$upload_percorso$file_nome";
+
         /*$immagine = file_get_contents($filetmp);
         $immagine = addslashes ($immagine);*/
         //echo "IL nome del file inserito è: ".$file_nome."<br>";
 
         //Controllo solo se la dimensione del file supera una soglia...
         if(filesize($file_tmp)>1000000){
-            $fotoERR = "<p class='error'>*Dimensione file troppo pesante: ".filesize($file_tmp)." > 1MB</p>";
+            $fotoERR = "*Dimensione file troppo pesante: ".filesize($file_tmp)." > 1MB";
         }
 
 
@@ -42,6 +42,7 @@ function caricaIMG($dir_final){
         if($fotoERR == ""){ //Se non ho avuto errori...
             // ...sposto l'immagine nel percorso che prima abbiamo deciso
             if(move_uploaded_file($file_tmp, $upload_percorso . $file_nome)===true) {
+                $_SESSION["nome_immagine"] = "$upload_percorso$file_nome";
                 /*$dir = substr("$upload_percorso$file_nome", 1);
                 echo "Il file è stato uploadato in: $dir<br>";*/
                 echo "<img src='$upload_percorso$file_nome' height='100' width='100'>";

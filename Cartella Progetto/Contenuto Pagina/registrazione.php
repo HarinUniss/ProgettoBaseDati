@@ -70,6 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $civico = htmlspecialchars($_REQUEST["civico"]);
                 if (empty($civico)) {
                     $civicoERR = "*Numero civico non inserito";
+                }else{
+                    if($civico < 0){
+                        $civicoERR = "*Non può esistere un civico <0";
+                    }
                 }
             }
         }
