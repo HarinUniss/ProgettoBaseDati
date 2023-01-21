@@ -18,7 +18,7 @@ function caricaIMG($dir_final){
         //echo "IL nome del file inserito è: ".$file_nome."<br>";
 
         //Controllo solo se la dimensione del file supera una soglia...
-        if(filesize($file_tmp)>1000000){
+        if(filesize($file_tmp)>1048576){
             $fotoERR = "*Dimensione file troppo pesante: ".number_format( filesize($file_tmp)/1048576, 2)." > 1MB";
         }
 
