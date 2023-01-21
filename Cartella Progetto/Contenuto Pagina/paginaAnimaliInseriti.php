@@ -13,16 +13,6 @@
     </style>
     <link rel="stylesheet" href="../scss/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!--<script>
-        $(document).ready(function(){
-            $("div.pop-up-conferma").hide();
-
-            $("button.annulla_cancellazione").click(function (){
-                $("div.pop-up-conferma").show();
-            });
-
-        });
-    </script>-->
 </head>
 <body>
 

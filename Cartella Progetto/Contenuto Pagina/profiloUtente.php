@@ -80,6 +80,7 @@ $id_utente = "";
         }
     }
 
+// -------------INIZIO A PRENDERE I DATI PER LA MODIFICA --------------------------------
 
     if($_SERVER["REQUEST_METHOD"] == "POST" ){
         if(isset($_POST["invia"]) && $id_utente === $_SESSION["id_utente"]){
@@ -142,6 +143,9 @@ $id_utente = "";
                     $modifica_email = "";
                 }
             }
+
+
+//----------------------INSERISCO LE MODIFICHE NEL DATABASE -------------------------------------------
 
             //Concateno gli errori e controllo se ci sono
             if($emailERR.$telefonoERR == ""){

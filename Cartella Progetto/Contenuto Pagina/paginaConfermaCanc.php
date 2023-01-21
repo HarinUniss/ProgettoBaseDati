@@ -17,7 +17,7 @@ if(!isset($_GET["anim"])){
                 window.location.href = "paginaAnimaliInseriti.php";
             </script>';
         unset($_GET["anim"]);
-    }elseif(isset($_POST["annulla-cancella"])){
+    }elseif(isset($_POST["annulla"])){
         unset($_GET["anim"]);
         echo '<script>
                 alert("Eliminazione animale Annullata");
@@ -25,12 +25,14 @@ if(!isset($_GET["anim"])){
             </script>';
     }
 
+
 }
+
 ?>
 <form method="post" action =""><div class="pop-up-conferma">
-        <p>Sicuro di voler elimiare l animale con id= <?php echo $_GET["anim"] ?>?</p>
-        <p><button type="submit" id="invia_reg" name="rimuovi-animale" class="btn btn-danger">Rimuovi</button>
-            <button type="button" id="annulla_reg" name="annulla-cancella">Annulla</button></p>
+        <p>Sicuro di voler elimiare l animale con <nobr>id= <?php echo $_GET["anim"] ?>?</nobr></p>
+        <p><button type="submit" name="rimuovi-animale" >Rimuovi</button>
+            <button type="submit" name="annulla">Annulla</button></p>
     </div></form>
 
 </body>
