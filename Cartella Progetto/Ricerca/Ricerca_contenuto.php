@@ -28,7 +28,7 @@
 </script>
 <style>
     #panel{
-        position: absolute;
+        position: relative;
         top:0;
         z-index: 120;
         text-align: center;
