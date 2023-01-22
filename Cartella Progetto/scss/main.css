@@ -378,6 +378,12 @@ div.boxAnimali img {
     height: 325px;
   }
 }
+@media (max-width: 437px) {
+  div.boxAnimali img {
+    width: 275px;
+    height: 275px;
+  }
+}
 /*
 
 div.boxAnimali{

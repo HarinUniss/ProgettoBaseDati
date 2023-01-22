@@ -5,7 +5,6 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     /*$("div.login_div").hide();*/
     $("div.tendina-login-button").hide();
 
-
     /*--- Funzioni di apertura e chiusura del div di login*/
 
     /*$("a.login_button").click(function(){

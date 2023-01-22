@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./script/header.js"></script>
+
 </head>
 
 
@@ -19,8 +20,11 @@
 
     <!--placeholder permette che all'inserimento lettera, Search Scompare-->
     <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->
-    <!--<input type="text" id="baricerca" placeholder="search"><button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
-    -->
+
+    <button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
+
+
+
     <?php
         $cdd = "";
         //Utile per il ripescaggio delle immagini nell'inclusione Quando richiamo
@@ -70,4 +74,5 @@
         }
         ?>
 </div>
+
 </html>

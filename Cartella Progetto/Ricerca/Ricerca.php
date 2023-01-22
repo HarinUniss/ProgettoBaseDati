@@ -242,7 +242,7 @@ if(isset($_POST["butt_ricerca"])){
 
 <div>
     <?php
-        $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database ".$conn->error);
+       /* $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database ".$conn->error);
     if(isset($_POST["butt_ricerca"])){
         $query_pop_animali = $query_filtro;
         $ris = $conn->query($query_pop_animali);
@@ -304,7 +304,7 @@ if(isset($_POST["butt_ricerca"])){
         echo ' </tbody>
             </table>
         </div>
-        ';}
+        ';}*/
         ?>
 </div>
 
