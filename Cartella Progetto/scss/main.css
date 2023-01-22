@@ -346,10 +346,9 @@ input:focus {
   display: inline-block;
   border: none;
   background-color: transparent;
-  border-top-left-radius: 15%;
-  border-bottom-left-radius: 15%;
-  width: 20px;
-  height: 25px;
+  border-radius: 15%;
+  width: 30px;
+  height: 30px;
 }
 
 #butt_search:hover {
@@ -372,6 +371,20 @@ div.boxAnimali img {
   display: flex;
 }
 
+/*
+#panel{
+  position: absolute;
+  top:0;
+  z-index: 120;
+  text-align: center;
+  background-color: wheat;
+  border-style: solid;
+  max-width: 600px;
+  select{
+    width: 100px;
+  }
+}
+*/
 @media (max-width: 506px) {
   div.boxAnimali img {
     width: 325px;

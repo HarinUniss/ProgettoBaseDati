@@ -39,7 +39,6 @@
                 <thead>
                 <tr>
                     <th>rimuovi</th>
-                    <th>modifica</th>
                     <th>foto</th>
                     <th>id</th>
                     <th>Nome</th>
@@ -58,7 +57,6 @@
                 $id_animale = $row["id_animale"];
                 echo "<tr>
                     <td><a href='paginaConfermaCanc.php?anim=$id_animale'>rimuovi</a></td>
-                    <td><a href =''>modifica</a></td>
                     <td><img src='".$row["foto"]."' width='50' height='50'></td>
                     <td>".$id_animale."</td>
                     <td>".$row["nome"]."</td>

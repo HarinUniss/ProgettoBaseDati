@@ -97,10 +97,9 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
   display: inline-block;
   border:none;
   background-color: transparent;
-  border-top-left-radius: 15%;
-  border-bottom-left-radius: 15%;
-  width: 20px;
-  height: 25px;
+  border-radius: 15%;
+  width: 30px;
+  height: 30px;
 }
 #butt_search:hover{
   cursor: pointer;

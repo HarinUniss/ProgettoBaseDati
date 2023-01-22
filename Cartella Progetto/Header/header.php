@@ -21,7 +21,7 @@
     <!--placeholder permette che all'inserimento lettera, Search Scompare-->
     <!--Invisibile si attiva premendo il bottone di ricerca vedi funzioni_jQuery-->
 
-    <button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="15" width="15"></button>
+    <button id="butt_search"><img id="img_bt_src" src="./Immagini/search_icone.png" height="20" width="20"></button>
 
 
 

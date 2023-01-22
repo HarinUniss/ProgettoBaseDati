@@ -30,7 +30,7 @@ if(!isset($_GET["anim"])){
 
 ?>
 <form method="post" action =""><div class="pop-up-conferma">
-        <p>Sicuro di voler elimiare l animale con <nobr>id= <?php echo $_GET["anim"] ?>?</nobr></p>
+        <p>Sicuro di voler inserire l' animale con <nobr>id= <?php echo $_GET["anim"] ?> tra i preferiti?</nobr></p>
         <p><button type="submit" name="rimuovi-animale" >Rimuovi</button>
             <button type="submit" name="annulla">Annulla</button></p>
     </div></form>

@@ -9,7 +9,6 @@
     <script src="../script/profiloUtente.js"></script>
     <script src="../script/header.js"></script>
     <style>
-
         img{
             max-width: 300px;
             max-height: 300px;
@@ -80,7 +79,7 @@ $id_utente = "";
         }
     }
 
-// -------------INIZIO A PRENDERE I DATI PER LA MODIFICA --------------------------------
+// ---------------------INIZIO A PRENDERE I DATI PER LA MODIFICA --------------------------------
 
     if($_SERVER["REQUEST_METHOD"] == "POST" ){
         if(isset($_POST["invia"]) && $id_utente === $_SESSION["id_utente"]){
@@ -198,9 +197,11 @@ $id_utente = "";
                 }
 
                 if($campiModificati != ""){
+                    session_unset();
+                    session_destroy();
                     echo '<script>
-                        alert("Sono stati modificati i campi: '.$campiModificati.'");
-                        window.location.href = "../home.php";
+                        alert("Sono stati modificati i campi: '.$campiModificati.', Consiglio di riloggare Per vedere le modifiche");
+                        window.location.href = "login.php";
                         </script>';
                 }else{
                     echo '<script>alert("Non sono state riscontrate modifiche")</script>';
@@ -298,9 +299,76 @@ $id_utente = "";
             ';
         }else{
             echo '<div class="col-lg-6 ">';
-            echo '</div>';
-                include_once("contenuto.php");
 
+            $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database " . $conn->error);
+
+            $query_pop_animali = "SELECT * FROM Animali WHERE Animali.proprietario = '" . $id_utente . "'";
+            $ris = $conn->query($query_pop_animali);
+            if (mysqli_num_rows($ris) > 0) {
+                echo '<div class="container containerAnimali">
+            <p class="titolo">Pagina Degli Animali Inseriti</p>
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th>Preferito</th>
+                    <th>foto</th>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>razza</th>
+                    <th>specie</th>
+                    <th>eta</th>
+                    <th>sesso</th>
+                    <th>provenienza</th>
+                    <th>pedigree</th>
+                </tr>
+                </thead>
+                <tbody><form method="get" action ="inserisciPreferito.php">
+                ';
+                while ($row = $ris->fetch_assoc()) {
+                    $perigree = "";
+                    $id_animale = $row["id_animale"];
+                    $utente_ospite_id = array_key_exists("id_utente", $_SESSION)?$_SESSION["id_utente"]: "";
+                    echo "<tr>
+                    <td>";
+
+                    //Controllo se animale già presente nella tabella preferiti dell' utente
+                        $ris3 = $conn->query("SELECT * FROM Preferiti WHERE animale='".$id_animale."' and utente ='".$utente_ospite_id."';")
+                        or die("Errore sulla query di controllo preferiti");
+                        if(mysqli_num_rows($ris3)==1){ echo"Preferito"; }
+                        else{
+                            echo"<a href='inserisciPreferito.php?anim=$id_animale'>InserisciPreferito</a>";
+                        }
+                    echo "    
+                    </td>
+                    <td><img src='" . $row["foto"] . "' width='50' height='50'></td>
+                    <td>" . $id_animale . "</td>
+                    <td>" . $row["nome"] . "</td>
+                    <td>" . $row["razza"] . "</td> ";
+
+                    $query_razza = "SELECT * FROM Razze WHERE Razze.razza = '" . $row["razza"] . "'";
+                    $ris2 = $conn->query($query_razza) or die("Impossibile trovare la razza inserita");
+                    if (mysqli_num_rows($ris2) > 0) {
+                        $row2 = $ris2->fetch_assoc();
+                        echo "<td>" . $row2["specie"] . "</td>";
+                    }
+
+                    echo "    
+                    <td>" . $row["eta"] . "</td>
+                    <td>" . $row["sesso"] . "</td>
+                    <td>" . $row["provenienza"] . "</td>
+                    <td>";
+                    if ($row["pedigree"] == 1) $pedigree = "si"; else $pedigree = "no";
+                    echo $pedigree . "</td>
+                <tr>";
+                }
+                echo '</form> </tbody>
+            </table>
+        </div>
+        ';
+            }
+            $conn->close();
+
+            echo '</div>';
 
         }
     ?>
