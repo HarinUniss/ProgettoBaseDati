@@ -1,75 +1,56 @@
-<?php session_start();//accedo alla variabile globale $_SESSION ?>
-<!-- Fare in modo che una volta fatto il loghin la sessione resti aperta nelle altre pagine del sito! -->
 
-<!DOCTYPE html>
-<html>
+<script>
 
 
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/main.css"> <!--linko il css della HP-->
-    <!--Includo la libreria di jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="./script/funzioni_header.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-
-
-
-    <script>
-
-
-        $(document).ready(function(){
-            $("#flip").click(function(){
-                $("#panel").slideToggle("slow");
-            });
+    $(document).ready(function(){
+        $("#butt_search").click(function(){
+            $("#panel").slideToggle("slow");
         });
+    });
 
-        function mostraRazza(str) {
-            if (str == "none") {
-                document.getElementById("razza").disabled=true;
-                document.getElementById("razza").innerHTML = '<option default value="none" selected>none</option>';
-                return;
-            } else {
-                document.getElementById("razza").disabled=false;
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    document.getElementById("razza").innerHTML = this.responseText;
-                };
-                xmlhttp.open("GET","getRazza.php?q="+str,true);
-                xmlhttp.send();
-            }
-        };
-    </script>
-    <style>
-        div.containerAnimali{
-            margin: 0 auto;
+    function mostraRazza(str) {
+        if (str == "none") {
+            document.getElementById("razza").disabled=true;
+            document.getElementById("razza").innerHTML = '<option default value="none" selected>none</option>';
+            return;
+        } else {
+            document.getElementById("razza").disabled=false;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                document.getElementById("razza").innerHTML = this.responseText;
+            };
+            xmlhttp.open("GET","./Ricerca/getRazza.php?q="+str,true);
+            xmlhttp.send();
         }
+    };
 
 
-
-        #panel{
-            text-align: center;
-            background-color: wheat;
-            border-style: solid;
-            max-width: 600px;
+</script>
+<style>
+    #panel{
+        position: absolute;
+        top:0;
+        z-index: 120;
+        text-align: center;
+        background-color: wheat;
+        border-style: solid;
+        max-width: 650px;
+    }
+    #panel select{
+        width: 100px;
+    }
+    #panel input[type=number]{
+        width: 50px;
+    }
+    @media (max-width:950px){
+        #panel {
+            max-width: 400px;
         }
+    }
 
-
-        select{
-            width: 100px;
-        }
-    </style>
+</style>
 </head>
 
-<body>
 <?php
 $nome_animale = $razza = $specie = $eta_min = $eta_max = $citta = $sesso = "";
 $query_filtro="SELECT * FROM Animali as A";
@@ -87,14 +68,11 @@ if(isset($_POST["butt_ricerca"])){
             $query_nome_animale="";
         }
         else {
-
-            {$query_filtro .=" WHERE ";}
-
+            $query_filtro .=" WHERE ";
             $query_nome_animale = "A.nome = '" . $nome_animale . "' ";
         }
         $query_filtro .= $query_nome_animale;
     }
-
     if(isset($_POST["Razza"])){
         $razza = $_POST["Razza"];
         if($razza == "none"){
@@ -161,7 +139,7 @@ if(isset($_POST["butt_ricerca"])){
             {$query_filtro .=" WHERE ";}
             else
             {$query_filtro .= " AND ";}
-            $query_citta = "A.citta = '".$citta."' ";
+            $query_citta = "A.provenienza = '".$citta."' ";
         }
         $query_filtro .= $query_citta;
     }
@@ -171,16 +149,16 @@ if(isset($_POST["butt_ricerca"])){
 
 
 
+<div id="panel" class="container-fluid" style="display: none">
+    <form id="form_ric" name="ricerca" method="post" action="">
 
-<form id="form_ric" name="ricerca" method="post" action="" >
-    <div >
         <input type="text" id="search_box" name="nome_animale" placeholder="inserire nome animale" class="input_text">
         <button type="submit" name="butt_ricerca" >Ricerca</button>
-    </div>
-    <div id="flip">
-        Filtro
-    </div>
-    <div id="panel" class="container-fluid" style="display: none">
+
+        <!--<div id="flip">
+            Filtro
+        </div>-->
+
         <div class="row" id="riga">
             <div class="col-sm" id="colors_box1">
                 <label for="specie">Specie</label>
@@ -232,82 +210,5 @@ if(isset($_POST["butt_ricerca"])){
                 </select>
             </div>
         </div>
-    </div>
-</form>
-<div>
-    <?php
-    echo $query_filtro;
-    ?>
+    </form>
 </div>
-
-
-<div>
-    <?php
-       /* $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database ".$conn->error);
-    if(isset($_POST["butt_ricerca"])){
-        $query_pop_animali = $query_filtro;
-        $ris = $conn->query($query_pop_animali);
-        if(mysqli_num_rows($ris) > 0){
-            echo '<div class="container containerAnimali">
-            <p class="titolo">Pagina Degli Animali Inseriti</p>
-            <table class="table table-dark table-hover">
-                <thead>
-                <tr>
-                    <th>rimuovi</th>
-                    <th>modifica</th>
-                    <th>foto</th>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>razza</th>
-                    <th>specie</th>
-                    <th>eta</th>
-                    <th>sesso</th>
-                    <th>provenienza</th>
-                    <th>pedigree</th>
-                </tr>
-                </thead>
-                <tbody>';
-            echo "<tr>";
-                echo "<td><a href =''>rimuovi</a></td>
-                      <td><a href =''>modifica</a></td>";
-            while($row = $ris->fetch_assoc()){
-                echo "
-                    <td><img src='".$row["foto"]."' width='50' height='50'></td>
-                    <td>".$row["id_animale"]."</td>
-                    <td>".$row["nome"]."</td>
-                    <td>".$row["razza"]."</td> ";
-
-                $query_razza = "SELECT * FROM Razze WHERE Razze.razza = '".$row["razza"]."'";
-                $ris2 = $conn->query($query_razza) or die("Impossibile trovare la razza inserita");
-                if(mysqli_num_rows($ris2) > 0){
-                    $row2 = $ris2->fetch_assoc();
-                    echo "<td>".$row2["specie"]."</td>";
-                }
-
-                echo "    
-                    <td>".$row["eta"]."</td>
-                    <td>".$row["sesso"]."</td>
-                    <td>".$row["provenienza"]."</td>
-                    <td>"; if($row["pedigree"] == 1) $pedigree = "si";else $pedigree = "no";
-                echo $pedigree."</td>              
-                ";
-
-            }
-            echo "<tr>";
-        }else{
-            echo '
-            <script>
-                alert("Non sono presenti Animali inseriti");
-            </script>
-            ';
-        }
-        $conn->close();
-        echo ' </tbody>
-            </table>
-        </div>
-        ';}*/
-        ?>
-</div>
-
-</body>
-</html>
