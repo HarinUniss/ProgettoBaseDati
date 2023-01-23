@@ -12,12 +12,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
+        /*$(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina pronta
             $("#panel2").hide();
             $("#butt_imposta_orario").click(function(){
                 $("#panel2").slideToggle( "slow" );
             });
-        });
+        });*/
     </script>
 
 </head>
@@ -27,7 +27,7 @@
     <?php
     include_once('./Header/header.php');
 //    include_once('./Navigatore/nav.php');
-    include_once('./Prenotazioni/inserimento_orario.php');
+    //include_once('./Prenotazioni/inserimento_orario.php');
     include_once('./Footer/footer.php');
     ?>
     <div id="blocco_pagina">

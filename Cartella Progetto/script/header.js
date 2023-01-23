@@ -4,12 +4,15 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     $("#baricerca").hide(); //Nascondo la barra di ricerca
     /*$("div.login_div").hide();*/
     $("div.tendina-login-button").hide();
-
+    $("div.tendina-gestione-appuntamenti").hide();
     /*--- Funzioni di apertura e chiusura del div di login*/
 
     /*$("a.login_button").click(function(){
         $("div.login_div").slideDown("fast");
     });*/
+    $("button.but_show_tendina_appuntamenti").click(function (){
+        $("div.tendina-gestione-appuntamenti").slideToggle();
+    });
     $("input.close").click(function (){
         $("div.login_div").hide();
     });
@@ -25,7 +28,7 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     });
 
 
-    $("a.login_button2").click(function(){
+    $("button.login_button2").click(function(){
         $("div.tendina-login-button").slideToggle("fast");
     });
 
@@ -49,4 +52,10 @@ $(document).ready(function(){ //Definisco le funzioni attivabilli dopo la pagina
     });
 
 });
+function goToLoginPage(){
+    window.location.href = "Contenuto Pagina/login.php";
+}
+function goToInserimentoOrario(){
+    window.location.href = "Prenotazioni/inserimento_orario.php";
+}
 

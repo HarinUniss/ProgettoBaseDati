@@ -228,9 +228,11 @@ $id_utente = "";
     }
 ?>
 <div class="pop-up-conferma">
+    <form method="post" action="">
     <p><nobr>Sicuro di voler eliminare il profilo?</nobr></p>
     <button type="submit" name="elimina_profilo" class="btn btn-danger" id="elimina_profilo">Conferma Elimina :(</button>
     <button type="button" name="chiudi-popup" class="btn btn-success" id="chiudi-popup">Non confermare :)</button>
+    </form>
 </div>
 
 <div class="container-fluid div_user_profile_info">
@@ -254,7 +256,7 @@ $id_utente = "";
         <p>Citta = <?php echo $citta?></p>
         <p>telefono = <?php echo $telefono?></p>
         <p>email = <?php echo $email; ?></p>
-        <?php if($dataora!=null) echo "<p>Data e Ora registrazione ".$dataora;?></p>
+        <?php if($dataora!=null && $id_utente === $x) echo "<p>Data e Ora registrazione ".$dataora;?></p>
     <?php
         //Devo fare così altriementi se un utente non loggato entra qui si generano dei warning
         //E devo passarlo tramite variabile senno non funziona... Nonn sò perchè
@@ -276,15 +278,15 @@ $id_utente = "";
                 <div class="col-lg-6 modifiche_profilo">
                     <form method="post" action="">
                         <p class="suggerimento_inserimento">Lasciare liberi i campi che non si intende modificare!</p>
-                        Modifica Nome: <input type="text" name = "nome">
+                        <nobr>Modifica Nome: <input type="text" name = "nome"></nobr>
             ';
-            if($tipo == "utente") echo "<br>Modifica Cognome: <input type = 'text' name='cognome'>";
+            if($tipo == "utente") echo "<br><nobr>Modifica Cognome: <input type = 'text' name='cognome'></nobr>";
             if(($tipo == "allevamento" || ($tipo == "canile")))
-                echo "  Modifica indirizzo: <input type='text' name='indirizzo'> Modifica Civico: <input type='number' name='civico'>";
+                echo "  <nobr>Modifica indirizzo: <input type='text' name='indirizzo'></nobr> <nobr>Modifica Civico: <input type='number' name='civico'></nobr>";
             echo '
-                            <br>Modifica Citta: <input type="text" name ="citta"><br>
+                            <br><nobr>Modifica Citta: <input type="text" name ="citta"></nobr><br>
                             <p class="suggerimento_inserimento">Inserire un numero di telefono con 10 cifre</p>
-                            Modifica Telefono: <input type="number" name ="telefono"><br>
+                            <nobr>Modifica Telefono: <input type="number" name ="telefono"></nobr><br>
             ';
                             if($telefonoERR != "")
                                 echo '<p class="error">$telefonoERR</p>';

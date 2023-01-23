@@ -9,7 +9,7 @@ div.head{
 
   background-color: darkcyan; /*L'header ha lo sfondo veleste*/
   position:fixed; /*Il div rimane visibile anche con lo scrolling*/
-  padding-top: 15px;
+  padding-top: 5px;
   padding-down: 15px;
   /*Gestisco lo spazio interno tra li elementi*/
   text-align: right; /*Metto il testo allineato a destra*/
@@ -20,42 +20,49 @@ div.head{
   /*border-style: unset; /*Definisco lo stile del bordo*/
   box-shadow: 1px  1px 1px 1px darkslategray;
   margin-bottom: 5px;
-  a.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
-    /*Text*/
-    text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
-    color: black; /*Colore testo nero*/
-    position: relative;
-    border-radius: 15%; /*Definisco il bordo*/
-    padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-    margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+
+  button.login_button{ /*Si usa per le pagine di collegamento presenti nell' header*/
+    margin: 5px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+    border-style: none;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 5px;
   }
-  a.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
+  button.login_button:hover{ /*Si attiva quando ci passo sopra col mouse*/
     background-color: lightgray;
     color: black;
     text-decoration-line: none;
     cursor: pointer;
+    img{
+      width: 30px;
+      height: 30px;
+    }
   }
 
-  a.login_button2{ /*Si usa per le pagine di collegamento presenti nell' header*/
-    /*Text*/
-    text-decoration-line: none; /*Tolgo la sottolineatura default del link*/
-    color: black; /*Colore testo nero*/
-    position: relative;
-    border-radius: 25%; /*Definisco il bordo*/
-    padding: 10px; /*Definisco la dimensione del background, per essere abbastanza grande per il testo*/
-    margin: 10px 10px 10px 10px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+  button.login_button2{ /*Si usa per le pagine di collegamento presenti nell' header*/
+    margin: 5px; /*Definisco i margini di distanza da su, destra, giu, sinistra*/
+    border-style: none;
+    background-color: transparent;
+    padding: 5px;
     img{
       border-radius: 50%;
     }
   }
-  a.login_button2:hover{ /*Si attiva quando ci passo sopra col mouse*/
+  button.login_button2:hover{ /*Si attiva quando ci passo sopra col mouse*/
     background-color: lightgray;
     color: black;
     text-decoration-line: none;
     cursor: pointer;
   }
 }
-
+div.tendina-gestione-appuntamenti{
+  position:fixed;
+  right: 200px;
+  width: 190px;
+  z-index: 118;
+  text-align: center;
+  background-color: #62e559;
+}
 
 div.tendina-login-button{
   position:fixed;
@@ -65,16 +72,9 @@ div.tendina-login-button{
   background-color: lightgray;
   text-align: center;
   width: 176px;
-
+  font-size: small;
   z-index: 118;
-}
-a.logout{
-  background-color: #4a64e2;
-  color: white;
-}
-a.logout:hover{
-  background-color: white;
-  color: darkblue;
+
 }
 
 input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella barra di testo*/
@@ -92,7 +92,6 @@ input:focus{outline:none;} /*Mi toglie il bordo che si genera premendo nella bar
 }
 //
 #butt_search{
-  margin-left:20%;
   position: relative;
   display: inline-block;
   border:none;

@@ -235,7 +235,9 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
 
             if($Inserimento != ""){
-                echo '<script> alert("Le modifiche sono state apportate con successo ") </script>';
+                echo '<script> alert("Le modifiche sono state apportate con successo ");
+                        window.location.href="../home.php";
+                       </script>';
             }
 
         }
@@ -360,7 +362,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         ?>
 
 
-        <button type="submit" name="butt_salva_orario" >Salva Orariro</button>
+        <button type="submit" name="butt_salva_orario" >Salva Orario</button>
 
     </form>
 

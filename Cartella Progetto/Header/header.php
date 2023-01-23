@@ -33,22 +33,12 @@
         }
         $directory_foto = $cdd."./Immagini/utente_img.png";
 
-        if (isset($_POST["logout"])){ //Se la richiesta arriva dal form di logout esegue questo
-            session_unset(); //Rimuove ogni variabile di sessione create
-            session_destroy(); //Distrugge la sessione
-            echo '<script type="text/javascript">alert("logout effettuato, arrivederci")</script>';
-        }
+
         $nome_utente = array_key_exists("nome_utente",$_SESSION) ? $_SESSION["nome_utente"] : "";
         $tipo = array_key_exists("tipo", $_SESSION)? $_SESSION["tipo"] : "";
         if($tipo == ""){
-            echo "<a class='login_button' href='./Contenuto Pagina/login.php'>
-                    <img id='prof' src='$directory_foto' height='30' width='30'>
-                 </a>";
+            echo "<button class='login_button' onclick='goToLoginPage()'><img id='prof' src='$directory_foto' height='25' width='25'></button>";
         }else{
-
-            if($tipo== "canile" || $tipo == "allevamento" ){
-                echo'<button id="butt_imposta_orario" ><i class="bx bxs-calendar-alt"></i></button>';
-            }
 
             if(isset($_SESSION["foto"]) && $_SESSION["foto"] != "" && $_SESSION["foto"] != null){
                 //Tolgo il primo . per poter essere localizzato nell'header
@@ -60,17 +50,29 @@
             }
 
             echo "
-                <a class='login_button2'><img id='prof' src='$directory_foto' height='30' width='30'>".$_SESSION["nome_utente"]."</a>
+                <button class='login_button2'><img id='prof' src='$directory_foto' height='30' width='30'>".$_SESSION["nome_utente"]."</button>
                   <!--<p>$directory_foto</p>-->
                   <div class='tendina-login-button'>
                     <form method='post' action=''>
                         <dl>
-                         <dt><a href='./Contenuto%20Pagina/registrazioneAnimale.php'>Inserisci animali</a></dt>
                          <dt><a href='./Contenuto Pagina/profiloUtente.php?user=".$_SESSION["id_utente"]."'>Profilo</a></dt>
+                         <dt><a href='./Contenuto%20Pagina/registrazioneAnimale.php'>Inserisci animali</a></dt>
                          <dt><a href='./Contenuto Pagina/paginaAnimaliInseriti.php'>Animali inseriti</a></dt>
-                         <dt><button name = 'logout'>
+                         ";
+            if($tipo== "canile" || $tipo == "allevamento" ){
+                echo '  <dt>Gestione Appuntamenti</dt>
+                        <dt><a href="">Visualizza Appuntamenti</a></dt>
+                        <!--<dt><button id="butt_imposta_orario" class="btn btn-light" onclick="goToInserimentoOrario()"><i class="bx bxs-calendar-alt">Imposta Orari</i></button></dt>-->
+                        <dt><a href="./Prenotazioni/inserimento_orario.php"><i class="bx bxs-calendar-alt"></i>Imposta Orari</a></dt>
+                        ';
+            }elseif($tipo=="utente"){
+                echo '<dt>Gestione Prenotazioni</dt>
+                      <dt><a href="">Visualizza Prenotazioni</a></dt>
+                ';
+            }
+                         echo"<dt><a href='Header/logout.php?logout=1'>
                                 Logout<i class='bx bx-log-out' ></i>
-                            </button>
+                            </a>
                          </dt>
                         </dl> 
                     </form>  
