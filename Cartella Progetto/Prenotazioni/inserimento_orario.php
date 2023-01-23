@@ -28,9 +28,9 @@
 $LApertura =  $MaApertura =  $MeApertura =  $GApertura =  $VApertura =  $SApertura = $DApertura =  "" ;
 $LChiusura =  $MaChiusura =  $MeChiusura =  $GChiusura =  $VChiusura =  $SChiusura = $DChiusura = "" ;
 $ErroreOrario = $LErrore = $MaErrore = $MeErrore = $GErrore = $VErrore = $SErrore = $DErrore = "";
+$Inserimento= [ 'lunedi', 'martedi','mercoledi' , 'giovedi', 'sabato' , 'domenica'];
 
-
-$query_cambia_orario="UPDATE ";
+$query_cambia_orario="";
 
 // ritorno alla home se non si è loggati
 if( !isset($_SESSION[ "id_utente" ] ) ){
@@ -179,9 +179,70 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
         if( $ErroreOrario != ""){
             echo '<script> alert("Errore inserimento orario"); </script>';
-        }else if($LApertura.$MaApertura.$MeApertura.$GApertura.$VApertura.$SApertura.$DApertura.$LChiusura.$MaChiusura.$MeChiusura.$GChiusura.$VChiusura.$SChiusura.$DChiusura != ""){
-            echo '<script> alert("Le modifiche sono state apportate con successo"); </script>';
         }
+
+
+
+        //CARICAMENTO SUL DATABASE
+        else {
+            $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
+
+            if($LApertura != "" ){
+                $query_orario_lunedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'lunedi' , '$LApertura' , '$LChiusura'  )";
+                $connessione ->query( $query_orario_lunedi) or die("Errore query_orario_lunedi");
+                $Inserimento = "true";
+            }
+
+            if($MaApertura != "" ){
+                $query_orario_martedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'martedi' , '$MaApertura' , '$MaChiusura'  )";
+                $connessione ->query( $query_orario_martedi) or die("Errore query_orario_martedi");
+                $Inserimento = "true";
+            }
+
+            if($MeApertura != "" ){
+                $query_orario_mercoledi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'mercoledi' , '$MeApertura' , '$MeChiusura'  )";
+                $connessione ->query( $query_orario_mercoledi) or die("Errore query_orario_mercoledi");
+                $Inserimento = "true";
+            }
+
+            if($GApertura != "" ){
+                $query_orario_giovedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'giovedi' , '$GApertura' , '$GChiusura'  )";
+                $connessione ->query( $query_orario_giovedi) or die("Errore query_orario_giovedi");
+                $Inserimento = "true";
+            }
+
+
+            if($VApertura != "" ){
+                $query_orario_venerdi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'venerdi' , '$VApertura' , '$VChiusura'  )";
+                $connessione ->query( $query_orario_venerdi) or die("Errore query_orario_venerdi");
+                $Inserimento = "true";
+            }
+
+
+
+            if($SApertura != "" ){
+                $query_orario_sabato=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'sabato' , '$SApertura' , '$SChiusura'  )";
+                $connessione ->query( $query_orario_sabato) or die("Errore query_orario_sabato");
+                $Inserimento = "true";
+            }
+
+            if($DApertura != "" ){
+                $query_orario_domenica=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'domenica' , '$DApertura' , '$DChiusura'  )";
+                $connessione ->query( $query_orario_domenica) or die("Errore query_orario_domenica");
+                $Inserimento = "true";
+            }
+
+
+
+            if($Inserimento != ""){
+                echo '<script> alert("Le modifiche sono state apportate con successo ") </script>';
+            }
+
+        }
+
+
+
+
 
 
     }
