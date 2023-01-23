@@ -34,7 +34,7 @@ $query_cambia_orario="UPDATE ";
 
 // ritorno alla home se non si è loggati
 if( !isset($_SESSION[ "id_utente" ] ) ){
-    header("location:../home.php");
+
 }else{
 
     //prendiamo input inseriti dall'utente
