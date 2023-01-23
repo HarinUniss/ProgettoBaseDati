@@ -8,7 +8,7 @@ body{
 {
   top: 56px;
   padding-top: 10px;
-  padding-left:270px;
+  //padding-left:270px;
   padding-bottom: 6%;
   position: fixed;
   background-color: green;
@@ -28,7 +28,7 @@ body{
 }
 @media(max-width: 781px){
   #blocco_pagina{
-    padding-left: 85px;
+    //padding-left: 85px;
     height:94%;
   }
 }

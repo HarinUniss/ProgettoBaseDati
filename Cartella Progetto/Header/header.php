@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!--Includo la libreria di jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./script/header.js"></script>
 
@@ -46,6 +45,11 @@
                     <img id='prof' src='$directory_foto' height='30' width='30'>
                  </a>";
         }else{
+
+            if($tipo== "canile" || $tipo == "allevamento" ){
+                echo'<button id="butt_imposta_orario" ><i class="bx bxs-calendar-alt"></i></button>';
+            }
+
             if(isset($_SESSION["foto"]) && $_SESSION["foto"] != "" && $_SESSION["foto"] != null){
                 //Tolgo il primo . per poter essere localizzato nell'header
                 if($cdd != ""){
