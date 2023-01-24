@@ -38,7 +38,8 @@ function se_esiste_gia( $giorno ) {
 
     $risultato = $connessione -> query($query_verifica);
 
-    if( mysqli_num_rows($risultato) != 0 ){
+    if( mysqli_num_rows($risultato) > 0 ){
+        echo "CIAOOONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE";
         return true;
     }
     return false;
@@ -205,7 +206,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
             $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
 
             if($LApertura != "" ){
-                if( se_esiste_gia("lunedi") ){
+                if( se_esiste_gia("lunedi")  ){
                     $query_orario_lunedi=" UPDATE orario_apertura  SET ora_inizio = '$LApertura' , ora_fine = '$LChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'lunedi' ";
                 }else{
                     $query_orario_lunedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'lunedi' , '$LApertura' , '$LChiusura'  )";
@@ -282,7 +283,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
 
 
-            if($Inserimento != ""){
+            if($Inserimento != "true"){
                 echo '<script> alert("Le modifiche sono state apportate con successo ");
                         window.location.href="../home.php";
                        </script>';
