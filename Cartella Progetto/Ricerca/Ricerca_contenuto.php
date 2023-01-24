@@ -73,6 +73,19 @@ if(isset($_POST["butt_ricerca"])){
         }
         $query_filtro .= $query_nome_animale;
     }
+    if(isset($_POST["Specie"])){
+        $specie = $_POST["Specie"];
+        if($specie == "none"){
+            $query_specie="";
+        }else {
+            if($query_filtro=="SELECT * FROM Animali as A")
+            {$query_filtro .=" WHERE ";}
+            else
+            {$query_filtro .= " AND ";}
+            $query_specie = " A.razza = ANY(SELECT r.razza FROM razze as r WHERE r.specie='".$specie."')";
+        }
+        $query_filtro .= $query_specie;
+    }
     if(isset($_POST["Razza"])){
         $razza = $_POST["Razza"];
         if($razza == "none"){
@@ -143,6 +156,14 @@ if(isset($_POST["butt_ricerca"])){
         }
         $query_filtro .= $query_citta;
     }
+    if (isset($_POST["Preferiti"])){
+        if($query_filtro=="SELECT * FROM Animali as A")
+        {$query_filtro .=" WHERE ";}
+        else
+        {$query_filtro .= " AND ";}
+        $query_preferito = "A.id_animale = ANY( SELECT p.animale FROM preferiti as p WHERE p.utente='".$_SESSION["id_utente"]."' ) ";
+        $query_filtro .= $query_preferito;
+    }
 }
 ?>
 
@@ -207,7 +228,12 @@ if(isset($_POST["butt_ricerca"])){
                         echo "<option value=".$row["provenienza"].">".$row["provenienza"]."</option> ";
                     }
                     ?>
-                </select>
+                </select><br>
+                <?php
+                if(isset($_SESSION["id_utente"])) {
+                    echo "<label for='preferiti'>Preferiti</label> <input type='checkbox' name='Preferiti' id='preferiti' value='true'>";
+                  }
+                   ?>
             </div>
         </div>
     </form>
