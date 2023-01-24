@@ -259,21 +259,26 @@ $id_utente = "";
         <?php if($dataora!=null && $id_utente === $x) echo "<p>Data e Ora registrazione ".$dataora;?></p>
     <?php
         //Devo fare così altriementi se un utente non loggato entra qui si generano dei warning
-        //E devo passarlo tramite variabile senno non funziona... Nonn sò perchè
+        //E devo passarlo tramite variabile senno non funziona
+        //se sono l'utente proprietario della pagina vedo il tasto modifica
         if($id_utente === $x){
             echo '
                 <button type="button" class="btn btn-danger" id="butt_req_modif_user">Modificare?</button>
             ';
         }else{
+            //altrimenti visualizzo il tasto prenotazione
             echo '
-                <button type="button" class="btn btn-info" >Prenotare?</button>
-            ';
+                <form>
+                    <button type="button" name="bt_accesso_sezione_prenotazione" class="btn btn-info" >Prenotare?</button>
+                </form>
+                ';
         }
     ?>
 
     </div>
     <?php
-        if($id_utente === $x){
+        //se sono l'utente proprietario della pagina vedo il div modifica
+        if($id_utente == $x){
             echo '
                 <div class="col-lg-6 modifiche_profilo">
                     <form method="post" action="">
