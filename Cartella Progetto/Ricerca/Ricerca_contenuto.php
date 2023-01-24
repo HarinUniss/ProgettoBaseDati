@@ -73,6 +73,19 @@ if(isset($_POST["butt_ricerca"])){
         }
         $query_filtro .= $query_nome_animale;
     }
+    if(isset($_POST["Specie"])){
+        $specie = $_POST["Specie"];
+        if($specie == "none"){
+            $query_specie="";
+        }else {
+            if($query_filtro=="SELECT * FROM Animali as A")
+            {$query_filtro .=" WHERE ";}
+            else
+            {$query_filtro .= " AND ";}
+            $query_specie = " A.razza = ANY(SELECT r.razza FROM razze as r WHERE r.specie='".$specie."')";
+        }
+        $query_filtro .= $query_specie;
+    }
     if(isset($_POST["Razza"])){
         $razza = $_POST["Razza"];
         if($razza == "none"){
