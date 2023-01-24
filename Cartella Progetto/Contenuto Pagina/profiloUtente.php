@@ -279,7 +279,7 @@ $id_utente = "";
 
     <div class="col-lg-6 ">
 
-        <?php include_once('../Prenotazioni/orari_azienda.php '); ?>
+        <?php include_once('../Prenotazioni/orario_azienda.php '); ?>
 
     </div>
 
