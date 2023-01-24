@@ -323,7 +323,7 @@ $id_utente = "";
             $ris = $conn->query($query_pop_animali);
             if (mysqli_num_rows($ris) > 0) {
                 echo '<div class="container containerAnimali">
-            <p class="titolo">Pagina Degli Animali Inseriti</p>
+            <p class="titolo">Animali Presenti</p>
             <table class="table table-dark table-hover">
                 <thead>
                 <tr>
@@ -339,7 +339,7 @@ $id_utente = "";
                     <th>pedigree</th>
                 </tr>
                 </thead>
-                <tbody><form method="get" action ="inserisciPreferito.php">
+                <tbody><form method="get" action ="gestisciPreferito.php">
                 ';
                 while ($row = $ris->fetch_assoc()) {
                     $perigree = "";
@@ -351,10 +351,12 @@ $id_utente = "";
                     //Controllo se animale già presente nella tabella preferiti dell' utente
                         $ris3 = $conn->query("SELECT * FROM Preferiti WHERE animale='".$id_animale."' and utente ='".$utente_ospite_id."';")
                         or die("Errore sulla query di controllo preferiti");
-                        if(mysqli_num_rows($ris3)==1){ echo"Preferito"; }
-                        else{
-                            echo"<a href='inserisciPreferito.php?anim=$id_animale'>InserisciPreferito</a>";
-                        }
+                    if(mysqli_num_rows($ris3)==1){
+                        echo"<a href='gestisciPreferito.php?anim=$id_animale&mode=rimuovi'>RimuoviPreferito</a>";
+                    }
+                    else{
+                        echo"<a href='gestisciPreferito.php?anim=$id_animale&mode=inserisci'>InserisciPreferito</a>";
+                    }
                     echo "    
                     </td>
                     <td><img src='" . $row["foto"] . "' width='50' height='50'></td>
