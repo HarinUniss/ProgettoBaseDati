@@ -276,6 +276,14 @@ $id_utente = "";
     ?>
 
     </div>
+
+    <div class="col-lg-6 ">
+
+        <?php include_once('../Prenotazioni/orari_azienda.php '); ?>
+
+    </div>
+
+
     <?php
         //se sono l'utente proprietario della pagina vedo il div modifica
         if($id_utente == $x){
@@ -305,7 +313,9 @@ $id_utente = "";
                 </div>
             ';
         }else{
-            echo '<div class="col-lg-6 ">';
+
+
+            echo '<div class="row-lg-6 ">';
 
             $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database " . $conn->error);
 
