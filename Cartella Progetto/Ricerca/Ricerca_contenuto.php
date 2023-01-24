@@ -143,6 +143,14 @@ if(isset($_POST["butt_ricerca"])){
         }
         $query_filtro .= $query_citta;
     }
+    if (isset($_POST["Preferiti"])){
+        if($query_filtro=="SELECT * FROM Animali as A")
+        {$query_filtro .=" WHERE ";}
+        else
+        {$query_filtro .= " AND ";}
+        $query_preferito = "A.id_animale = ANY( SELECT p.animale FROM preferiti as p WHERE p.utente='".$_SESSION["id_utente"]."' ) ";
+        $query_filtro .= $query_preferito;
+    }
 }
 ?>
 
@@ -207,7 +215,12 @@ if(isset($_POST["butt_ricerca"])){
                         echo "<option value=".$row["provenienza"].">".$row["provenienza"]."</option> ";
                     }
                     ?>
-                </select>
+                </select><br>
+                <?php
+                if(isset($_SESSION["id_utente"])) {
+                    echo "<label for='preferiti'>Preferiti</label> <input type='checkbox' name='Preferiti' id='preferiti' value='true'>";
+                  }
+                   ?>
             </div>
         </div>
     </form>
