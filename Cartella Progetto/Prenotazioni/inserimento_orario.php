@@ -39,7 +39,6 @@ function se_esiste_gia( $giorno ) {
     $risultato = $connessione -> query($query_verifica);
 
     if( mysqli_num_rows($risultato) > 0 ){
-        echo "CIAOOONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE";
         return true;
     }
     return false;
@@ -283,7 +282,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
 
 
-            if($Inserimento != "true"){
+            if($Inserimento == "true"){
                 echo '<script> alert("Le modifiche sono state apportate con successo ");
                         window.location.href="../home.php";
                        </script>';
