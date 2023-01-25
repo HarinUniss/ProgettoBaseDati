@@ -29,9 +29,27 @@ $Inserimento= [ 'lunedi', 'martedi','mercoledi' , 'giovedi', 'sabato' , 'domenic
 
 $query_cambia_orario="";
 
+
+//serve a verificare se un giorno è gia stato impostato per l'utente
+function se_esiste_gia( $giorno ) {
+    $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
+
+    $query_verifica = "SELECT * FROM orario_apertura WHERE giorno = '".$giorno."' AND id_azienda = '".$_SESSION['id_utente']."' ";
+
+    $risultato = $connessione -> query($query_verifica);
+
+    if( mysqli_num_rows($risultato) > 0 ){
+        return true;
+    }
+    return false;
+}
+
+
+
+
 // ritorno alla home se non si è loggati
 if( !isset($_SESSION[ "id_utente" ] ) ){
-
+    header( "location: ../home.php");
 }else{
 
     //prendiamo input inseriti dall'utente
@@ -181,36 +199,61 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
 
         //CARICAMENTO SUL DATABASE
+
+
         else {
             $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
 
             if($LApertura != "" ){
-                $query_orario_lunedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'lunedi' , '$LApertura' , '$LChiusura'  )";
+                if( se_esiste_gia("lunedi")  ){
+                    $query_orario_lunedi=" UPDATE orario_apertura  SET ora_inizio = '$LApertura' , ora_fine = '$LChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'lunedi' ";
+                }else{
+                    $query_orario_lunedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'lunedi' , '$LApertura' , '$LChiusura'  )";
+                }
                 $connessione ->query( $query_orario_lunedi) or die("Errore query_orario_lunedi");
                 $Inserimento = "true";
+
+
             }
 
-            if($MaApertura != "" ){
-                $query_orario_martedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'martedi' , '$MaApertura' , '$MaChiusura'  )";
+            if($MeApertura != "" ){
+                if( se_esiste_gia("martedi") ){
+                    $query_orario_martedi=" UPDATE orario_apertura  SET ora_inizio = '$MaApertura' , ora_fine = '$MaChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'martedi' ";
+                }else{
+                    $query_orario_martedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'martedi' , '$MaApertura' , '$MaChiusura'  )";
+                }
                 $connessione ->query( $query_orario_martedi) or die("Errore query_orario_martedi");
                 $Inserimento = "true";
             }
 
             if($MeApertura != "" ){
-                $query_orario_mercoledi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'mercoledi' , '$MeApertura' , '$MeChiusura'  )";
+                if( se_esiste_gia("mercoledi") ){
+                    $query_orario_mercoledi=" UPDATE orario_apertura  SET ora_inizio = '$MeApertura' , ora_fine = '$MeChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'mercoledi' ";
+                }else{
+                    $query_orario_mercoledi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'mercoledi' , '$MeApertura' , '$MeChiusura'  )";
+                }
                 $connessione ->query( $query_orario_mercoledi) or die("Errore query_orario_mercoledi");
                 $Inserimento = "true";
             }
 
             if($GApertura != "" ){
-                $query_orario_giovedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'giovedi' , '$GApertura' , '$GChiusura'  )";
+                if( se_esiste_gia("giovedi") ){
+                    $query_orario_giovedi=" UPDATE orario_apertura  SET ora_inizio = '$GApertura' , ora_fine = '$GChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'giovedi' ";
+                }else{
+                    $query_orario_giovedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'giovedi' , '$GApertura' , '$GChiusura'  )";
+                }
+
                 $connessione ->query( $query_orario_giovedi) or die("Errore query_orario_giovedi");
                 $Inserimento = "true";
             }
 
 
             if($VApertura != "" ){
-                $query_orario_venerdi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'venerdi' , '$VApertura' , '$VChiusura'  )";
+                if( se_esiste_gia("venerdi") ){
+                    $query_orario_venerdi=" UPDATE orario_apertura  SET ora_inizio = '$VApertura' , ora_fine = '$VChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'venerdi' ";
+                }else{
+                    $query_orario_venerdi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'venerdi' , '$VApertura' , '$VChiusura'  )";
+                }
                 $connessione ->query( $query_orario_venerdi) or die("Errore query_orario_venerdi");
                 $Inserimento = "true";
             }
@@ -218,20 +261,28 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
 
             if($SApertura != "" ){
-                $query_orario_sabato=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'sabato' , '$SApertura' , '$SChiusura'  )";
+                if( se_esiste_gia("sabato") ){
+                    $query_orario_sabato=" UPDATE orario_apertura  SET ora_inizio = '$SApertura' , ora_fine = '$SChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'sabato' ";
+                }else{
+                    $query_orario_sabato=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'sabato' , '$SApertura' , '$SChiusura'  )";
+                }
                 $connessione ->query( $query_orario_sabato) or die("Errore query_orario_sabato");
                 $Inserimento = "true";
             }
 
             if($DApertura != "" ){
-                $query_orario_domenica=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'domenica' , '$DApertura' , '$DChiusura'  )";
+                if( se_esiste_gia("domenica") ){
+                    $query_orario_domenica=" UPDATE orario_apertura  SET ora_inizio = '$DApertura' , ora_fine = '$DChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'domenica' ";
+                }else{
+                    $query_orario_domenica=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'domenica' , '$DApertura' , '$DChiusura'  )";
+                }
                 $connessione ->query( $query_orario_domenica) or die("Errore query_orario_domenica");
                 $Inserimento = "true";
             }
 
 
 
-            if($Inserimento != ""){
+            if($Inserimento == "true"){
                 echo '<script> alert("Le modifiche sono state apportate con successo ");
                         window.location.href="../home.php";
                        </script>';

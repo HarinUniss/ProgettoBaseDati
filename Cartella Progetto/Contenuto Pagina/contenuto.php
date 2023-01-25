@@ -63,6 +63,13 @@ if(mysqli_num_rows($ris) > 0){
     }
     echo "<div>";
 }
+else {
+    echo '<script>
+                alert("Non è stato trovato nessun animale!");
+                window.location.href = "./home.php";
+            </script>';
+}
+
 $conn->close();
 
 

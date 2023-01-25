@@ -23,6 +23,9 @@
             xmlhttp.send();
         }
     };
+    function minXmax(str){
+        document.getElementById("eta-max").min= str;
+    }
 
 
 </script>
@@ -69,9 +72,22 @@ if(isset($_POST["butt_ricerca"])){
         }
         else {
             $query_filtro .=" WHERE ";
-            $query_nome_animale = "A.nome = '" . $nome_animale . "' ";
+            $query_nome_animale = "A.nome LIKE  '%" . $nome_animale . "%' ";
         }
         $query_filtro .= $query_nome_animale;
+    }
+    if(isset($_POST["Specie"])){
+        $specie = $_POST["Specie"];
+        if($specie == "none"){
+            $query_specie="";
+        }else {
+            if($query_filtro=="SELECT * FROM Animali as A")
+            {$query_filtro .=" WHERE ";}
+            else
+            {$query_filtro .= " AND ";}
+            $query_specie = " A.razza = ANY(SELECT r.razza FROM razze as r WHERE r.specie='".$specie."')";
+        }
+        $query_filtro .= $query_specie;
     }
     if(isset($_POST["Razza"])){
         $razza = $_POST["Razza"];
@@ -198,9 +214,9 @@ if(isset($_POST["butt_ricerca"])){
                 <div id="blocco_eta">
                     Eta dell'animale:
                     da
-                    <input name="Eta_Min" id="eta-min" type="number"  value="0" min="0" step="1"><br>
+                    <input name="Eta_Min" id="eta-min" type="number"  value="0" min="0" step="1" onchange="minXmax(this.value)"><br>
                     a
-                    <input name="Eta_Max" id="eta-max" type="number" value="100" min="1" step="1">
+                    <input name="Eta_Max" id="eta-max" type="number" value="100" min="0" step="1" >
                 </div>
                 <label for="pedigree">Pedigree</label>
                 <input name="Pedigree" id="pedigree" type="checkbox" value="true">
