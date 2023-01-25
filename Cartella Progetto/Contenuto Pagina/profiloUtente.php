@@ -215,14 +215,22 @@ $id_utente = "";
             alert("Non puoi modificare le cose che non ti appartengono :/");
             </script>';
 
-        }elseif(isset($_POST["elimina_profilo"])){//Da testare l'eliminazione del profilo
+        }elseif(isset($_POST["elimina_profilo"])){                                                          //Da testare l'eliminazione del profilo
             $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Impossibile connettersi al database");
-            $conn->query("DELETE from Utenti where Utenti.id_utente = '$id_utente';") or die("Non è stato possibile cancellare l'account");
+            $query_foto_utente="SELECT foto FROM utenti WHERE id_utente = '".$id_utente."';";               //query per la foto utente
+            $foto_profilo=$conn->query($query_foto_utente) or die("Errore query Foto Animale");             //esegue la query per la foto utente
+            $query_delete_Utente = "CALL EliminaUtente('".$id_utente."');";                                 //query per eliminare l'utente
+            $conn->query($query_delete_Utente) or die("Errore query di eliminazione dell'animale");         //esegue la procedura sql per eliminare l'utente
+            while ($row = $foto_profilo->fetch_assoc()) {
+                unlink($row["foto"]);                                                                       //elimmina la foto dell'utente eliminato
+            }
+
+
             session_unset(); //Unsetto tutte le variabili sessione
             session_destroy(); //Disrtuggo la sessione
             echo '<script>
                 alert("Eliminazione profilo avvenuta con successo, arrivederci :)");
-                window.location.href = "../home.php";
+                window.location.href = "../home.php";                                                       //da tornare alla home
             </script>';
         }
     }

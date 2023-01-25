@@ -9,8 +9,15 @@ if(!isset($_GET["anim"])){
 }else{
     if(isset($_POST["rimuovi-animale"])){
         $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database ".$conn->error);
-        $query_delete_animale = "DELETE FROM Animali WHERE id_animale = '".$_GET['anim']."';";
-        $conn->query($query_delete_animale) or die("Errore query di eliminazione dell'animale");
+
+        $query_foto_animale="SELECT foto FROM Animali WHERE id_animale = '".$_GET['anim']."';";         //query per la foto animale
+        $foto_animale=$conn->query($query_foto_animale) or die("Errore query Foto Animale");            //eseguo la queri per la foto animale
+
+             $query_delete_animale = "CALL EliminaAnimale('".$_GET['anim']."');";                       //query per eliminare l'animale
+             $conn->query($query_delete_animale) or die("Errore query di eliminazione dell'animale");   //esegue la procedura sql per eliminare l'animale
+            while ($row = $foto_animale->fetch_assoc()) {
+                unlink($row["foto"]);                                                                   //elimmina la foto dell'animale eliminato
+            }
         $conn->close();
         echo '<script>
                 alert("Eliminazione animale avvenuta con successo");
