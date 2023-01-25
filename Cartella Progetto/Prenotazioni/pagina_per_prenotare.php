@@ -10,7 +10,8 @@ function getOrario(data){
     xml.onreadystatechange = function(){
         document.getElementById("ora_disp").innerHTML = this.responseText;
     };
-    xml.open("GET", "getOrario.php?giorno="+data+"&azienda="+azienda, true);
+    azienda = <?php echo $_GET["azienda"]; ?>;
+    xml.open("GET", "getOrario.php?giorno="+data+"&azienda="+ azienda, true);
     xml.send();
 }
 </script>
