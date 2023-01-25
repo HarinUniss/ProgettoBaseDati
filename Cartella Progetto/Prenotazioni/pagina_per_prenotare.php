@@ -51,7 +51,7 @@
                 echo '
                         <script>
                             alert("Prenotazione avvenuta con successo");
-                            /*window.location.href = "../home.php";*/
+                            window.location.href = "../home.php";
                         </script>
                         ';
             }else{
