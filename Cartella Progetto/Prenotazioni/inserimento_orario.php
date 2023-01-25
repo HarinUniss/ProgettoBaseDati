@@ -56,7 +56,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
     if( isset($_POST["butt_salva_orario"] )){
 
         if( isset($_POST["LApertura"]) && isset($_POST["LChiusura"])   ){
-            echo $_POST["LApertura"];
+
             if($_POST["LApertura"] != "" && $_POST["LChiusura"] != "")
                 if( $_POST["LApertura"] < $_POST["LChiusura"] ){
                     $LApertura = $_POST["LApertura"];

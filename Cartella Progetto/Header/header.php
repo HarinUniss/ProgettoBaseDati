@@ -61,7 +61,7 @@
                          ";
             if($tipo== "canile" || $tipo == "allevamento" ){
                 echo '  <dt>Gestione Appuntamenti</dt>
-                        <dt><a href="">Visualizza Appuntamenti</a></dt>
+                        <dt><a href="./Contenuto Pagina/pagina_prenotazioni.php">Visualizza Appuntamenti</a></dt>
                         <!--<dt><button id="butt_imposta_orario" class="btn btn-light" onclick="goToInserimentoOrario()"><i class="bx bxs-calendar-alt">Imposta Orari</i></button></dt>-->
                         <dt><a href="./Prenotazioni/inserimento_orario.php"><i class="bx bxs-calendar-alt"></i>Imposta Orari</a></dt>
                         ';

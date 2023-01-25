@@ -21,7 +21,7 @@ $result = $conn->query($query) or die("errore Query lettura orario apertura");
 if(mysqli_num_rows($result)>0){
     $row = $result->fetch_assoc();
     $ora_inizio = strtotime($row["ora_inizio"]);
-    $ora_fine=strtotime("", $row["ora_fine"]);
+    $ora_fine=strtotime($row["ora_fine"]);
     $ora = $ora_inizio;
     while($ora<$ora_fine) {
 
