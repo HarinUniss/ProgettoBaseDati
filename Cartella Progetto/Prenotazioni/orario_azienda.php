@@ -66,7 +66,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Martedi'){
+                if( $riga['giorno'] == 'martedi'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;
@@ -85,7 +85,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Mercoledi'){
+                if( $riga['giorno'] == 'mercoledi'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;
@@ -104,7 +104,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Giovedi'){
+                if( $riga['giorno'] == 'giovedi'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;
@@ -123,7 +123,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Venerdi'){
+                if( $riga['giorno'] == 'venerdi'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;
@@ -142,7 +142,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Sabato'){
+                if( $riga['giorno'] == 'sabato'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;
@@ -161,7 +161,7 @@ $giorno_trovato = false;
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Domenica'){
+                if( $riga['giorno'] == 'domenica'){
                     echo "<td> ".$riga['ora_inizio']."</td>";
                     echo "<td> ".$riga['ora_fine']."</td>";
                     $giorno_trovato= true;

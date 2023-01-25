@@ -169,29 +169,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($num > 0) {
                 $errori = "*username già esistente<br>";
             } else {
-                //Genero un id random
-                $esiste_id = true;
-                while($esiste_id != false) {
-                    $id = rand(0, 9999999);
-
-                    $sql_check_id_exist = "SELECT * FROM Utenti WHERE Utenti.id_utente = '$id'";
-                    if(mysqli_num_rows($conn->query($sql_check_id_exist)) == 0){
-                        $esiste_id = false;
-                    }
-                }
 
                 $dataora_registrazione = date("Y-m-d h:i:sa");
 
-                $query_reg_inUtente = "INSERT INTO utenti(id_utente, cognome, nome, indirizzo, civico, citta, telefono, email, foto, tipo, dataora)
-        VALUES('$id', '$cognome', '$nome', '$indirizzo', '$civico', '$citta', '$telefono', '$email', '$foto', '$tipo', '$dataora_registrazione');";
-                $query_reg_inCredenziali = "INSERT INTO credenziali(username, password, proprietario)
-        VALUES('$userN', '$pass', '$id');";
 
-                //Registro i dati nel database
-
-                $conn->query($query_reg_inUtente) or die("Errore registrazione utente: " . $conn->error);
-
-                $conn->query($query_reg_inCredenziali) or die("Errore registrazione credenziali: " . $conn->error);
+                $query_registra_utente = "CALL CreaUtente('$cognome', '$nome', '$indirizzo', '$civico', '$citta', '$telefono', '$email', '$foto', '$tipo', '$dataora_registrazione', '$userN', '$pass')";
+                $conn->query($query_registra_utente) or die("Errore registrazione utente: " . $conn->error);
 
                 echo '<script type="text/javascript"> 
                     alert("Registrazione avvenuta con successo :)");
@@ -201,7 +184,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $conn->close();
 
-            //header("Location: login.php?reg=ok"); //Dovrebbe reindirizzarmi al login con GET[reg] = ok
 
         } else {
             echo '<script type="text/javascript"> ';
