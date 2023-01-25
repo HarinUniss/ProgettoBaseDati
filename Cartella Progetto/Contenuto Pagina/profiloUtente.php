@@ -276,7 +276,7 @@ $id_utente = "";
         }elseif(isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "utente"){
             //altrimenti visualizzo il tasto prenotazione
             echo '
-                    <a href="../Prenotazioni/pagina_per_prenotare.php?utente='.$id_utente.'">Prenotare?</a>
+                    <a href="../Prenotazioni/pagina_per_prenotare.php?azienda='.$id_utente.'">Prenotare?</a>
                 ';
         }
     ?>

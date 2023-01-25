@@ -56,13 +56,14 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
     if( isset($_POST["butt_salva_orario"] )){
 
         if( isset($_POST["LApertura"]) && isset($_POST["LChiusura"])   ){
-
-            if( $_POST["LApertura"] < $_POST["LChiusura"] ){
-                $LApertura = $_POST["LApertura"];
-                $LChiusura = $_POST["LChiusura"];
-            }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
-            }
+            echo $_POST["LApertura"];
+            if($_POST["LApertura"] != "" && $_POST["LChiusura"] != "")
+                if( $_POST["LApertura"] < $_POST["LChiusura"] ){
+                    $LApertura = $_POST["LApertura"];
+                    $LChiusura = $_POST["LChiusura"];
+                }else{
+                    $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                }
 
 
         }else if( !isset($_POST["LApertura"]) && !isset($_POST["LChiusura"])){
@@ -101,7 +102,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
                 $MeChiusura = $_POST["MeChiusura"];
 
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                $MeErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
         }else if( !isset($_POST["MeApertura"]) && !isset($_POST["MeChiusura"])){
@@ -216,7 +217,7 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
 
             }
 
-            if($MeApertura != "" ){
+            if($MaApertura != "" ){
                 if( se_esiste_gia("martedi") ){
                     $query_orario_martedi=" UPDATE orario_apertura  SET ora_inizio = '$MaApertura' , ora_fine = '$MaChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'martedi' ";
                 }else{
@@ -328,11 +329,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Martedi Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="MaApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Martedi Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="MaChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php
@@ -342,11 +343,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Mercoledi Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="MeApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Mercoledi Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="MeChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php
@@ -356,11 +357,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Giovedi Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="GApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Giovedi Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="GChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php
@@ -370,11 +371,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Venerdi Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="VApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Venerdi Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="VChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php
@@ -384,11 +385,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Sabato Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="SApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Sabato Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="SChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php
@@ -398,11 +399,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         <div class="row">
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Domenica Apertura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="DApertura" id="timeStandard" type="time">
             </div>
             <div class=" col form-group">
                 <label class="active" for="timeStandard">Domenica Chiusura</label>
-                <input class="form-control" id="timeStandard" type="time">
+                <input class="form-control" name="DChiusura" id="timeStandard" type="time">
             </div>
         </div>
         <?php

@@ -42,139 +42,92 @@ $giorno_trovato = false;
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row" class="bg-secondary">Lunedi</th>
+
         <?php
         if( mysqli_num_rows( $tabella_orario) > 0){
             while ( $riga = $tabella_orario->fetch_assoc() ){
                 if( $riga['giorno'] == 'lunedi'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                    if($riga['ora_inizio'] != "") {
+                        echo '<tr><th scope="row" class="bg-secondary">Lunedi</th>';
+                        echo "<td> " . $riga['ora_inizio'] . "</td>";
+                        echo "<td> " . $riga['ora_fine'] . "</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">Lunedi</th><td> --- </td>';
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row" class="bg-secondary">Martedi</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Martedi'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'martedi'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">Martedi</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">Martedi</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row" class="bg-secondary">Mercoledi</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Mercoledi'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'mercoledi'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">Mercoledi</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">Mercoledi</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row" class="bg-secondary">Giovedi</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Giovedi'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'giovedi'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">giovedi</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">giovedi</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row" class="bg-secondary">Venerdi</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Venerdi'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'venerdi'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">venerdi</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">venerdi</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row" class="bg-secondary">Sabato</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Sabato'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'sabato'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">sabato</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">sabato</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
-            }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
-        }
-        $giorno_trovato= false;
-        ?>
-    </tr>
-    <tr>
-        <th scope="row"class="bg-secondary" >Domenica</th>
-        <?php
-        if( mysqli_num_rows( $tabella_orario) > 0){
-            while ( $riga = $tabella_orario->fetch_assoc() ){
-                if( $riga['giorno'] == 'Domenica'){
-                    echo "<td> ".$riga['ora_inizio']."</td>";
-                    echo "<td> ".$riga['ora_fine']."</td>";
-                    $giorno_trovato= true;
+                if( $riga['giorno'] == 'domenica'){
+                    if($riga['ora_inizio'] != ""){
+                        echo '<tr><th scope="row" class="bg-secondary">domenica</th>';
+                        echo "<td> ".$riga['ora_inizio']."</td>";
+                        echo "<td> ".$riga['ora_fine']."</td></tr>";
+                    }else{
+                        echo '<tr><th scope="row" class="bg-secondary">domenica</th>';
+                        echo "<td> --- </td>";
+                        echo "<td> --- </td></tr>";
+                    }
                 }
+
             }
-            if( $giorno_trovato == false){
-                echo "<td> --- </td>";
-                echo "<td> --- </td>";
-            }
+
         }
-        $giorno_trovato= false;
+
         ?>
-    </tr>
 
     </tbody>
 </table>
