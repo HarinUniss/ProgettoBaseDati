@@ -13,9 +13,9 @@
     <div class="row">
         <div class="col-sm">
             <b> Information </b><br>
-            "Autors: **********************"<br>
-            "Sede:  ***********************"<br>
-            "Recapito: ********************"
+            "Autors: ANTONIO CARTA"
+            "Autors: GIOVANNI USAI"<br>
+            "Autors: SHANTI LEONARDO ARZU"<br>
         </div>
         <div class="col-sm">
             <b> Contact </b><br>

@@ -3,17 +3,18 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../scss/main.css">
+    <script src="../script/pagina_per_prenotare.js"></script>
 <script>
-function getOrario(data){
-    var azienda = document.getElementById("numero_azienda").value;
-    var xml = new XMLHttpRequest();
-    xml.onreadystatechange = function(){
-        document.getElementById("ora_disp").innerHTML = this.responseText;
-    };
-    azienda = <?php echo $_GET["azienda"]; ?>;
-    xml.open("GET", "getOrario.php?giorno="+data+"&azienda="+ azienda, true);
-    xml.send();
-}
+    function getOrario(data){
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function(){
+            document.getElementById("ora_disp").innerHTML = this.responseText;
+        };
+        var azienda = <?php echo $_GET["azienda"]; ?>;
+        xml.open("GET", "getOrario.php?giorno="+data+"&azienda="+ azienda, true);
+        xml.send();
+    }
 </script>
 </head>
 <body>
@@ -23,43 +24,73 @@ function getOrario(data){
         }
     ?>
     <?php
-       //$conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
+    //$conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
+    $data = $nota = "";
+    if(isset($_POST["invia_prenotazione"]))
+        if(isset($_POST["data"])){
+            /*echo date("d-m-Y h:i:sa");*/
 
-        if(isset($_POST["invia_prenotazione"]))
-            if(isset($_POST["data"])){
-                echo date("d-m-Y h:i:sa");
+            //echo date('l, j F Y', $timestamp); // stamperà Thursday, 15 December 2016
 
-                //echo date('l, j F Y', $timestamp); // stamperà Thursday, 15 December 2016
-                $giorno = date('l', strtotime($_POST["data"]));
+            $giorno = date('l', strtotime($_POST["data"]));
 
-                if(date('j', strtotime($_POST["data"]))>=date("d") &&
-                    date('F', strtotime($_POST["data"]))>=date("m") &&
-                    date('Y', strtotime($_POST["data"]))>=date("Y")) {
-                    echo "Yeahh";
 
-                }
-                if(isset($_POST["ora_disp"])){
-                    $ora_scelta = $_POST["ora_disp"];
+            if(date('j', strtotime($_POST["data"]))>=date("d") &&
+                date('F', strtotime($_POST["data"]))>=date("m") &&
+                date('Y', strtotime($_POST["data"]))>=date("Y")) {
+                $data = $_POST["data"];
 
-                }
             }
+            if(isset($_POST["ora_disp"])){
+                $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
+                $ora_scelta = $_POST["ora_disp"];
+                if(isset($_POST["nota"]))
+                    $nota = $_POST["nota"];
+                $query_crea_prenotazione = "CALL CreaPrenotazione('".$_SESSION['id_utente']."', '".$_GET["azienda"]."', '".$data."', '".$ora_scelta."', '".$nota."')";
+                $ris = $conn->query($query_crea_prenotazione) or die("Errore query prenotazione");
+                echo '
+                        <script>
+                            alert("Prenotazione avvenuta con successo");
+                            /*window.location.href = "../home.php";*/
+                        </script>
+                        ';
+            }else{
+                echo '
+                        <script>
+                            alert("Non è stata inserita l ora desiderata");
+                        </script>
+                        ';
+            }
+        }else{
+            echo '
+                        <script>
+                            alert("Non è stata inserita una data valdida");
+                        </script>
+                        ';
+        }
 
 
 
     ?>
-    <p>Pagina di prenotazione per <?php echo "<p id='numero_azienda'>".$_GET["azienda"]."</p>" ?></p>
+    <nobr><p>Pagina di prenotazione per <?php echo "<p id='numero_azienda'>".$_GET["azienda"]."</p>" ?></p></nobr>
 
-
+    <?php echo date('Y-F-j', strtotime(15-02-2023)); ?>
     <form method="post">
+        <div class="pop-up-conferma">
+            <p><nobr>Sicuro di voler confermare?</nobr></p>
+            <p>
+                <button type="submit" name="invia_prenotazione" class="btn btn-danger" id="invia_reg">conferma</button><button type="button" class="btn btn-secondary annulla">annulla</button>
+            </p>
+        </div>
         <input type="date" name ="data" oninput="getOrario(this.value)">
 
         <label for="ora_disp">Ora</label>
         <select name="ora_disp" id="ora_disp">
 
         </select><br>
-
-
-        <button type="submit" name="invia_prenotazione">Premi</button>
+        <input type="text" name ="nota" class="nota" placeholder="Inserisci una nota">
+        <button type="button"></button>
+        <button type="button" class="invia">Premi</button>
     </form>
 </body>
 </html>

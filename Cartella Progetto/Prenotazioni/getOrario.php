@@ -25,8 +25,16 @@ if(mysqli_num_rows($result)>0){
     $ora = $ora_inizio;
     while($ora<$ora_fine) {
 
-        $res .= "<option>".date("h:i",$ora)."</option>";
-        $ora= strtotime("+ 30 minutes", $ora);
+        /*$query_checkOrario ="CALL checkOraPrenotazione('".$azienda."', '".$giorno."', '".$ora."')" ;
+
+        $res = $conn->query($query_checkOrario)or die("errore query check prenotazione");
+        /*if($res->fetch_assoc()["Num_Prenotazioni"] == 0){
+            if($row["count(*)"] ){*/
+                $res .= "<option>".date("h:i",$ora)."</option>";
+                $ora= strtotime("+ 30 minutes", $ora);
+            /*}
+        }*/
+
     }
 
 }
