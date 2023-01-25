@@ -32,17 +32,49 @@ $query_cambia_orario="";
 
 //serve a verificare se un giorno è gia stato impostato per l'utente
 function se_esiste_gia( $giorno ) {
+    echo 'entro nella funzione';
     $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
 
     $query_verifica = "SELECT * FROM orario_apertura WHERE giorno = '".$giorno."' AND id_azienda = '".$_SESSION['id_utente']."' ";
 
     $risultato = $connessione -> query($query_verifica);
 
-    if( mysqli_num_rows($risultato) > 0 ){
+
+    if( $risultato){
         return true;
     }
     return false;
 }
+
+function controllo_orario( $Apertura , $Chiusura ){
+    $oraI = intval(substr($Apertura,0,2));
+    $minI = intval(substr($Apertura,3,2));
+    $oraF = intval(substr($Chiusura,0,2));
+    $minF = intval(substr($Chiusura,3,2));
+
+    if( $oraF - $oraI > 0 ){
+        return true;
+    }else if( $oraF - $oraI == 0 && $minF - $minI > 0 ){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+function controllo_azzeramento_orario( $Apertura , $Chiusura ){
+    $oraI = intval(substr($Apertura,0,2));
+    $minI = intval(substr($Apertura,3,2));
+    $oraF = intval(substr($Chiusura,0,2));
+    $minF = intval(substr($Chiusura,3,2));
+
+    if( $oraF - $oraI == 0 && $minF - $minI == 0 ){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
 
 
 
@@ -56,157 +88,199 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
     if( isset($_POST["butt_salva_orario"] )){
 
         if( isset($_POST["LApertura"]) && isset($_POST["LChiusura"])   ){
-            echo $_POST["LApertura"];
-            if($_POST["LApertura"] != "" && $_POST["LChiusura"] != "")
-                if( $_POST["LApertura"] < $_POST["LChiusura"] ){
-                    $LApertura = $_POST["LApertura"];
-                    $LChiusura = $_POST["LChiusura"];
+
+
+
+                if( controllo_orario( $_POST["LApertura"] , $_POST["LChiusura"] )){
+//                    echo "LUNEDI GIUSTO!!!   ";
+                    $LApertura = substr( $_POST["LApertura"],0,5) ;
+                    $LChiusura = substr( $_POST["LChiusura"],0,5) ;
+                }else if ( controllo_azzeramento_orario( $_POST["LApertura"] , $_POST["LChiusura"] )){
+                    $LApertura = substr( $_POST["LApertura"],0,5) ;
+                    $LChiusura = substr( $_POST["LChiusura"],0,5) ;
                 }else{
+
                     $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
                 }
 
 
-        }else if( !isset($_POST["LApertura"]) && !isset($_POST["LChiusura"])){
-//                tengo a nul gli orari
-//                $LApertura = "";
-//                $LChiusura = "";
-
-        }else{
-            $LErrore = "Orari lunedi non inseriti";
         }
+//      else if( !isset($_POST["LApertura"]) && !isset($_POST["LChiusura"])){
+////                tengo a nul gli orari
+////                $LApertura = "";
+////                $LChiusura = "";
+//
+//        }else{
+//            $LErrore = "Orari lunedi non inseriti";
+//        }
 
+        //MARTEDI
         if( isset($_POST["MaApertura"]) && isset($_POST["MaChiusura"])   ){
 
 
-            if( $_POST["MaApertura"] < $_POST["MaChiusura"] ){
-                $MaApertura = $_POST["MaApertura"];
-                $MaChiusura = $_POST["MaChiusura"];
+            if( controllo_orario( $_POST["MaApertura"] , $_POST["MaChiusura"] ) ){
+//                echo "MARTEDI GIUSTO!!!   ";
+                $MaApertura = substr( $_POST["MaApertura"],0,5);
+                $MaChiusura = substr( $_POST["MaChiusura"],0,5);
+
+            }else if ( controllo_azzeramento_orario( $_POST["MaApertura"] , $_POST["MaChiusura"] )){
+                $MaApertura = substr( $_POST["MaApertura"],0,5);
+                $MaChiusura = substr( $_POST["MaChiusura"],0,5);
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+
+                $MaErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["MaApertura"]) && !isset($_POST["MaChiusura"])){
-//                tengo a nul gli orari
-//                $MaApertura = "";
-//                $MaChiusura = "";
-
-        }else{
-            $MaErrore = "Orari Martedi non inseriti";
         }
+//        else if( !isset($_POST["MaApertura"]) && !isset($_POST["MaChiusura"])){
+////                tengo a nul gli orari
+////                $MaApertura = "";
+////                $MaChiusura = "";
+//
+//        }else{
+//            $MaErrore = "Orari Martedi non inseriti";
+//        }
 
+        //MERCOLEDI
         if( isset($_POST["MeApertura"]) && isset($_POST["MeChiusura"])   ){
 
 
-            if( $_POST["MeApertura"] < $_POST["MeChiusura"] ){
-                $MeApertura = $_POST["MeApertura"];
-                $MeChiusura = $_POST["MeChiusura"];
+            if( controllo_orario( $_POST["MeApertura"] , $_POST["MeChiusura"] ) ){
+//                echo "MERCOLEDI GIUSTO!!!   ";
+                $MeApertura = substr( $_POST["MeApertura"],0,5) ;
+                $MeChiusura = substr( $_POST["MeChiusura"],0,5) ;
 
+            }else if ( controllo_azzeramento_orario( $_POST["MeApertura"] , $_POST["MeChiusura"] )){
+                $MeApertura = substr( $_POST["MeApertura"],0,5) ;
+                $MeChiusura = substr( $_POST["MeChiusura"],0,5) ;
             }else{
                 $MeErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["MeApertura"]) && !isset($_POST["MeChiusura"])){
-//                tengo a nul gli orari
-//                $MeApertura = "";
-//                $MeChiusura = "";
-
-        }else{
-            $MeErrore = "Orari Mercoledi non inseriti";
         }
+//        else if( !isset($_POST["MeApertura"]) && !isset($_POST["MeChiusura"])){
+////                tengo a nul gli orari
+////                $MeApertura = "";
+////                $MeChiusura = "";
+//
+//        }else{
+//            $MeErrore = "Orari Mercoledi non inseriti";
+//        }
 
-
+        //GIOVEDI
         if( isset($_POST["GApertura"]) && isset($_POST["GChiusura"])   ){
 
-            if( $_POST["GApertura"] < $_POST["GChiusura"] ){
-                $GApertura = $_POST["GApertura"];
-                $GChiusura = $_POST["GChiusura"];
+            if( controllo_orario( $_POST["GApertura"] , $_POST["GChiusura"] ) ){
+//                echo "GIOVEDI GIUSTO!!!   ";
+                $GApertura = substr( $_POST["GApertura"],0,5) ;
+                $GChiusura = substr( $_POST["GChiusura"],0,5) ;
 
+            }else if ( controllo_azzeramento_orario( $_POST["GApertura"] , $_POST["GChiusura"] )){
+                $GApertura = substr( $_POST["GApertura"],0,5) ;
+                $GChiusura = substr( $_POST["GChiusura"],0,5) ;
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                $GErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["GApertura"]) && !isset($_POST["GChiusura"])){
-//                tengo a nul gli orari
-//                $GApertura = "";
-//                $GChiusura = "";
-
-        }else{
-            $GErrore = "Orari Giovedi non inseriti";
         }
+//        else if( !isset($_POST["GApertura"]) && !isset($_POST["GChiusura"])){
+////                tengo a nul gli orari
+////                $GApertura = "";
+////                $GChiusura = "";
+//
+//        }else{
+//            $GErrore = "Orari Giovedi non inseriti";
+//        }
+//
 
-
-
+        //VENERDI
         if( isset($_POST["VApertura"]) && isset($_POST["VChiusura"])   ){
 
-            if( $_POST["VApertura"] < $_POST["VChiusura"] ){
-                $VApertura = $_POST["VApertura"];
-                $VChiusura = $_POST["VChiusura"];
+            if( controllo_orario( $_POST["VApertura"] , $_POST["VChiusura"] ) ){
+//                echo "VENERDI GIUSTO!!!   ";
+                $VApertura = substr( $_POST["VApertura"],0,5) ;
+                $VChiusura = substr( $_POST["VChiusura"],0,5) ;
+            }else if ( controllo_azzeramento_orario(  $_POST["VApertura"] , $_POST["VChiusura"] )){
+                $VApertura = substr( $_POST["VApertura"],0,5) ;
+                $VChiusura = substr( $_POST["VChiusura"],0,5) ;
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                $VErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["VApertura"]) && !isset($_POST["VChiusura"])){
-//                tengo a nul gli orari
-//                $VApertura = "";
-//                $VChiusura = "";
-
-        }else{
-            $VErrore = "Orari Venerdi non inseriti";
         }
+//        else if( !isset($_POST["VApertura"]) && !isset($_POST["VChiusura"])){
+////                tengo a nul gli orari
+////                $VApertura = "";
+////                $VChiusura = "";
+//
+//        }else{
+//            $VErrore = "Orari Venerdi non inseriti";
+//        }
 
-
+        //SABATO
         if( isset($_POST["SApertura"]) && isset($_POST["SChiusura"])   ){
 
-            if( $_POST["SApertura"] < $_POST["SChiusura"] ){
-                $SApertura = $_POST["SApertura"];
-                $SChiusura = $_POST["SChiusura"];
+            if( controllo_orario( $_POST["SApertura"] , $_POST["SChiusura"] ) ){
+//                echo "SABATO GIUSTO!!!   ";
+                $SApertura = substr( $_POST["SApertura"],0,5);
+                $SChiusura = substr( $_POST["SChiusura"],0,5);
+            }else if ( controllo_azzeramento_orario( $_POST["SApertura"] , $_POST["SChiusura"] )){
+                $SApertura = substr( $_POST["SApertura"],0,5);
+                $SChiusura = substr( $_POST["SChiusura"],0,5);
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                $SErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["SApertura"]) && !isset($_POST["SChiusura"])){
-//                tengo a nul gli orari
-//                $SApertura = "";
-//                $SChiusura = "";
-
-        }else{
-            $SErrore = "Orari Sabato non inseriti";
         }
+//        else if( !isset($_POST["SApertura"]) && !isset($_POST["SChiusura"])){
+////                tengo a nul gli orari
+////                $SApertura = "";
+////                $SChiusura = "";
+//
+//        }else{
+//            $SErrore = "Orari Sabato non inseriti";
+//        }
 
-        if( isset($_POST["DApertura"]) && isset($_POST["DChiusura"])   ){
 
-            if( $_POST["DApertura"] < $_POST["DChiusura"] ){
-                $SApertura = $_POST["DApertura"];
-                $SChiusura = $_POST["DChiusura"];
+        //DOMENICA
+        if( isset($_POST["DApertura"]) && isset($_POST["DChiusura"])  ){
+
+            if( controllo_orario( $_POST["GApertura"] , $_POST["GChiusura"] ) ){
+//                echo "DOMENICA GIUSTO!!!   ";
+                $DApertura = substr( $_POST["DApertura"],0,5);
+                $DChiusura = substr( $_POST["DChiusura"],0,5);
+            }else if ( controllo_azzeramento_orario( $_POST["GApertura"] , $_POST["GChiusura"] )){
+                $DApertura = substr( $_POST["DApertura"],0,5);
+                $DChiusura = substr( $_POST["DChiusura"],0,5);
             }else{
-                $LErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
+                $DErrore = "Oraro chiusura non può essere minore di quello di appertura!!!";
             }
 
-        }else if( !isset($_POST["DApertura"]) && !isset($_POST["DChiusura"])){
-//                tengo a nul gli orari
-//                $DApertura = "";
-//                $DChiusura = "";
-
-        }else{
-            $DErrore = "Orari Domenica non inseriti";
         }
+//        else if( !isset($_POST["DApertura"]) && !isset($_POST["DChiusura"])){
+////                tengo a nul gli orari
+////                $DApertura = "";
+////                $DChiusura = "";
+//
+//        }else{
+//            $DErrore = "Orari Domenica non inseriti";
+//        }
+
+
 
         $ErroreOrario = $LErrore.$MaErrore.$MeErrore.$GErrore.$VErrore.$SErrore.$DErrore;
 
-        if( $ErroreOrario != ""){
+        if( $ErroreOrario != "" ){
+
             echo '<script> alert("Errore inserimento orario"); </script>';
-        }
 
 
-
-        //CARICAMENTO SUL DATABASE
-
-
-        else {
+        } else {//CARICAMENTO SUL DATABASE
             $connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Connessione fallita: " . $connessione->connect_error); //streammo l'errore di connessione;
 
             if($LApertura != "" ){
                 if( se_esiste_gia("lunedi")  ){
+                    echo 'query di update!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!';
                     $query_orario_lunedi=" UPDATE orario_apertura  SET ora_inizio = '$LApertura' , ora_fine = '$LChiusura'  WHERE id_azienda = '".$_SESSION["id_utente"]."' AND giorno = 'lunedi' ";
                 }else{
                     $query_orario_lunedi=" INSERT INTO orario_apertura ( id_azienda , giorno , ora_inizio , ora_fine  ) VALUES  ( '".$_SESSION["id_utente"]."' , 'lunedi' , '$LApertura' , '$LChiusura'  )";
