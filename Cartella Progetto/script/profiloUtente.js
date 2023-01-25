@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $("div.modifiche_profilo").hide();
-    $("div.pop-up-conferma").hide("slow");
-
+    $("div.pop-up-conferma").hide();
 
     $("#butt_req_modif_user").click(function (){
         $("div.modifiche_profilo").show(3000);

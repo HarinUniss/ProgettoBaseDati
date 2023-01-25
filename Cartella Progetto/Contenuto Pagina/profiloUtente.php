@@ -265,12 +265,10 @@ $id_utente = "";
             echo '
                 <button type="button" class="btn btn-danger" id="butt_req_modif_user">Modificare?</button>
             ';
-        }else{
+        }elseif(isset($_SESSION["tipo"]) && $_SESSION["tipo"] == "utente"){
             //altrimenti visualizzo il tasto prenotazione
             echo '
-                <form>
-                    <button type="button" name="bt_accesso_sezione_prenotazione" class="btn btn-info" >Prenotare?</button>
-                </form>
+                    <a href="../Prenotazioni/pagina_per_prenotare.php?utente='.$id_utente.'">Prenotare?</a>
                 ';
         }
     ?>
@@ -291,6 +289,7 @@ $id_utente = "";
                 <div class="col-lg-6 modifiche_profilo">
                     <form method="post" action="">
                         <p class="suggerimento_inserimento">Lasciare liberi i campi che non si intende modificare!</p>
+                        
                         <nobr>Modifica Nome: <input type="text" name = "nome"></nobr>
             ';
             if($tipo == "utente") echo "<br><nobr>Modifica Cognome: <input type = 'text' name='cognome'></nobr>";
@@ -314,8 +313,8 @@ $id_utente = "";
             ';
         }else{
 
-
-            echo '<div class="row-lg-6 ">';
+    echo '
+        <div class="row-lg-6">';
 
             $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database " . $conn->error);
 

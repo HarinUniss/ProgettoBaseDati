@@ -82,7 +82,7 @@
                 //Dato che il pedigree dev'essere obbligatorio per un animale inserito da un allevamento
                 //Faccio il controllo solo sull'allevamento...
                 if((!isset($_POST["pedigree"]) || $_POST["pedigree"] == 0) && $_SESSION["tipo"] == "allevamento"){
-                    $pedigreeERR = "*Pegigree obbligatorio per animali inseriti da allavamento";
+                    $pedigreeERR = "*Pegigree obbligatorio per animali inseriti da allevamento";
                 }elseif(isset($_POST["pedigree"]) ){
                     $pedigree = 1;
                     echo "Patata";
