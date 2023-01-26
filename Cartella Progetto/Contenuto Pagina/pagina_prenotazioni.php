@@ -60,18 +60,17 @@ $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore access
         $query_prenotazioni="SELECT *  FROM tabella_prenotazioni WHERE id_azienda =".$_SESSION["id_utente"];
 
         $qris = $conn->query($query_prenotazioni);
-if(mysqli_num_rows($qris) == 0){
+if(mysqli_num_rows($qris) > 0){
         while($row = $qris->fetch_assoc()) {
-            $query_id_utente="SELECT nome,cognome FROM utente WHERE id_utente =".$row["id_utente"];
-            $ris = $conn->query($query_id_utente);
-            $ris = $qris->fetch_assoc();
+            $query_id_utente="SELECT nome,cognome FROM utenti WHERE id_utente =".$row["id_utente"];
+            $cont = $conn->query($query_id_utente);
+            $ris = $cont->fetch_assoc();
             echo "<tr>
             <td>".$row["id_prenotazione"]."</td>
             <td>".$ris["nome"]."-".$ris["cognome"]."</td>
-            <td>".$row["giorno"]."</td>
+            <td>".$row["data"]."</td>
             <td>".$row["ora"]."</td>
             <td>".$row["note"]."</td>
-            <td><input type='button' value='elimina' onclick='".EliminaPrenotazioni($row['id_animale'])."'></td>
         </tr>";
 
 
