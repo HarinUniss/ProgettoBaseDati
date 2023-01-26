@@ -29,6 +29,16 @@ $Inserimento= [ 'lunedi', 'martedi','mercoledi' , 'giovedi', 'sabato' , 'domenic
 
 $query_cambia_orario="";
 
+//CONTROLLO SE L'USER CHE STA FACENDO UNA MODIFICA ORARIO SIA REALMENTE UN CANILE O UN ALLEVAMENTO
+$tipo_utente = "";
+$connessione = new mysqli("localhost", "root", "", "db_progetto") or die("Errore accesso database " . $connessione->error);
+if( isset($_GET['id_utente'])){
+    $id_utente = $_GET['id_utente'];
+    $ris = $connessione->query("SELECT * FROM Utenti WHERE id_utente = ".$id_utente.";");
+    if($ris->fetch_assoc()["tipo"] == "utente"){
+        $tipo_utente = "utente";
+    }
+}
 
 //serve a verificare se un giorno è gia stato impostato per l'utente
 function se_esiste_gia( $giorno ) {
