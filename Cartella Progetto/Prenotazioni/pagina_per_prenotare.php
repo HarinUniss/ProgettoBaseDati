@@ -25,7 +25,7 @@
     ?>
     <?php
     //$conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
-    $data = $nota = $errore ="";
+    $data = $nota = "";
     if(isset($_POST["invia_prenotazione"]))
         if(isset($_POST["data"])){
             /*echo date("d-m-Y h:i:sa");*/
@@ -41,9 +41,9 @@
                 $data = $_POST["data"];
 
             }
-            else{
+            /*else{
                 $errore = "Errore Inserimento data, dev'essere < 10 giorni da oggi";
-            }
+            }*/
             if(isset($_POST["ora_disp"])){
                 if($data != ""){
                     $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
@@ -87,7 +87,6 @@
     ?>
     <nobr><p>Pagina di prenotazione per <?php echo "<p id='numero_azienda'>".$_GET["azienda"]."</p>" ?></p></nobr>
 
-    <?php echo date('Y-F-j', strtotime(15-02-2023)); ?>
     <form method="post">
         <div class="pop-up-conferma">
             <p><nobr>Sicuro di voler confermare?</nobr></p>
@@ -95,7 +94,6 @@
                 <button type="submit" name="invia_prenotazione" class="btn btn-danger" id="invia_reg">conferma</button><button type="button" class="btn btn-secondary annulla">annulla</button>
             </p>
         </div>
-        <?php echo '<p class="error">'.$errore.'</p>'?>
         <input type="date" name ="data" oninput="getOrario(this.value)">
 
         <label for="ora_disp">Ora</label>
