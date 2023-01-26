@@ -67,7 +67,7 @@
                         ';
             }elseif($tipo=="utente"){
                 echo '<dt>Gestione Prenotazioni</dt>
-                      <dt><a href="">Visualizza Prenotazioni</a></dt>
+                      <dt><a href="./Contenuto Pagina/pagina_prenotazioni.php">Visualizza Prenotazioni</a></dt>
                 ';
             }
                          echo"<dt><a href='Header/logout.php?logout=1'>
