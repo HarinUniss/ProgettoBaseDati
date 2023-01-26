@@ -34,17 +34,22 @@ if(!isset($_GET["anim"]) && !isset($_GET["pren"])){
                 alert("Eliminazione Prenotazione avvenuta con successo");
                 window.location.href = "../home.php";
             </script>';
-            unset($_GET["anim"]);
+            unset($_GET["pren"]);
         }
 
 
 
-    }elseif(isset($_POST["annulla"])){
+    }elseif(isset($_POST["annulla"])&&isset($_GET["anim"])){
         unset($_GET["anim"]);
-        unset($_GET["pren"]);
         echo '<script>
                 alert("Eliminazione animale Annullata");
                 window.location.href = "paginaAnimaliInseriti.php";
+            </script>';
+    }elseif(isset($_POST["annulla"])&&isset($_GET["pren"])){
+        unset($_GET["pren"]);
+        echo '<script>
+                alert("Eliminazione Prenotazione Annullata");
+                window.location.href = "../home.php";
             </script>';
     }
 
@@ -57,7 +62,7 @@ if(!isset($_GET["anim"]) && !isset($_GET["pren"])){
         <?php
             if(isset($_GET["anim"])){
                 echo '<p>Sicuro di voler Eliminare l animale con <nobr>id=  '.$_GET["anim"].'</nobr></p>';
-            }else{
+            }elseif(isset($_GET["pren"])){
                 echo '<p>Sicuro di voler Eliminare la prenotazione con <nobr>id=  '.$_GET["pren"].'</nobr></p>';
             }
         ?>
