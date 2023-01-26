@@ -1,3 +1,18 @@
-
+div.container-fluid p.titolo {
+  text-align: center;
+  font-family: "Tempus Sans ITC", "Times New Roman";
+  color: darkgreen;
+  font-size: large;
+}
+div.container-fluid div.div_user_profile_info {
+  position: relative;
+  margin-top: 75px;
+}
+div.container-fluid div.row div {
+  text-align: center;
+}
+div.container-fluid div.row div.modifiche_profilo {
+  background-color: #62e559;
+}
 
 /*# sourceMappingURL=profiloUtente.css.map */

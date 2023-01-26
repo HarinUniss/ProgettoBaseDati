@@ -40,7 +40,7 @@ function se_esiste_gia( $giorno ) {
     $risultato = $connessione -> query($query_verifica);
 
 
-    if( $risultato){
+    if( mysqli_num_rows($risultato) > 0){
         return true;
     }
     return false;
@@ -245,11 +245,11 @@ if( !isset($_SESSION[ "id_utente" ] ) ){
         //DOMENICA
         if( isset($_POST["DApertura"]) && isset($_POST["DChiusura"])  ){
 
-            if( controllo_orario( $_POST["GApertura"] , $_POST["GChiusura"] ) ){
+            if( controllo_orario( $_POST["DApertura"] , $_POST["DChiusura"] ) ){
 //                echo "DOMENICA GIUSTO!!!   ";
                 $DApertura = substr( $_POST["DApertura"],0,5);
                 $DChiusura = substr( $_POST["DChiusura"],0,5);
-            }else if ( controllo_azzeramento_orario( $_POST["GApertura"] , $_POST["GChiusura"] )){
+            }else if ( controllo_azzeramento_orario( $_POST["DApertura"] , $_POST["DChiusura"] )){
                 $DApertura = substr( $_POST["DApertura"],0,5);
                 $DChiusura = substr( $_POST["DChiusura"],0,5);
             }else{

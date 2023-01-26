@@ -45,7 +45,7 @@
                 $errore = "Errore Inserimento data, dev'essere < 10 giorni da oggi";
             }
             if(isset($_POST["ora_disp"])){
-                if($errore != ""){
+                if($data != ""){
                     $conn = new mysqli("localhost", "root", "", "db_progetto") or die("Errore di connessione: " . $conn->connect_error);
                     $ora_scelta = $_POST["ora_disp"];
                     if(isset($_POST["nota"]))
@@ -59,11 +59,11 @@
                         </script>
                         ';
                 }else{
-                    echo '
-                        <script>
-                            alert("Errore nell inserimento della data");
-                        </script>
-                        ';
+                    echo "CIAOOOOOONEEEEEEEEEEE";
+//                        <script>
+//                            alert("Errore nell inserimento della data");
+//                        </script>
+//                        ';
                 }
 
 
