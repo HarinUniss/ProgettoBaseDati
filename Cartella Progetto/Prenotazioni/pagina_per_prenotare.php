@@ -87,7 +87,6 @@
     ?>
     <nobr><p>Pagina di prenotazione per <?php echo "<p id='numero_azienda'>".$_GET["azienda"]."</p>" ?></p></nobr>
 
-    <?php echo date('Y-F-j', strtotime(15-02-2023)); ?>
     <form method="post">
         <div class="pop-up-conferma">
             <p><nobr>Sicuro di voler confermare?</nobr></p>
